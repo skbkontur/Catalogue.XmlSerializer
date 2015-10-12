@@ -1,4 +1,4 @@
-﻿using SKBKontur.Catalogue.XmlSerializer.Reading.Configuration;
+﻿using SKBKontur.Catalogue.XmlSerialization.Reading.Configuration;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 {

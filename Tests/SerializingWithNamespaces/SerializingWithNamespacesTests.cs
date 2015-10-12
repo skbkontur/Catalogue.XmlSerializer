@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Attributes;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Attributes;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
 {
@@ -10,7 +11,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         [SetUp]
         public void SetUp()
         {
-            xmlSerializer = new XmlSerializer();
+            xmlSerializer = new XmlSerialization.XmlSerializer();
         }
 
         [Test]
@@ -40,7 +41,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
 </ns1:root>");
         }
 
-        private XmlSerializer xmlSerializer;
+        private XmlSerialization.XmlSerializer xmlSerializer;
     }
 
     [XmlNamespace(Namespaces.Namespace1)]

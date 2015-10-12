@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Reading;
+using SKBKontur.Catalogue.XmlSerialization.Reading;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 {

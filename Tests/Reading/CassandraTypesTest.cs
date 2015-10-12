@@ -10,7 +10,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void DeserealizeTest()
         {
-            var serializer = new XmlSerializer();
+            var serializer = new XmlSerialization.XmlSerializer();
             var actual = serializer.Deserialize<Qxx>(File.ReadAllText(@"Files\CassandraColumn.xml")).col;
             var expected = new[]
                 {

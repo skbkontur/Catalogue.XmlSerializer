@@ -3,8 +3,9 @@ using System.Text;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Attributes;
-using SKBKontur.Catalogue.XmlSerializer.Writing;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using SKBKontur.Catalogue.XmlSerialization.Writing;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 {

@@ -86,9 +86,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XmlSerializer\XmlSerializer.csproj">
+    <ProjectReference Include="..\XmlSerialization\XmlSerialization.csproj">
       <Project>{D4CB2820-6919-405B-B476-8C7C340D702A}</Project>
-      <Name>XmlSerializer</Name>
+      <Name>XmlSerialization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

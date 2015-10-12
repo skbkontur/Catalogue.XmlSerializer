@@ -4,8 +4,9 @@ using FluentAssertions;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Reading;
-using SKBKontur.Catalogue.XmlSerializer.Reading.ContentReaders;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Reading;
+using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
 using SKBKontur.Catalogue.XmlSerializer.Tests.Writing;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading

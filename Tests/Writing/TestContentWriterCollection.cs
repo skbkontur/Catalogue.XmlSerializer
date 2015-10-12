@@ -1,7 +1,8 @@
 ﻿using System;
 
-using SKBKontur.Catalogue.XmlSerializer.Writing;
-using SKBKontur.Catalogue.XmlSerializer.Writing.ContentWriters;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Writing;
+using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 {

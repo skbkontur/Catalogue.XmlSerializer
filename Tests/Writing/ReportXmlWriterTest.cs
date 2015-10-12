@@ -4,7 +4,7 @@ using System.Xml;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Writing;
+using SKBKontur.Catalogue.XmlSerialization.Writing;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 {

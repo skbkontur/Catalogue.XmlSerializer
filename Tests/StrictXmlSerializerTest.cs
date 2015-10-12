@@ -4,7 +4,8 @@ using FluentAssertions;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Attributes;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Attributes;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests
 {

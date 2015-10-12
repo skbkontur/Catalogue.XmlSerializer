@@ -1,4 +1,4 @@
-﻿using SKBKontur.Catalogue.XmlSerializer.Attributes;
+﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 {

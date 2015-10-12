@@ -3,7 +3,8 @@ using System.Text;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerializer.Attributes;
+using SKBKontur.Catalogue.XmlSerialization;
+using SKBKontur.Catalogue.XmlSerialization.Attributes;
 using SKBKontur.Catalogue.XmlSerializer.Tests.Writing;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests
@@ -26,7 +27,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
         [SetUp]
         public void SetUp()
         {
-            xmlSerializer = new XmlSerializer();
+            xmlSerializer = new XmlSerialization.XmlSerializer();
         }
 
         [Test]
@@ -36,7 +37,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
             Assert.AreEqual(xmlText, xmlSerializer.SerializeToUtfString(data, true));
         }
 
-        private XmlSerializer xmlSerializer;
+        private XmlSerialization.XmlSerializer xmlSerializer;
 
         private const string xmlText = @"<root>
   <Qxx>
