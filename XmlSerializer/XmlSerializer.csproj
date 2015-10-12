@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeHelper.cs" />
+    <Compile Include="Attributes\DeclareXmlNamespaceAttribute.cs" />
     <Compile Include="Attributes\XmlAttributeAttribute.cs" />
     <Compile Include="Attributes\XmlElementAttribute.cs" />
     <Compile Include="Attributes\XmlElementInfo.cs" />
@@ -136,9 +137,7 @@
     <Compile Include="XmlSerializerConfiguration.cs" />
     <Compile Include="XmlSerializerExtensions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XmlNamespaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

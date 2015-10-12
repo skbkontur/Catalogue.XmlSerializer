@@ -67,6 +67,7 @@
     <Compile Include="Reading\ReportReaderHelpers.cs" />
     <Compile Include="Reading\SimpleContentReaderTest.cs" />
     <Compile Include="Reading\StandardConfigurations.cs" />
+    <Compile Include="SerializingWithNamespaces\SerializingWithNamespacesTests.cs" />
     <Compile Include="StrictXmlSerializerTest.cs" />
     <Compile Include="Writing\ContentWriterCollectionTest.cs" />
     <Compile Include="Writing\ContentWriterTest.cs" />

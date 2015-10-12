@@ -53,7 +53,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Writing.ContentWriters
             {
                 if(!IsAttr(propertyInfo) && propertyInfo.GetIndexParameters().Length == 0)
                 {
-                    var elementInfo = xmlAttributeInterpretator.GetXmlNodeInfo(propertyInfo);
+                    var elementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);
                     xmlElementInfoList.Add(elementInfo);
                     var propertyType = propertyInfo.PropertyType;
                     var emitReadPropertyFunc = ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type);
@@ -88,7 +88,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Writing.ContentWriters
                 if(IsAttr(propertyInfo))
                 {
                     funcList.Add(ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type));
-                    var xmlElementInfo = xmlAttributeInterpretator.GetXmlNodeInfo(propertyInfo);
+                    var xmlElementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);
                     xmlElementInfoList.Add(xmlElementInfo);
                     list.Add(new AttributeValueWriter(xmlElementInfo, collection.Get(propertyInfo.PropertyType)));
                 }

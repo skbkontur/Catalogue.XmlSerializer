@@ -8,8 +8,8 @@ namespace SKBKontur.Catalogue.XmlSerializer.Writing.ContentWriters
         {
             this.keyContentWriter = keyContentWriter;
             this.valueContentWriter = valueContentWriter;
-            keyNodeInfo = xmlAttributeInterpretator.GetXmlNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Key"));
-            valueNodeInfo = xmlAttributeInterpretator.GetXmlNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Value"));
+            keyNodeInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Key"));
+            valueNodeInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Value"));
         }
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)

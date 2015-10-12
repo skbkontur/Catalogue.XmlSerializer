@@ -9,14 +9,6 @@ namespace SKBKontur.Catalogue.XmlSerializer
 {
     public class XmlAttributeInterpretator : IXmlAttributeInterpretator
     {
-        public string GetXmlNamespace(MemberInfo memberInfo)
-        {
-            var namespaceAttribute = GetAttribute<XmlNamespaceAttribute>(memberInfo, false);
-            if(namespaceAttribute != null)
-                return namespaceAttribute.NamespaceUri;
-            return null;
-        }
-
         public string GetXmlNodeName(MemberInfo memberInfo)
         {
             var name = GetXmlNodeInternal(memberInfo);
@@ -24,19 +16,40 @@ namespace SKBKontur.Catalogue.XmlSerializer
             return name;
         }
 
-        public XmlElementInfo GetXmlNodeInfo(MemberInfo memberInfo)
+        public XmlElementInfo GetPropertyNodeInfo(PropertyInfo propertyInfo, Type parentType = null)
         {
-            return new XmlElementInfo {Name = GetXmlNodeName(memberInfo), NamespaceUri = GetXmlNamespace(memberInfo), Optional = IsOptional(memberInfo)};
+            return new XmlElementInfo { Name = GetXmlNodeName(propertyInfo), NamespaceUri = GetXmlNamespace(propertyInfo, parentType), Optional = IsOptional(propertyInfo), NamespaceDescriptions = GetXmlNamespaceDescriptions(GetPropertyType(propertyInfo)) };
         }
 
-        public XmlElementInfo GetRootNodeInfo(MemberInfo memberInfo)
+        public XmlElementInfo GetRootNodeInfo(Type type)
         {
-            return new XmlElementInfo {Name = GetRootName(memberInfo), NamespaceUri = GetXmlNamespace(memberInfo), Optional = IsOptional(memberInfo)};
+            return new XmlElementInfo { Name = GetRootName(type), NamespaceUri = GetXmlNamespace(type), Optional = IsOptional(type), NamespaceDescriptions = GetXmlNamespaceDescriptions(type) };
         }
 
-        public bool IsOptional(MemberInfo memberInfo)
+        private bool IsOptional(MemberInfo memberInfo)
         {
             return GetAttribute<XmlOptionalAttribute>(memberInfo, true) != null;
+        }
+
+        private XmlNamespaceDescription[] GetXmlNamespaceDescriptions(MemberInfo memberInfo)
+        {
+            var attributes = GetAttributes<DeclareXmlNamespaceAttribute>(memberInfo, false);
+            return attributes.Select(x => new XmlNamespaceDescription(x.Prefix, x.Uri)).ToArray();
+        }
+
+        private string GetXmlNamespace(MemberInfo memberInfo, Type parentType = null)
+        {
+            var namespaceAttribute = GetAttribute<XmlNamespaceAttribute>(memberInfo, false);
+            if(namespaceAttribute != null)
+                return namespaceAttribute.NamespaceUri;
+
+            if(parentType != null)
+            {
+                namespaceAttribute = GetAttribute<XmlNamespaceAttribute>(parentType, false);
+                if(namespaceAttribute != null)
+                    return namespaceAttribute.NamespaceUri;
+            }
+            return null;
         }
 
         private string GetXmlNodeInternal(MemberInfo memberInfo)
@@ -100,6 +113,12 @@ namespace SKBKontur.Catalogue.XmlSerializer
                 throw new Exception(string.Format("У элемента '{0}' не может быть больше одного атрибута типа '{1}'.", memberInfo, typeof(T).Name));
             if(attributes.Length == 1) return attributes[0];
             return null;
+        }
+
+        private static T[] GetAttributes<T>(MemberInfo memberInfo, bool inherit)
+            where T : Attribute
+        {
+            return memberInfo.GetAttributes<T>(inherit);
         }
 
         private static bool PossibleXmlName(string str)

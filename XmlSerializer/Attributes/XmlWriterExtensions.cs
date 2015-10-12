@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Linq;
+using System.Xml;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Attributes
 {
@@ -9,7 +10,16 @@ namespace SKBKontur.Catalogue.XmlSerializer.Attributes
             if(string.IsNullOrEmpty(xmlElementInfo.NamespaceUri))
                 writer.WriteStartElement(xmlElementInfo.Name);
             else
-                writer.WriteStartElement(xmlElementInfo.Name, xmlElementInfo.NamespaceUri);
+            {
+                var xmlNamespaceDescription = xmlElementInfo.NamespaceDescriptions.FirstOrDefault(x => x.Uri == xmlElementInfo.NamespaceUri);
+                if (xmlNamespaceDescription != null)
+                    writer.WriteStartElement(xmlNamespaceDescription.Prefix, xmlElementInfo.Name, xmlElementInfo.NamespaceUri);
+                else
+                    writer.WriteStartElement(xmlElementInfo.Name, xmlElementInfo.NamespaceUri);
+            }
+
+            foreach(var namespaceDescription in xmlElementInfo.NamespaceDescriptions)
+                writer.WriteAttributeString("xmlns", namespaceDescription.Prefix, null, namespaceDescription.Uri);
         }
 
         public static void WriteStartAttribute(this XmlWriter writer, XmlElementInfo xmlElementInfo)
