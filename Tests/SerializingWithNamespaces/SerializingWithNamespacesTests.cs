@@ -44,7 +44,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         private XmlSerialization.XmlSerializer xmlSerializer;
     }
 
-    [XmlNamespace(Namespaces.Namespace1)]
+    [XmlNamespace(Namespaces.Namespace1, true)]
     public class Root1
     {
         public string A { get; set; }
@@ -53,13 +53,13 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         public BClass B { get; set; }
     }
 
-    [XmlNamespace(Namespaces.Namespace1)]
+    [XmlNamespace(Namespaces.Namespace1, true)]
     public class BClass
     {
         public string C { get; set; }
     }
 
-    [XmlNamespace(Namespaces.Namespace1)]
+    [XmlNamespace(Namespaces.Namespace1, true)]
     [DeclareXmlNamespace("ns1", Namespaces.Namespace1)]
     public class Root2
     {
@@ -69,7 +69,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         public BClass2 B { get; set; }
     }
 
-    [XmlNamespace(Namespaces.Namespace1)]
+    [XmlNamespace(Namespaces.Namespace1, true)]
     [DeclareXmlNamespace("ns3", Namespaces.Namespace3)]
     public class BClass2
     {
