@@ -12,7 +12,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         {
             ReportReaderHelpers.Check(
                 new NameValueCollection {{"S", "zzz"}, {"C.S", "x"}},
-                new C2 {S = "zzz", C = new[] {new C2 {S = "x"},}});
+                new C2 {S = "zzz", C = new[] {new C2 {S = "x"}}});
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         <S>x</S>
     </C>
 </Root>",
-                new C2 {S = "zzz", C = new[] {new C2 {S = "x"},}});
+                new C2 {S = "zzz", C = new[] {new C2 {S = "x"}}});
         }
 
         [Test]

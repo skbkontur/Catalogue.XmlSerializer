@@ -20,7 +20,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
         public static void WriteNameValueCollection(this NameValueCollection nvc)
         {
             for(var i = 0; i < nvc.Count; i++)
-                Console.WriteLine(string.Format("{0}_{1}", nvc.AllKeys[i], nvc[nvc.AllKeys[i]]));
+                Console.WriteLine("{0}_{1}", nvc.AllKeys[i], nvc[nvc.AllKeys[i]]);
         }
     }
 }
