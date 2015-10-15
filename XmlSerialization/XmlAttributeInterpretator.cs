@@ -46,7 +46,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             if(parentType != null)
             {
                 namespaceAttribute = GetAttribute<XmlNamespaceAttribute>(parentType, false);
-                if (namespaceAttribute != null && namespaceAttribute.UseForChildProperties)
+                if (namespaceAttribute != null && (namespaceAttribute.IncludingAttributes || GetAttributes<XmlAttributeAttribute>(memberInfo, false).Length == 0))
                     return namespaceAttribute.NamespaceUri;
             }
             return null;

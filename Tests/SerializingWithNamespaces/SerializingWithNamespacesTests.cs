@@ -50,68 +50,9 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         public void SerializeWithNamespacesAndAttributesPrefixes()
         {
             var res = xmlSerializer.SerializeToUtfString(new Root3 {A = "1", B = "2"}, true);
-            Console.WriteLine(res);
-            res.AssertEqualsXml(@"<ns1:root xmlns:ns1=""http://alko.kontur.ru/napespace1"">
-  <ns1:A>1</ns1:A>
-  <B xmlns:ns3=""namespace:3"" xmlns=""urn:2"">
-    <ns1:C>
-      <ns3:D>2</ns3:D>
-    </ns1:C>
-  </B>
+            res.AssertEqualsXml(@"<ns1:root xmlns:ns1=""http://alko.kontur.ru/napespace1"" qxx=""2"">
+  <ns1:zzz>1</ns1:zzz>
 </ns1:root>");
-        }
-
-        [Test]
-        public void Test()
-        {
-            var memoryStream = new MemoryStream();
-            using(var z = XmlWriter.Create(memoryStream, new XmlWriterSettings
-                {
-                    NamespaceHandling = NamespaceHandling.OmitDuplicates
-                }))
-            {
-                z.WriteStartElement("a", "urn1");
-                z.WriteAttributeString("xmlns", "z", null, "urn1");
-                z.WriteStartElement("b", "urn1");
-
-                z.WriteAttributeString("c", "urn1", "2");
-                z.WriteEndElement();
-
-                z.WriteEndElement();
-            }
-            Console.WriteLine(Encoding.UTF8.GetString(memoryStream.ToArray()));
-        }
-
-        [Test]
-        public void Test2()
-        {
-            //var xml = @"<?xml version=""1.0"" encoding=""utf-8""?><a xmlns:z=""urn1"" xmlns=""urn1""><z:b a:c=""2"" z:c=""z"" xmlns:a=""urn2"" /></a>";
-            var xml = @"<?xml version=""1.0"" encoding=""utf-8""?><a xmlns=""urn"" xmlns:n=""urn2"" ><n:b><c></c></n:b></a>";
-            var reader = XmlReader.Create(new MemoryStream(Encoding.UTF8.GetBytes(xml)));
-            while(reader.Read())
-            {
-                switch(reader.NodeType)
-                {
-                case XmlNodeType.Element:
-                    Console.Write("<" + reader.Name + "(" + reader.NamespaceURI + ")");
-                    if(reader.HasAttributes)
-                    {
-                        while(reader.MoveToNextAttribute())
-                            Console.Write(" " + reader.Name + "(" + reader.NamespaceURI + ")=" + reader.Value);
-                        reader.MoveToElement();
-                    }
-                        Console.WriteLine(">");
-
-                    break;
-
-                case XmlNodeType.Text:
-                    Console.WriteLine(reader.Value);
-                    break;
-                case XmlNodeType.EndElement:
-                    Console.WriteLine("<" + reader.Name + "(" + reader.NamespaceURI + ")" + ">");
-                    break;
-                }
-            }
         }
 
         private XmlSerialization.XmlSerializer xmlSerializer;
@@ -155,7 +96,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         public string D { get; set; }
     }
 
-    [XmlNamespace(Namespaces.Namespace1, true)]
+    [XmlNamespace(Namespaces.Namespace1)]
     [DeclareXmlNamespace("ns1", Namespaces.Namespace1)]
     public class Root3
     {

@@ -7,16 +7,16 @@ namespace SKBKontur.Catalogue.XmlSerialization.Attributes
         public XmlNamespaceAttribute(string namespaceUri)
         {
             NamespaceUri = namespaceUri;
-            UseForChildProperties = false;
+            IncludingAttributes = false;
         }
 
-        public XmlNamespaceAttribute(string namespaceUri, bool useForChildProperties)
+        public XmlNamespaceAttribute(string namespaceUri, bool includingAttributes)
         {
             NamespaceUri = namespaceUri;
-            UseForChildProperties = useForChildProperties;
+            IncludingAttributes = includingAttributes;
         }
 
         public string NamespaceUri { get; set; }
-        public bool UseForChildProperties { get; set; }
+        public bool IncludingAttributes { get; set; }
     }
 }
