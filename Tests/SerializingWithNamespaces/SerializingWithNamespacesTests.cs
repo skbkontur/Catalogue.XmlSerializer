@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 using SKBKontur.Catalogue.XmlSerialization;
 using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using SKBKontur.Catalogue.XmlSerialization.TestExtensions;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
 {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerialization", "XmlSeri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{11878059-52A9-4057-8555-F795AD3E6802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlSerialization.TestExtensions", "XmlSerialization.TestExtensions\XmlSerialization.TestExtensions.csproj", "{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{11878059-52A9-4057-8555-F795AD3E6802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11878059-52A9-4057-8555-F795AD3E6802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11878059-52A9-4057-8555-F795AD3E6802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
