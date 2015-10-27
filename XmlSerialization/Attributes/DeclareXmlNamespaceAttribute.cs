@@ -2,6 +2,7 @@
 
 namespace SKBKontur.Catalogue.XmlSerialization.Attributes
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     public class DeclareXmlNamespaceAttribute : Attribute
     {
         public DeclareXmlNamespaceAttribute(string prefix, string uri)
