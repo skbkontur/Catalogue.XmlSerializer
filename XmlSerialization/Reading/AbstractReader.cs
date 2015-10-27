@@ -27,7 +27,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 while(NodeType != NodeType.EndElement)
                 {
                     if(NodeType == NodeType.Text || NodeType == NodeType.CDATA) result = Value;
-                    if(NodeType == NodeType.Element) throw new XmlException(string.Format("У элемента, который должен был быть простым, оказались дочерние элементы"));
+                    if(NodeType == NodeType.Element) throw new XmlException(string.Format("У элемента, который должен был быть простым, оказались дочерние элементы ({0})", LocalName));
                     if(!Read()) return null;
                 }
             }
