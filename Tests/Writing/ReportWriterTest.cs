@@ -38,6 +38,19 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
     <Id>7fe483b0-b27e-43fb-ac68-d66fd7dea4da</Id>
 </root>");
         }
+        
+        [Test]
+        public void TestDecimal()
+        {
+            writer.SerializeToString(new DCC
+                {
+                    Z = 23782.323223m
+                }, true, Encoding.ASCII).Replace(",",".").AssertEqualsXml(
+                    @"
+<root>
+    <Z>23782.323223</Z>
+</root>");
+        }
 
         [Test]
         public void TestEnum()
@@ -153,6 +166,11 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         public class QXX
         {
             public Guid Id { get; set; }
+        }
+        
+        public class DCC
+        {
+            public decimal Z { get; set; }
         }
 
         public class Q

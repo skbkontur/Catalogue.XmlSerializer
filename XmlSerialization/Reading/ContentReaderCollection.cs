@@ -22,6 +22,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                     {typeof(float), new FractionalContentReader<float>(float.TryParse)},
                     {typeof(Guid), new SimpleContentReader<Guid>(Guid.TryParse)},
                     {typeof(DateTime), new DateTimeContentReader()},
+                    {typeof(decimal), new FractionalContentReader<decimal>(decimal.TryParse)},
                 };
             this.xmlAttributeInterpretator = xmlAttributeInterpretator;
             this.onDeserializeConfiguration = onDeserializeConfiguration;

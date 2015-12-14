@@ -26,13 +26,43 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         }
 
         [Test]
-        public void TestDouble()
+        public void TestDouble_Dot()
         {
             double read;
             var reader = new FractionalContentReader<double>(double.TryParse);
             using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
                 read = reader.Read(new SimpleXmlReader(xmlReader, true));
             Assert.AreEqual(1.23, read, 1e-10);
+        }
+        
+        [Test]
+        public void TestDouble_Comma()
+        {
+            double read;
+            var reader = new FractionalContentReader<double>(double.TryParse);
+            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
+                read = reader.Read(new SimpleXmlReader(xmlReader, true));
+            Assert.AreEqual(1.23, read, 1e-10);
+        }
+        
+        [Test]
+        public void TestDecimal_Dot()
+        {
+            decimal read;
+            var reader = new FractionalContentReader<decimal>(decimal.TryParse);
+            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
+                read = reader.Read(new SimpleXmlReader(xmlReader, true));
+            Assert.AreEqual(1.23, read);
+        }
+        
+        [Test]
+        public void TestDecimal_Comma()
+        {
+            decimal read;
+            var reader = new FractionalContentReader<decimal>(decimal.TryParse);
+            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
+                read = reader.Read(new SimpleXmlReader(xmlReader, true));
+            Assert.AreEqual(1.23, read);
         }
 
         [Test]

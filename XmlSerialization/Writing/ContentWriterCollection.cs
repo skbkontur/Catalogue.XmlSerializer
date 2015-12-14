@@ -44,7 +44,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
                 return stringContentWriter;
             if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 return new NullableContentWriter(type, this);
-            if(type.IsEnum || type == typeof(Guid))
+            if(type.IsEnum || type == typeof(Guid) || type == typeof(decimal))
                 return toStringContentWriter;
             if(type == typeof(DateTime))
                 return new DateTimeContentWriter();
