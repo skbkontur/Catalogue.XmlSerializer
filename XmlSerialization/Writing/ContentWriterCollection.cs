@@ -38,13 +38,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         private IContentWriter CreateLeafWriter(Type type)
         {
-            if(type.IsPrimitive)
+            if (type.IsPrimitive || type == typeof(decimal))
                 return valueContentWriter;
             if(type == typeof(string))
                 return stringContentWriter;
             if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 return new NullableContentWriter(type, this);
-            if(type.IsEnum || type == typeof(Guid) || type == typeof(decimal))
+            if(type.IsEnum || type == typeof(Guid))
                 return toStringContentWriter;
             if(type == typeof(DateTime))
                 return new DateTimeContentWriter();

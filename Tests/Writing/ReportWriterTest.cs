@@ -45,7 +45,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
             writer.SerializeToString(new DCC
                 {
                     Z = 23782.323223m
-                }, true, Encoding.ASCII).Replace(",",".").AssertEqualsXml(
+                }, true, Encoding.ASCII).AssertEqualsXml(
                     @"
 <root>
     <Z>23782.323223</Z>
