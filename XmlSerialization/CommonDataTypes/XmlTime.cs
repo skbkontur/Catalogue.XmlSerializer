@@ -10,44 +10,33 @@ namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
 {
     public class XmlTime : XmlDataType, ICustomRead, ICustomWrite
     {
+        private const string Format = "HH:mm";
+
+        public TimeSpan? Time { get; set; }
+
         public void Read(IReader xmlReader)
         {
             var dateString = xmlReader.ReadStringValue();
-            if (!string.IsNullOrEmpty(dateString))
-            {
-                try
-                {
-                    var datetime = DateTime.Parse(dateString, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal);
-                    Time = new TimeSpan(datetime.Hour, datetime.Minute, datetime.Second);
-                }
-                catch
-                {
-                    Time = null;
-                }
-            }
+            DateTime datetime;
+            if (!string.IsNullOrEmpty(dateString) && DateTime.TryParse(dateString, CultureInfo.InvariantCulture,
+                    DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out datetime))
+                Time = new TimeSpan(datetime.Hour, datetime.Minute, datetime.Second);
             else
-            {
                 Time = null;
-            }
         }
 
         public void Write(IWriter xmlWriter)
         {
-            
             if (Time != null)
             {
                 var datetime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + Time.Value;
                 xmlWriter.WriteValue(datetime.ToUniversalTime().ToString(Format));
             }
-                
         }
 
         public static XmlTime FromDateTime(DateTime datetime)
         {
             return new XmlTime {Time = new TimeSpan(datetime.Hour, datetime.Minute, datetime.Second)};
         }
-        
-        public TimeSpan? Time { get; set; }
-        private const string Format = "HH:mm";
     }
 }
