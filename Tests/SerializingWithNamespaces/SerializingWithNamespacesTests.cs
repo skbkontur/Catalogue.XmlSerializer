@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
 
 using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
 using SKBKontur.Catalogue.XmlSerialization.TestExtensions;
-using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts;
 using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents;
 using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleClassWithManyNamespaces;
 using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRoots;
@@ -72,40 +70,40 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
             xmlSerializer
                 .SerializeToUtfString(
                     new Document<Body2>
-                    {
-                        Body = new Body2
                         {
-                            A = "A",
-                            B = "B"
-                        }
-                    }, true).
+                            Body = new Body2
+                                {
+                                    A = "A",
+                                    B = "B"
+                                }
+                        }, true).
                  AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body><two:A>A</two:A><two:B>B</two:B></m:Body></m:root>");
 
             xmlSerializer
-               .SerializeToUtfString(
-                   new Document<Body3>
-                   {
-                       Body = new Body3
-                       {
-                           A = "A",
-                           B = "B",
-                           C = "C"
-                       }
-                   }, true).
-                AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body> <three:A>A</three:A> <three:B>B</three:B> <three:C>C</three:C> </m:Body></m:root>");
+                .SerializeToUtfString(
+                    new Document<Body3>
+                        {
+                            Body = new Body3
+                                {
+                                    A = "A",
+                                    B = "B",
+                                    C = "C"
+                                }
+                        }, true).
+                 AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body> <three:A>A</three:A> <three:B>B</three:B> <three:C>C</three:C> </m:Body></m:root>");
         }
 
         [Test]
         public void TestCheckPrefixDeclaringOrder()
         {
             xmlSerializer.SerializeToUtfString(new RootWithManyNamespaces
-            {
-                A = "A",
-                B = "B",
-                C = "C",
-                D = "D",
-            },true)
-            .AssertEqualsXml(@"<root xmlns:d=""urn:a"" xmlns:c=""urn:b"" xmlns:b=""urn:c"" xmlns:a=""urn:d""> <d:A>A</d:A> <c:B>B</c:B> <b:C>C</b:C> <a:D>D</a:D> </root>");
+                {
+                    A = "A",
+                    B = "B",
+                    C = "C",
+                    D = "D",
+                }, true)
+                         .AssertEqualsXml(@"<root xmlns:d=""urn:a"" xmlns:c=""urn:b"" xmlns:b=""urn:c"" xmlns:a=""urn:d""> <d:A>A</d:A> <c:B>B</c:B> <b:C>C</b:C> <a:D>D</a:D> </root>");
         }
 
         private XmlSerialization.XmlSerializer xmlSerializer;

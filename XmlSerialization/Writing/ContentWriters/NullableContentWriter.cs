@@ -14,7 +14,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)
         {
-            if((bool)callHasValue(obj))
+            if ((bool)callHasValue(obj))
             {
                 var nullableValue = callGetValue(obj);
                 contentWriter.Write(nullableValue, writer);

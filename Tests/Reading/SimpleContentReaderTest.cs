@@ -17,7 +17,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public void TestCantParse()
         {
             int read;
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>ZZZ</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>ZZZ</A>"))
             {
                 read = ((IContentReader<int>)new SimpleContentReader<int>(int.TryParse)).Read(new SimpleXmlReader(xmlReader, true));
                 Assert.AreEqual(XmlNodeType.None, xmlReader.NodeType);
@@ -30,37 +30,37 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         {
             double read;
             var reader = new FractionalContentReader<double>(double.TryParse);
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
                 read = reader.Read(new SimpleXmlReader(xmlReader, true));
             Assert.AreEqual(1.23, read, 1e-10);
         }
-        
+
         [Test]
         public void TestDouble_Comma()
         {
             double read;
             var reader = new FractionalContentReader<double>(double.TryParse);
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
                 read = reader.Read(new SimpleXmlReader(xmlReader, true));
             Assert.AreEqual(1.23, read, 1e-10);
         }
-        
+
         [Test]
         public void TestDecimal_Dot()
         {
             decimal read;
             var reader = new FractionalContentReader<decimal>(decimal.TryParse);
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1.23</A>"))
                 read = reader.Read(new SimpleXmlReader(xmlReader, true));
             Assert.AreEqual(1.23, read);
         }
-        
+
         [Test]
         public void TestDecimal_Comma()
         {
             decimal read;
             var reader = new FractionalContentReader<decimal>(decimal.TryParse);
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>1,23</A>"))
                 read = reader.Read(new SimpleXmlReader(xmlReader, true));
             Assert.AreEqual(1.23, read);
         }
@@ -68,7 +68,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void TestPosition()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>123</A> <Z />"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A>123</A> <Z />"))
             {
                 var read = ((IContentReader<int>)new SimpleContentReader<int>(int.TryParse)).Read(new SimpleXmlReader(xmlReader, true));
                 Assert.AreEqual(XmlNodeType.Element, xmlReader.NodeType);
@@ -80,7 +80,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void TestReadEmptyTag()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A />"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A />"))
             {
                 var contentReader = new SimpleContentReader<int>(int.TryParse);
                 var read = contentReader.Read(new SimpleXmlReader(xmlReader, true));
@@ -92,7 +92,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void TestReadSimple()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A x='xx'>123</A>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A x='xx'>123</A>"))
             {
                 var contentReader = new SimpleContentReader<int>(int.TryParse);
                 var read = contentReader.Read(new SimpleXmlReader(xmlReader, true));
@@ -105,14 +105,14 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public void TestStringReaderAndSubtree()
         {
             var stringContentReader = new StringContentReader();
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
                 stringContentReader.Read(new SimpleXmlReader(xmlReader, true));
         }
 
         [Test, ExpectedException(typeof(XmlException))]
         public void TestSubtree()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
             {
                 var contentReader = new SimpleContentReader<int>(int.TryParse);
                 contentReader.Read(new SimpleXmlReader(xmlReader, true));
@@ -122,7 +122,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void TestGenericType()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>1</specificTrash><SpecificTransaction><specifictransactiontrash>2</specifictransactiontrash></SpecificTransaction></Message>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>1</specificTrash><SpecificTransaction><specifictransactiontrash>2</specifictransactiontrash></SpecificTransaction></Message>"))
             {
                 var interpretator = new XmlAttributeInterpretator();
                 var contentReader = new ClassContentReader<Message<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);
@@ -138,7 +138,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void TestGenericArray()
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>st</specificTrash><SpecificTransaction><specifictransactiontrash>stt1</specifictransactiontrash></SpecificTransaction><SpecificTransaction><specifictransactiontrash>stt2</specifictransactiontrash></SpecificTransaction></Message>"))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>st</specificTrash><SpecificTransaction><specifictransactiontrash>stt1</specifictransactiontrash></SpecificTransaction><SpecificTransaction><specifictransactiontrash>stt2</specifictransactiontrash></SpecificTransaction></Message>"))
             {
                 var interpretator = new XmlAttributeInterpretator();
                 var contentReader = new ClassContentReader<ArrayMessage<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);

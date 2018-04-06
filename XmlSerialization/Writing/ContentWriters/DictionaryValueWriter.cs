@@ -17,7 +17,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
         {
             var dictionary = (IDictionary)value;
             var list = new List<DictionaryKeyValuePair>();
-            foreach(var key in dictionary.Keys)
+            foreach (var key in dictionary.Keys)
             {
                 var pair = new DictionaryKeyValuePair {Key = key, Value = dictionary[key]};
                 list.Add(pair);

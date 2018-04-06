@@ -169,6 +169,12 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 ", PrivateContructor.Create(new Guid("e3637da2-2220-422e-85f8-5f8268f024ea")));
         }
 
+        public enum ZEnum
+        {
+            A,
+            B
+        }
+
         public class PrivateContructor
         {
             private PrivateContructor()
@@ -223,12 +229,6 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public class Z2
         {
             public ZEnum Z { get; set; }
-        }
-
-        public enum ZEnum
-        {
-            A,
-            B
         }
     }
 }

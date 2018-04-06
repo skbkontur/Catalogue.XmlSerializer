@@ -7,12 +7,12 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
     {
         public NameValueCollection GetAttributes()
         {
-            if(NodeType != NodeType.Element) throw new XmlException(string.Format("Атрибуты можно вычитывать только у узла с типом Element. Тип '{0}' не годится.", NodeType));
-            if(!HasAttributes) return new NameValueCollection();
+            if (NodeType != NodeType.Element) throw new XmlException(string.Format("Атрибуты можно вычитывать только у узла с типом Element. Тип '{0}' не годится.", NodeType));
+            if (!HasAttributes) return new NameValueCollection();
             var collection = new NameValueCollection();
             MoveToFirstAttribute();
             collection.Add(LocalName, Value);
-            while(MoveToNextAttribute())
+            while (MoveToNextAttribute())
                 collection.Add(LocalName, Value);
             return collection;
         }
@@ -20,15 +20,15 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         public string ReadElementString()
         {
             string result = null;
-            if(NodeType == NodeType.Attribute) MoveToElement();
-            if(NodeType != NodeType.Element || (NodeType == NodeType.Element && !IsEmptyElement))
+            if (NodeType == NodeType.Attribute) MoveToElement();
+            if (NodeType != NodeType.Element || (NodeType == NodeType.Element && !IsEmptyElement))
             {
                 Read();
-                while(NodeType != NodeType.EndElement)
+                while (NodeType != NodeType.EndElement)
                 {
-                    if(NodeType == NodeType.Text || NodeType == NodeType.CDATA) result = Value;
-                    if(NodeType == NodeType.Element) throw new XmlException(string.Format("У элемента, который должен был быть простым, оказались дочерние элементы ({0})", LocalName));
-                    if(!Read()) return null;
+                    if (NodeType == NodeType.Text || NodeType == NodeType.CDATA) result = Value;
+                    if (NodeType == NodeType.Element) throw new XmlException(string.Format("У элемента, который должен был быть простым, оказались дочерние элементы ({0})", LocalName));
+                    if (!Read()) return null;
                 }
             }
             Read();

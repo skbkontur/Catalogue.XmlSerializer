@@ -11,7 +11,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)
         {
-            while(worker == null) Sleep();
+            while (worker == null) Sleep();
             worker.Write(obj, writer);
         }
 

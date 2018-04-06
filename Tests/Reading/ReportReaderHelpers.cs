@@ -34,7 +34,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 
         public static ReportReader CreateReader(OnDeserializeConfiguration configuration = null)
         {
-            if(configuration == null)
+            if (configuration == null)
                 configuration = StandardConfigurations.EmptyOnDeserializeConfiguration;
             return new ReportReader(new ContentReaderCollection(new XmlAttributeInterpretator(), configuration));
         }
@@ -49,12 +49,12 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 
         public static string KillSpaces(string source)
         {
-            using(var xmlReader = XmlReader.Create(new StringReader(source),
-                                                   new XmlReaderSettings
-                                                       {ConformanceLevel = ConformanceLevel.Fragment}))
+            using (var xmlReader = XmlReader.Create(new StringReader(source),
+                                                    new XmlReaderSettings
+                                                        {ConformanceLevel = ConformanceLevel.Fragment}))
             {
                 var builder = new StringBuilder();
-                using(
+                using (
                     XmlWriter xmlWriter = new NoWhitespaceWriter(new StringWriter(builder),
                                                                  new XmlWriterSettings
                                                                      {

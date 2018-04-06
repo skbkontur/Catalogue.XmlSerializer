@@ -10,13 +10,13 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
     {
         public IContentWriter Get(Type type)
         {
-            if(type == typeof(string))
+            if (type == typeof(string))
                 return new StringContentWriter();
-            if(type == typeof(int))
+            if (type == typeof(int))
                 return new ValueContentWriter();
-            if(type == typeof(int?))
+            if (type == typeof(int?))
                 return new NullableContentWriter(type, this);
-            if(typeof(ICustomWrite).IsAssignableFrom(type))
+            if (typeof(ICustomWrite).IsAssignableFrom(type))
                 return new CustomContentWriter();
 
             return new ClassContentWriter(type, this, new XmlAttributeInterpretator());

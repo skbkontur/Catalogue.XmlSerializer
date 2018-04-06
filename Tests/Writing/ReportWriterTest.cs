@@ -38,7 +38,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
     <Id>7fe483b0-b27e-43fb-ac68-d66fd7dea4da</Id>
 </root>");
         }
-        
+
         [Test]
         public void TestDecimal()
         {
@@ -153,6 +153,15 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 ");
         }
 
+        public enum ZEnum
+        {
+            A,
+            B
+        }
+
+        private IContentWriterCollection collection;
+        private IReportWriter writer;
+
         public class ClassWithIndexer
         {
             public virtual Object this[int index] { get { return "djskdjsdk"; } }
@@ -167,7 +176,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             public Guid Id { get; set; }
         }
-        
+
         public class DCC
         {
             public decimal Z { get; set; }
@@ -177,15 +186,6 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             public ZEnum Z { get; set; }
         }
-
-        public enum ZEnum
-        {
-            A,
-            B
-        }
-
-        private IContentWriterCollection collection;
-        private IReportWriter writer;
 
         private class C2
         {

@@ -79,13 +79,13 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
             expected.AssertAreEqual(actual);
         }
 
+        private IContentWriterCollection collection;
+        private IReportWriter writer;
+
         public class QZZ
         {
             public byte[] ByteArray { get; set; }
         }
-
-        private IContentWriterCollection collection;
-        private IReportWriter writer;
 
         private class C2
         {

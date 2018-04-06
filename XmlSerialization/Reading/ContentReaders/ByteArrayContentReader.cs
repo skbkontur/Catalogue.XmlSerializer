@@ -9,13 +9,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
         public byte[] Read(IReader reader)
         {
             var base64String = reader.ReadStringValue();
-            if(String.IsNullOrEmpty(base64String))
+            if (String.IsNullOrEmpty(base64String))
                 return null;
             try
             {
                 return Convert.FromBase64String(base64String);
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 return null;
             }

@@ -19,13 +19,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
             do
             {
                 dontRead = false;
-                switch(reader.Depth - workingDepth)
+                switch (reader.Depth - workingDepth)
                 {
                 case 0:
-                    if(reader.NodeType == NodeType.Element)
+                    if (reader.NodeType == NodeType.Element)
                     {
-                        if(elementName == null) elementName = reader.LocalName;
-                        if(reader.LocalName == elementName)
+                        if (elementName == null) elementName = reader.LocalName;
+                        if (reader.LocalName == elementName)
                         {
                             var item = itemReader.Read(reader);
                             dontRead = true;
@@ -39,7 +39,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
                 default:
                     throw new InvalidOperationException("TRASH IN ARRAY");
                 }
-            } while(dontRead || reader.Read());
+            } while (dontRead || reader.Read());
             return list.ToArray();
         }
 

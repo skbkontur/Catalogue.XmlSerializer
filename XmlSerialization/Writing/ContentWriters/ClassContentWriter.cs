@@ -25,7 +25,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)
         {
-            for(var i = 0; i < readPropertyFuncs.Length; i++)
+            for (var i = 0; i < readPropertyFuncs.Length; i++)
             {
                 var value = readPropertyFuncs[i](obj);
                 writers[i].Write(value, writer);
@@ -40,7 +40,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
         private static PropertyInfo[] GetProperties(Type type)
         {
             var result = new List<PropertyInfo>();
-            if(type.BaseType != null)
+            if (type.BaseType != null)
                 result.AddRange(GetProperties(type.BaseType));
             result.AddRange(type.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty | BindingFlags.DeclaredOnly));
             return result.ToArray();
@@ -49,9 +49,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
         private void ProcessOtherProps(Type type, ICollection<Func<object, object>> funcList,
                                        ICollection<IValueWriter> list, ICollection<XmlElementInfo> xmlElementInfoList, IContentWriterCollection collection)
         {
-            foreach(var propertyInfo in GetOrderedProperties(type))
+            foreach (var propertyInfo in GetOrderedProperties(type))
             {
-                if(!IsAttr(propertyInfo) && propertyInfo.GetIndexParameters().Length == 0)
+                if (!IsAttr(propertyInfo) && propertyInfo.GetIndexParameters().Length == 0)
                 {
                     var elementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);
                     xmlElementInfoList.Add(elementInfo);
@@ -59,17 +59,17 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
                     var emitReadPropertyFunc = ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type);
                     funcList.Add(emitReadPropertyFunc);
 
-                    if(propertyType == typeof(byte[]))
+                    if (propertyType == typeof(byte[]))
                         list.Add(new ByteArrayValueWriter(elementInfo));
-                    else if(propertyType.IsArray)
+                    else if (propertyType.IsArray)
                     {
-                        if(propertyType.GetArrayRank() > 1)
+                        if (propertyType.GetArrayRank() > 1)
                             throw new NotSupportedException(string.Format("array with rank {0}", propertyType.GetArrayRank()));
                         list.Add(new ArrayValueWriter(elementInfo, collection.Get(propertyType.GetElementType())));
                     }
-                    else if(propertyType.IsList())
+                    else if (propertyType.IsList())
                         list.Add(new ListValueWriter(elementInfo, collection.Get(propertyType.GetListType())));
-                    else if(propertyType.IsDictionary())
+                    else if (propertyType.IsDictionary())
                     {
                         var keyWriter = collection.Get(propertyType.GetDictionaryKeyType());
                         var valueWriter = collection.Get(propertyType.GetDictionaryValueType());
@@ -83,9 +83,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
         private void ProcessAttributes(Type type, ICollection<Func<object, object>> funcList,
                                        ICollection<IValueWriter> list, ICollection<XmlElementInfo> xmlElementInfoList, IContentWriterCollection collection)
         {
-            foreach(var propertyInfo in GetOrderedProperties(type))
+            foreach (var propertyInfo in GetOrderedProperties(type))
             {
-                if(IsAttr(propertyInfo))
+                if (IsAttr(propertyInfo))
                 {
                     funcList.Add(ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type));
                     var xmlElementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);

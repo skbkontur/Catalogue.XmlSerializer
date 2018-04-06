@@ -8,7 +8,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
     {
         public T Read(IReader xmlReader)
         {
-            while(worker == null) Sleep();
+            while (worker == null) Sleep();
             return worker.Read(xmlReader);
         }
 

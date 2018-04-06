@@ -37,8 +37,6 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
             Assert.AreEqual(xmlText, xmlSerializer.SerializeToUtfString(data, true));
         }
 
-        private XmlSerialization.XmlSerializer xmlSerializer;
-
         private const string xmlText = @"<root>
   <Qxx>
     <specificTrash>qzz1</specificTrash>
@@ -71,5 +69,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
     </Value>
   </Qyy>
 </root>";
+
+        private XmlSerialization.XmlSerializer xmlSerializer;
     }
 }

@@ -48,14 +48,9 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             ReportReaderHelpers.Check(nvc, new C1 {A = new[] {1, 2}});
         }
 
-        public class C1
-        {
-            public int[] A { get; set; }
-        }
-
         private static void CheckArray<T>(string source, T[] expected)
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader(source))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader(source))
             {
                 var arrayContentReader = new ArrayContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
                 var value = arrayContentReader.Read(new SimpleXmlReader(xmlReader, true));
@@ -68,6 +63,11 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             var arrayContentReader = new ArrayContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
             var value = arrayContentReader.Read(new NameValueCollectionReader(source));
             value.ShouldBeEquivalentTo(expected);
+        }
+
+        public class C1
+        {
+            public int[] A { get; set; }
         }
     }
 }

@@ -37,7 +37,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new MyClass {Value = "zzz"}, xmlWriter);
@@ -54,7 +54,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(Temp), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new Temp {Val = "zzz"}, xmlWriter);
@@ -71,7 +71,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(WithCustomContent), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(
@@ -94,7 +94,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new C1 {Int = 134, Value = 567}, xmlWriter);
@@ -112,7 +112,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new C1 {Int = 134}, xmlWriter);
@@ -127,7 +127,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new MyClass {Value = null}, xmlWriter);
@@ -141,7 +141,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new StringContentWriter();
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write("zzz", xmlWriter);
@@ -155,7 +155,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new StringContentWriter();
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write("", xmlWriter);
@@ -169,7 +169,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ValueContentWriter();
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(1, xmlWriter);
@@ -183,7 +183,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new CWithArray {Values = new int?[] {1, null, 2, 3}}, xmlWriter);
@@ -204,7 +204,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new CWithArray {Values = new int?[0]}, xmlWriter);
@@ -219,7 +219,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new ClassWithAttributes {Attr1 = "a1", attr2 = 2, Value = "zzz", Attr3 = "a3", SuperValue = "superZZZ"}, xmlWriter);
@@ -237,7 +237,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(ClassWithName), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new ClassWithName {Value = "Qqq"}, xmlWriter);
@@ -254,7 +254,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new ClassWithAttributes {Attr1 = null, attr2 = 2, Value = "zzz"}, xmlWriter);
@@ -272,7 +272,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = new ClassContentWriter(typeof(MyClassWithSubclass), collection, xmlAttributeInterpretator);
             var builder = new StringBuilder();
-            using(var xmlWriter = CreateWriter(builder))
+            using (var xmlWriter = CreateWriter(builder))
             {
                 xmlWriter.WriteStartElement("root");
                 writer.Write(new MyClassWithSubclass {MyClassProp = new MyClass {Value = "zzz"}}, xmlWriter);

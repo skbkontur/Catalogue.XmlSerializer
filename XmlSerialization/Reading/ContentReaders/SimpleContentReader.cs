@@ -13,7 +13,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
         {
             var readString = reader.ReadStringValue();
             T value;
-            if(!parseDelegate(readString, out value))
+            if (!parseDelegate(readString, out value))
                 value = default(T);
             return value;
         }

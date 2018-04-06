@@ -19,7 +19,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
                 BindingFlags.Instance | constructorFlags,
                 null, constructorParameterTypes,
                 null);
-            if(constructorInfo == null)
+            if (constructorInfo == null)
                 throw ConstructorNotFoundException.Create(type, constructorParameterTypes);
             return constructorInfo;
         }

@@ -51,6 +51,8 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
             strictXmlSerializer.Deserialize<C>(@"<C><Z> 2 </Z></C>").ShouldBeEquivalentTo(new C {Z = 2});
         }
 
+        private StrictXmlSerializer strictXmlSerializer;
+
         public class A
         {
             [XmlAttribute]
@@ -68,7 +70,5 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
         {
             public int Z { get; set; }
         }
-
-        private StrictXmlSerializer strictXmlSerializer;
     }
 }

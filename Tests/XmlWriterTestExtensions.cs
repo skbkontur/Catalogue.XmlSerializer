@@ -1,6 +1,5 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Writing;
-
-using XmlElementInfo = SKBKontur.Catalogue.XmlSerialization.Attributes.XmlElementInfo;
+﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using SKBKontur.Catalogue.XmlSerialization.Writing;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests
 {

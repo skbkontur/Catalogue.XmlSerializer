@@ -44,7 +44,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         public void WriteValue(object value)
         {
-            if(value != null)
+            if (value != null)
                 xmlWriter.WriteValue(value);
         }
 

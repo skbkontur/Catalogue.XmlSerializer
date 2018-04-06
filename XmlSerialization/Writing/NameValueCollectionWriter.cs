@@ -35,7 +35,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         public void WriteEndElement()
         {
             namespacesStack.Pop();
-            if(currentPath.Count == 1 && currentPath[0].Value)
+            if (currentPath.Count == 1 && currentPath[0].Value)
                 return; //к классе ничего не заполнено
             Remove();
         }
@@ -48,7 +48,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         public void WriteValue(object obj)
         {
-            if(obj != null)
+            if (obj != null)
             {
                 currentPath[currentPath.Count - 1] = new KeyValuePair<string, bool>(currentPath[currentPath.Count - 1].Key, true);
                 value = ValueToString(obj);
@@ -81,21 +81,21 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         {
             var url = GetUrl(xmlElementInfo);
             var topUrl = namespacesStack.Count > 0 ? namespacesStack.Peek() : "";
-            if(string.IsNullOrEmpty(url) || url == topUrl)
+            if (string.IsNullOrEmpty(url) || url == topUrl)
                 return xmlElementInfo.Name;
             return "[" + url + "]" + xmlElementInfo.Name;
         }
 
         private void Add(string name)
         {
-            if(currentPath.Count > 0)
+            if (currentPath.Count > 0)
                 currentPath[currentPath.Count - 1] = new KeyValuePair<string, bool>(currentPath[currentPath.Count - 1].Key, false);
             currentPath.Add(new KeyValuePair<string, bool>(name, true));
         }
 
         private void Remove()
         {
-            if(currentPath[currentPath.Count - 1].Value)
+            if (currentPath[currentPath.Count - 1].Value)
             {
                 nameValueCollection.Add(GetCurrentName(), value);
                 value = null;
@@ -106,7 +106,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         private string GetCurrentName()
         {
             var result = currentPath[1].Key;
-            for(var i = 2; i < currentPath.Count; i++)
+            for (var i = 2; i < currentPath.Count; i++)
                 result += "." + currentPath[i].Key;
             return result;
         }

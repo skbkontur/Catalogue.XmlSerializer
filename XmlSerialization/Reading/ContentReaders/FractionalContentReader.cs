@@ -17,9 +17,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
 
         private bool ParseDelegateDouble(string s, out T result)
         {
-            if(!string.IsNullOrEmpty(s))
+            if (!string.IsNullOrEmpty(s))
             {
-                if(s.Contains(","))
+                if (s.Contains(","))
                     s = s.Replace(",", ".");
             }
 

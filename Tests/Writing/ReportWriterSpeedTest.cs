@@ -31,7 +31,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
             var encoding1251 = Encoding.GetEncoding(1251);
             writer.SerializeToString(пфрсзв2010, true, encoding1251);
             var w = Stopwatch.StartNew();
-            for(var i = 0; i < count; ++i)
+            for (var i = 0; i < count; ++i)
                 writer.SerializeToString(пфрсзв2010, true, encoding1251);
             Debug.WriteLine(w.ElapsedMilliseconds);
             Debug.WriteLine(count / w.Elapsed.TotalSeconds + " writes/s");
@@ -40,7 +40,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         private static ФайлПФРСЗВ2010 Fill()
         {
             var сзв2010s = new ТипСЗВ2010[10];
-            for(var i = 0; i < сзв2010s.Length; ++i)
+            for (var i = 0; i < сзв2010s.Length; ++i)
                 сзв2010s[i] = new ТипСЗВ2010 {Zzz = "sdjksdkjsdkj"};
             var пфрсзв2010 = new ФайлПФРСЗВ2010
                 {

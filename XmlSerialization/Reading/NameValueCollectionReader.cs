@@ -11,23 +11,23 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             root = new TreeVertex("GlobalRoot");
             var allKeys = collection.AllKeys.OrderBy(key => key, new NameValueCollectionKeyComparer());
-            foreach(var key in allKeys)
+            foreach (var key in allKeys)
                 AddPath("Root." + key, collection[key]);
             cur = root.LeftSon;
         }
 
         public override bool Read()
         {
-            if(root.NodeType == NodeType.EndElement) return false;
-            switch(cur.NodeType)
+            if (root.NodeType == NodeType.EndElement) return false;
+            switch (cur.NodeType)
             {
             case NodeType.Attribute:
                 return false;
             case NodeType.None:
                 return false;
             case NodeType.EndElement:
-                if(cur.RightNeighbour != null) cur = cur.RightNeighbour;
-                else if(cur.Parent != null)
+                if (cur.RightNeighbour != null) cur = cur.RightNeighbour;
+                else if (cur.Parent != null)
                 {
                     cur = cur.Parent;
                     cur.NodeType = NodeType.EndElement;
@@ -38,9 +38,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 cur.NodeType = NodeType.EndElement;
                 return true;
             case NodeType.Element:
-                if(!cur.IsEmptyElement)
+                if (!cur.IsEmptyElement)
                 {
-                    if(cur.LeftSon == null) cur.NodeType = NodeType.Text;
+                    if (cur.LeftSon == null) cur.NodeType = NodeType.Text;
                     else cur = cur.LeftSon;
                     return true;
                 }
@@ -53,9 +53,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
         public override string ReadRawData()
         {
-            if(root.NodeType == NodeType.EndElement) return null;
+            if (root.NodeType == NodeType.EndElement) return null;
             string result = null;
-            switch(cur.NodeType)
+            switch (cur.NodeType)
             {
             case NodeType.Text:
                 result = cur.Value;
@@ -69,7 +69,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 break;
             case NodeType.Element:
                 Read();
-                if(NodeType != NodeType.Text)
+                if (NodeType != NodeType.Text)
                     throw new GroboSerializerException("Unable to read raw data");
                 result = cur.Value;
                 Read();
@@ -103,7 +103,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             get
             {
-                if(root.NodeType == NodeType.EndElement) return NodeType.None;
+                if (root.NodeType == NodeType.EndElement) return NodeType.None;
                 return cur.NodeType;
             }
         }
@@ -120,19 +120,19 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         private string[] SplitPath(string path)
         {
             var result = new List<string>();
-            for(var i = 0; i < path.Length; i++)
+            for (var i = 0; i < path.Length; i++)
             {
                 var list = new List<char>();
-                if(path[i] == '[')
+                if (path[i] == '[')
                 {
-                    while(path[i] != ']')
+                    while (path[i] != ']')
                         list.Add(path[i++]);
-                    while(i < path.Length && path[i] != '.')
+                    while (i < path.Length && path[i] != '.')
                         list.Add(path[i++]);
                 }
                 else
                 {
-                    while(i < path.Length && path[i] != '.')
+                    while (i < path.Length && path[i] != '.')
                         list.Add(path[i++]);
                 }
                 result.Add(new String(list.ToArray()));
@@ -144,23 +144,23 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             var name = SplitPath(path);
             var it = root;
-            for(var i = 0; i < name.Length; i++)
+            for (var i = 0; i < name.Length; i++)
             {
-                if(!IsAttribute(name[i]))
+                if (!IsAttribute(name[i]))
                 {
                     var treeVertex = new TreeVertex(name[i]);
-                    if(it.RightSon == null || it.RightSon.FullName != treeVertex.FullName)
+                    if (it.RightSon == null || it.RightSon.FullName != treeVertex.FullName)
                         it.AddSon(treeVertex);
                     it = it.RightSon;
                 }
                 else
                 {
-                    if(i != name.Length - 1)
+                    if (i != name.Length - 1)
                         throw new GroboSerializerException("Атрибут {0} не последний в цепочке '{1}'", name[i], path);
                 }
             }
             var lastName = name[name.Length - 1];
-            if(IsAttribute(lastName))
+            if (IsAttribute(lastName))
                 it.AddAttribute(lastName, value);
             else it.AddText(value);
         }
@@ -186,7 +186,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             public TreeVertex(string fullName)
             {
-                if(fullName[0] == '[')
+                if (fullName[0] == '[')
                 {
                     var pos = fullName.IndexOf(']');
                     url = fullName.Substring(1, pos - 1);
@@ -201,14 +201,14 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             public override string ToString()
             {
                 var attrs = "";
-                if(Attributes != null)
+                if (Attributes != null)
                 {
-                    for(var i = 0; i < Attributes.Count; i++)
+                    for (var i = 0; i < Attributes.Count; i++)
                     {
-                        if(i == 0) attrs += "[";
-                        if(i != 0) attrs += "; ";
+                        if (i == 0) attrs += "[";
+                        if (i != 0) attrs += "; ";
                         attrs += string.Format("{0}:{1}={2}", Attributes[i].NamespaceURI, Attributes[i].Name, Attributes[i].Value);
-                        if(i == Attributes.Count - 1) attrs += "]";
+                        if (i == Attributes.Count - 1) attrs += "]";
                     }
                 }
                 return string.Format(FullName + attrs + ": " + value);
@@ -217,7 +217,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             public void AddAttribute(string fullName, string attrValue)
             {
                 string name, attrUrl = null;
-                if(fullName[0] == '[')
+                if (fullName[0] == '[')
                 {
                     var pos = fullName.IndexOf(']');
                     attrUrl = fullName.Substring(1, pos - 1);
@@ -225,7 +225,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 }
                 else
                     name = fullName;
-                if(Attributes == null)
+                if (Attributes == null)
                     Attributes = new List<XmlAttribute>();
                 var attribute = new XmlAttribute(attrUrl, GetShortName(name), attrValue);
                 Attributes.Add(attribute);
@@ -241,7 +241,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             {
                 son.depth = depth + 1;
                 son.Parent = this;
-                if(LeftSon == null)
+                if (LeftSon == null)
                     LeftSon = RightSon = son;
                 else
                 {
@@ -252,7 +252,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
             public bool MoveToFirstAttribute()
             {
-                if(Attributes == null) return false;
+                if (Attributes == null) return false;
                 attributeIndex = 0;
                 NodeType = NodeType.Attribute;
                 return true;
@@ -260,16 +260,16 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
             public bool MoveToNextAttribute()
             {
-                if(Attributes == null) return false;
-                if(NodeType != NodeType.Attribute) return false;
-                if(attributeIndex + 1 >= Attributes.Count) return false;
+                if (Attributes == null) return false;
+                if (NodeType != NodeType.Attribute) return false;
+                if (attributeIndex + 1 >= Attributes.Count) return false;
                 attributeIndex++;
                 return true;
             }
 
             public bool MoveToElement()
             {
-                if(NodeType != NodeType.Attribute) return false;
+                if (NodeType != NodeType.Attribute) return false;
                 NodeType = NodeType.Element;
                 return true;
             }
@@ -295,7 +295,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             private static string GetShortName(string fullName)
             {
                 var pos = fullName.IndexOf('$');
-                if(pos == -1) return fullName;
+                if (pos == -1) return fullName;
                 return fullName.Substring(0, pos);
             }
 

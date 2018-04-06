@@ -4,7 +4,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
     {
         public void Write(object value, IWriter writer)
         {
-            if(value != null)
+            if (value != null)
                 WriteNonNullableValue(value, writer);
         }
 

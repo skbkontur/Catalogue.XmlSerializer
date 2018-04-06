@@ -13,7 +13,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
         public T Read<T>(byte[] xmlContent, bool needTrimValues)
         {
-            using(var reader = XmlReader.Create(new MemoryStream(xmlContent), new XmlReaderSettings {CloseInput = true,}))
+            using (var reader = XmlReader.Create(new MemoryStream(xmlContent), new XmlReaderSettings {CloseInput = true,}))
                 return Read<T>(reader, needTrimValues);
         }
 
@@ -24,7 +24,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
         public T Read<T>(NameValueCollection collection)
         {
-            if(collection == null || collection.Count == 0)
+            if (collection == null || collection.Count == 0)
                 throw new EmptyNameValueCollectionNotSupportedException();
             return Read<T>(new NameValueCollectionReader(collection));
         }

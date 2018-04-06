@@ -51,19 +51,19 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         public T Deserialize<T>(byte[] source, bool needTrimValues = true)
         {
-            using(var xmlReader = XmlReader.Create(new MemoryStream(source)))
+            using (var xmlReader = XmlReader.Create(new MemoryStream(source)))
                 return reportReader.Read<T>(xmlReader, needTrimValues);
         }
 
         public T Deserialize<T>(Stream stream, bool needTrimValues = true)
         {
-            using(var xmlReader = XmlReader.Create(stream))
+            using (var xmlReader = XmlReader.Create(stream))
                 return reportReader.Read<T>(xmlReader, needTrimValues);
         }
 
         public T Deserialize<T>(string source, bool needTrimValues = true)
         {
-            using(var xmlReader = XmlReader.Create(new StringReader(source)))
+            using (var xmlReader = XmlReader.Create(new StringReader(source)))
                 return reportReader.Read<T>(xmlReader, needTrimValues);
         }
 

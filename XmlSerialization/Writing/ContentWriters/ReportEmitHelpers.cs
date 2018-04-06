@@ -12,11 +12,11 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
             var method =
                 new DynamicMethod(Guid.NewGuid().ToString(), typeof(object), new[] {typeof(object)}, true);
 
-            if(getMethod == null)
+            if (getMethod == null)
                 throw new MissingMemberException(objectType.FullName, propertyInfo.Name + ".get()");
             var il = method.GetILGenerator();
             il.Emit(OpCodes.Ldarg_0);
-            if(objectType.IsValueType)
+            if (objectType.IsValueType)
             {
                 il.Emit(OpCodes.Unbox, objectType);
                 il.Emit(OpCodes.Call, getMethod);
@@ -26,7 +26,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
                 il.Emit(OpCodes.Castclass, objectType);
                 il.Emit(OpCodes.Callvirt, getMethod);
             }
-            if(getMethod.ReturnType.IsValueType)
+            if (getMethod.ReturnType.IsValueType)
                 il.Emit(OpCodes.Box, getMethod.ReturnType);
             il.Emit(OpCodes.Ret);
             return (Func<object, object>)method.CreateDelegate(typeof(Func<object, object>));

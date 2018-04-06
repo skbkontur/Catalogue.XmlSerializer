@@ -23,7 +23,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
                     Encoding = encoding
                 };
             var memoryStream = new MemoryStream();
-            using(var xmlWriter = XmlWriter.Create(memoryStream, settings))
+            using (var xmlWriter = XmlWriter.Create(memoryStream, settings))
                 Write(data, new CollapseWriter(new SimpleXmlWriter(xmlWriter)));
             return memoryStream.ToArray();
         }

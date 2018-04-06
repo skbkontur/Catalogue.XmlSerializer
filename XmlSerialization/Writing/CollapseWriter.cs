@@ -24,7 +24,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         public void WriteEndElement()
         {
             Check("[?", "WriteEndElement");
-            if(actionsList[actionsList.Count - 1].ActionType == "(" && actionsList.Count > 2 && actionsList[actionsList.Count - 1].CanBeRemoved)
+            if (actionsList[actionsList.Count - 1].ActionType == "(" && actionsList.Count > 2 && actionsList[actionsList.Count - 1].CanBeRemoved)
                 actionsList.RemoveAt(actionsList.Count - 1);
             else
             {
@@ -36,7 +36,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         public void WriteEndAttribute()
         {
             Check("()?]", "WriteEndAttribute");
-            if(actionsList[actionsList.Count - 1].ActionType == "[" && actionsList[actionsList.Count - 1].CanBeRemoved)
+            if (actionsList[actionsList.Count - 1].ActionType == "[" && actionsList[actionsList.Count - 1].CanBeRemoved)
                 actionsList.RemoveAt(actionsList.Count - 1);
             else
             {
@@ -65,7 +65,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         public void WriteValue(object value)
         {
-            if(value != null)
+            if (value != null)
             {
                 Check(")*?", "WriteValue");
                 actionsList.Add(new XmlWriterAction("*", w => w.WriteValue(value), false));
@@ -85,13 +85,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         private void Flush()
         {
-            while(cur < actionsList.Count)
+            while (cur < actionsList.Count)
                 actionsList[cur++].Action(writer);
         }
 
         private void Check(string badActions, string currentAction)
         {
-            if(badActions.Contains(actionsList[actionsList.Count - 1].ActionType))
+            if (badActions.Contains(actionsList[actionsList.Count - 1].ActionType))
                 throw new InvalidOperationException(string.Format("Попытка выполнить '{0}' в ситуации, когда это запрещено", currentAction));
         }
 

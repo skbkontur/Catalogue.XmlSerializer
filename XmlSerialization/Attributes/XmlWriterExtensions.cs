@@ -7,7 +7,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Attributes
     {
         public static void WriteStartElement(this XmlWriter writer, XmlElementInfo xmlElementInfo)
         {
-            if(string.IsNullOrEmpty(xmlElementInfo.NamespaceUri))
+            if (string.IsNullOrEmpty(xmlElementInfo.NamespaceUri))
                 writer.WriteStartElement(xmlElementInfo.Name);
             else
             {
@@ -18,16 +18,16 @@ namespace SKBKontur.Catalogue.XmlSerialization.Attributes
                     writer.WriteStartElement(xmlElementInfo.Name, xmlElementInfo.NamespaceUri);
             }
 
-            if(xmlElementInfo.NamespaceDescriptions != null)
+            if (xmlElementInfo.NamespaceDescriptions != null)
             {
-                foreach(var namespaceDescription in xmlElementInfo.NamespaceDescriptions)
+                foreach (var namespaceDescription in xmlElementInfo.NamespaceDescriptions)
                     writer.WriteAttributeString("xmlns", namespaceDescription.Prefix, null, namespaceDescription.Uri);
             }
         }
 
         public static void WriteStartAttribute(this XmlWriter writer, XmlElementInfo xmlElementInfo)
         {
-            if(string.IsNullOrEmpty(xmlElementInfo.NamespaceUri))
+            if (string.IsNullOrEmpty(xmlElementInfo.NamespaceUri))
                 writer.WriteStartAttribute(xmlElementInfo.Name);
             else
                 writer.WriteStartAttribute(xmlElementInfo.Name, xmlElementInfo.NamespaceUri);

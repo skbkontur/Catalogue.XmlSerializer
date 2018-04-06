@@ -14,7 +14,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
 
         public void Write(IWriter xmlWriter)
         {
-            if(!string.IsNullOrEmpty(Data))
+            if (!string.IsNullOrEmpty(Data))
                 xmlWriter.WriteRawData(Data);
         }
 

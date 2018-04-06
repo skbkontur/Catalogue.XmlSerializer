@@ -83,7 +83,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
         {
             var writer = collection.Get(typeof(T));
             var builder = new StringBuilder();
-            using(
+            using (
                 var xmlWriter =
                     new SimpleXmlWriter(XmlWriter.Create(builder,
                                                          new XmlWriterSettings

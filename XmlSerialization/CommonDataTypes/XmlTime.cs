@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+
 using SKBKontur.Catalogue.XmlSerialization.Attributes;
 using SKBKontur.Catalogue.XmlSerialization.Reading;
 using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
@@ -19,7 +20,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
             var dateString = xmlReader.ReadStringValue();
             DateTime datetime;
             if (!string.IsNullOrEmpty(dateString) && DateTime.TryParse(dateString, CultureInfo.InvariantCulture,
-                    DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out datetime))
+                                                                       DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal, out datetime))
                 Time = new TimeSpan(datetime.Hour, datetime.Minute, datetime.Second);
             else
                 Time = null;

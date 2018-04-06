@@ -51,19 +51,19 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             Check(ReportReaderHelpers.KillSpaces(source), (int?)1);
         }
 
-        public class C1
-        {
-            public int? A { get; set; }
-        }
-
         private static void Check<T>(string source, T? expected) where T : struct
         {
-            using(var xmlReader = ReportReaderHelpers.CreateXmlReader(source))
+            using (var xmlReader = ReportReaderHelpers.CreateXmlReader(source))
             {
                 var arrayContentReader = new NullableContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
                 var value = arrayContentReader.Read(new SimpleXmlReader(xmlReader, true));
                 value.ShouldBeEquivalentTo(expected);
             }
+        }
+
+        public class C1
+        {
+            public int? A { get; set; }
         }
     }
 }

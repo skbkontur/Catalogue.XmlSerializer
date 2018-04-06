@@ -25,7 +25,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                     new Column {Name = "123632", TTL = 52246, Timestamp = 77834, Value = new byte[] {29, 30, 31, 32}}
                 };
             Assert.AreEqual(expected.Length, actual.Length);
-            for(var i = 0; i < expected.Length; i++)
+            for (var i = 0; i < expected.Length; i++)
             {
                 var expected1 = expected[i];
                 var actual1 = actual[i];

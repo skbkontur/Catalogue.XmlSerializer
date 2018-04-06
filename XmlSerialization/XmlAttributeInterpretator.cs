@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+
 using SKBKontur.Catalogue.XmlSerialization.Attributes;
 
 namespace SKBKontur.Catalogue.XmlSerialization
@@ -18,23 +19,23 @@ namespace SKBKontur.Catalogue.XmlSerialization
         public XmlElementInfo GetPropertyNodeInfo(PropertyInfo propertyInfo, Type parentType = null)
         {
             return new XmlElementInfo
-            {
-                Name = GetXmlNodeName(propertyInfo),
-                NamespaceUri = GetXmlNamespace(propertyInfo, parentType),
-                Optional = IsOptional(propertyInfo),
-                NamespaceDescriptions = GetXmlNamespaceDescriptions(GetPropertyType(propertyInfo))
-            };
+                {
+                    Name = GetXmlNodeName(propertyInfo),
+                    NamespaceUri = GetXmlNamespace(propertyInfo, parentType),
+                    Optional = IsOptional(propertyInfo),
+                    NamespaceDescriptions = GetXmlNamespaceDescriptions(GetPropertyType(propertyInfo))
+                };
         }
 
         public XmlElementInfo GetRootNodeInfo(Type type)
         {
             return new XmlElementInfo
-            {
-                Name = GetRootName(type),
-                NamespaceUri = GetXmlNamespace(type),
-                Optional = IsOptional(type),
-                NamespaceDescriptions = GetXmlNamespaceDescriptions(type)
-            };
+                {
+                    Name = GetRootName(type),
+                    NamespaceUri = GetXmlNamespace(type),
+                    Optional = IsOptional(type),
+                    NamespaceDescriptions = GetXmlNamespaceDescriptions(type)
+                };
         }
 
         private bool IsOptional(MemberInfo memberInfo)
@@ -47,9 +48,9 @@ namespace SKBKontur.Catalogue.XmlSerialization
             DeclareXmlNamespaceAttribute[] attributes = GetAttributes<DeclareXmlNamespaceAttribute>(memberInfo, true);
             return
                 attributes.OrderBy(x => x.Uri)
-                    .ThenBy(x => x.Prefix)
-                    .Select(x => new XmlNamespaceDescription(x.Prefix, x.Uri))
-                    .ToArray();
+                          .ThenBy(x => x.Prefix)
+                          .Select(x => new XmlNamespaceDescription(x.Prefix, x.Uri))
+                          .ToArray();
         }
 
         private string GetXmlNamespace(MemberInfo memberInfo, Type parentType = null)
@@ -83,7 +84,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             }
 
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
-                return GetXmlNodeName(GetPropertyType((PropertyInfo) memberInfo));
+                return GetXmlNodeName(GetPropertyType((PropertyInfo)memberInfo));
             if (!string.IsNullOrEmpty(formNameAttribute.SpecificName))
                 return formNameAttribute.SpecificName;
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.LowerFirstLetter)
@@ -107,7 +108,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             }
 
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
-                return GetXmlNodeName(GetPropertyType((PropertyInfo) memberInfo));
+                return GetXmlNodeName(GetPropertyType((PropertyInfo)memberInfo));
             if (!string.IsNullOrEmpty(formNameAttribute.SpecificName))
                 return formNameAttribute.SpecificName;
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.LowerFirstLetter)
@@ -139,7 +140,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             T[] attributes = memberInfo.GetAttributes<T>(inherit);
             if (attributes.Length > 1)
                 throw new Exception(string.Format("У элемента '{0}' не может быть больше одного атрибута типа '{1}'.",
-                    memberInfo, typeof (T).Name));
+                                                  memberInfo, typeof(T).Name));
             if (attributes.Length == 1) return attributes[0];
             return null;
         }

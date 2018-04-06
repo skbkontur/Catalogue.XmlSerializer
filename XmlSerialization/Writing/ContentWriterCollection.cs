@@ -15,10 +15,10 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         public IContentWriter Get(Type type)
         {
             IContentWriter writer;
-            if((writer = Read(type)) == null)
+            if ((writer = Read(type)) == null)
             {
-                lock(writersLock)
-                    if((writer = Read(type)) == null)
+                lock (writersLock)
+                    if ((writer = Read(type)) == null)
                     {
                         //для циклических зависимостей
                         var adaper = new ContentWriterAdaper();
@@ -40,20 +40,20 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         {
             if (type.IsPrimitive || type == typeof(decimal))
                 return valueContentWriter;
-            if(type == typeof(string))
+            if (type == typeof(string))
                 return stringContentWriter;
-            if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 return new NullableContentWriter(type, this);
-            if(type.IsEnum || type == typeof(Guid))
+            if (type.IsEnum || type == typeof(Guid))
                 return toStringContentWriter;
-            if(type == typeof(DateTime))
+            if (type == typeof(DateTime))
                 return new DateTimeContentWriter();
             return null;
         }
 
         private IContentWriter Create(Type type)
         {
-            if(typeof(ICustomWrite).IsAssignableFrom(type))
+            if (typeof(ICustomWrite).IsAssignableFrom(type))
                 return customContentWriter;
             return CreateLeafWriter(type) ?? new ClassContentWriter(type, this, xmlAttributeInterpretator);
         }

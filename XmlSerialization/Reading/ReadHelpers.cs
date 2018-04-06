@@ -24,7 +24,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             var constructorInfo = type.GetConstructor(
                 BindingFlags.Instance | BindingFlags.Public,
                 null, Type.EmptyTypes, null);
-            if(constructorInfo == null)
+            if (constructorInfo == null)
                 return () => (T)FormatterServices.GetUninitializedObject(type);
             var dynamicMethod = new DynamicMethod(
                 Guid.NewGuid().ToString(),
@@ -41,7 +41,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         public static IContentPropertySetter<T> BuildSetter<T>(PropertyInfo propertyInfo,
                                                                IContentReaderCollection contentWriterCollection)
         {
-            lock(lockObject)
+            lock (lockObject)
             {
                 var typeBuilder =
                     moduleBuilder.DefineType(
@@ -71,7 +71,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 ilGenerator.Emit(OpCodes.Ret);
 
                 var setMethod = propertyInfo.GetSetMethod();
-                if(setMethod == null)
+                if (setMethod == null)
                     throw new MissingMemberException(propertyInfo.ReflectedType.FullName, propertyInfo.Name + ".set()");
 
                 var methodBuilder = typeBuilder.DefineMethod("SetProperty",

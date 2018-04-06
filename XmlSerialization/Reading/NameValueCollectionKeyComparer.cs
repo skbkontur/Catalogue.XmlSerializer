@@ -12,14 +12,14 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
 
             var minLength = Math.Min(xArray.Length, yArray.Length);
 
-            for(var i = 0; i < minLength; i++)
+            for (var i = 0; i < minLength; i++)
             {
                 var compareResult = CompareToken(xArray[i], yArray[i]);
-                if(compareResult != 0)
+                if (compareResult != 0)
                     return compareResult;
             }
 
-            if(xArray.Length == yArray.Length)
+            if (xArray.Length == yArray.Length)
                 return 0;
 
             return xArray.Length == minLength ? -1 : 1;
@@ -29,7 +29,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             ulong token1LongValue;
             ulong token2LongValue;
-            if(ulong.TryParse(token1, out token1LongValue) && ulong.TryParse(token2, out token2LongValue))
+            if (ulong.TryParse(token1, out token1LongValue) && ulong.TryParse(token2, out token2LongValue))
                 return token1LongValue.CompareTo(token2LongValue);
             return token1.CompareTo(token2);
         }

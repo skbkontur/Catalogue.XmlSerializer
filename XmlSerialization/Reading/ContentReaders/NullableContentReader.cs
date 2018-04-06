@@ -9,7 +9,7 @@
 
         public T? Read(IReader reader)
         {
-            if(reader.IsEmptyElement)
+            if (reader.IsEmptyElement)
             {
                 reader.Read();
                 return null;

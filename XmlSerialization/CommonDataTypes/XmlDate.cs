@@ -14,7 +14,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
         public void Read(IReader xmlReader)
         {
             var dateString = xmlReader.ReadStringValue();
-            if(!string.IsNullOrEmpty(dateString))
+            if (!string.IsNullOrEmpty(dateString))
             {
                 try
                 {
@@ -29,7 +29,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
 
         public void Write(IWriter xmlWriter)
         {
-            if(Date != null)
+            if (Date != null)
                 xmlWriter.WriteValue(string.Format(CultureInfo.InvariantCulture, "{0:yyyy-MM-dd}", Date));
         }
 

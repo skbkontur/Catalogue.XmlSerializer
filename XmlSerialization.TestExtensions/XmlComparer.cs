@@ -15,9 +15,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.TestExtensions
         {
             var reformatExpected = ReformatXml(expected);
             var reformatActual = ReformatXml(actual);
-            if(reformatExpected != reformatActual)
+            if (reformatExpected != reformatActual)
             {
-                if(!useAraxisMerge)
+                if (!useAraxisMerge)
                 {
                     Console.WriteLine("expected: " + Environment.NewLine + reformatExpected);
                     Console.WriteLine("actual: " + Environment.NewLine + reformatActual);
