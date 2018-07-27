@@ -26,22 +26,22 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
             Assert.AreEqual("qxx", obj1.C);
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException))]
+        [Test]
         public void TestUnexpectedAttribute()
         {
-            strictXmlSerializer.Deserialize<A>("<A B=\"zzz\" Z=\"p\"><C>qxx</C></A>");
+            Assert.Throws<InvalidOperationException>(() => strictXmlSerializer.Deserialize<A>("<A B=\"zzz\" Z=\"p\"><C>qxx</C></A>"));
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException))]
+        [Test]
         public void TestUnexpectedElement()
         {
-            strictXmlSerializer.Deserialize<A>("<A B=\"zzz\"><D>qxx</D></A>");
+            Assert.Throws<InvalidOperationException>(() => strictXmlSerializer.Deserialize<A>("<A B=\"zzz\"><D>qxx</D></A>"));
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException))]
+        [Test]
         public void TestUnexpectedElementWithArray()
         {
-            strictXmlSerializer.Deserialize<P>("<P><A><C>q</C></A><A D=\"z\"></A></P>");
+            Assert.Throws<InvalidOperationException>(() => strictXmlSerializer.Deserialize<P>("<P><A><C>q</C></A><A D=\"z\"></A></P>"));
         }
 
         [Test]

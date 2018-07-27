@@ -101,21 +101,21 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             }
         }
 
-        [Test, ExpectedException(typeof(XmlException))]
+        [Test]
         public void TestStringReaderAndSubtree()
         {
             var stringContentReader = new StringContentReader();
             using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
-                stringContentReader.Read(new SimpleXmlReader(xmlReader, true));
+                Assert.Throws<XmlException>(() => stringContentReader.Read(new SimpleXmlReader(xmlReader, true)));
         }
 
-        [Test, ExpectedException(typeof(XmlException))]
+        [Test]
         public void TestSubtree()
         {
             using (var xmlReader = ReportReaderHelpers.CreateXmlReader("<A><b>234</b></A><z />"))
             {
                 var contentReader = new SimpleContentReader<int>(int.TryParse);
-                contentReader.Read(new SimpleXmlReader(xmlReader, true));
+                Assert.Throws<XmlException>(() => contentReader.Read(new SimpleXmlReader(xmlReader, true)));
             }
         }
 

@@ -26,10 +26,10 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 
         #endregion
 
-        [Test, ExpectedException(typeof(NotSupportedException))]
+        [Test]
         public void TestArrayRank()
         {
-            new ClassContentWriter(typeof(CWithBadArray), collection, xmlAttributeInterpretator);
+            Assert.Throws<NotSupportedException>(() => new ClassContentWriter(typeof(CWithBadArray), collection, xmlAttributeInterpretator));
         }
 
         [Test]

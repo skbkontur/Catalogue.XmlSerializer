@@ -68,11 +68,11 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                 new C1 {Val = 1, Z = new Z1 {Val2 = 465, Val3 = 12}, P = -1});
         }
 
-        [Test, ExpectedException(typeof(EmptyNameValueCollectionNotSupportedException))]
+        [Test]
         public void TestEmptyNvc()
         {
             var reportReader = ReportReaderHelpers.CreateReader();
-            reportReader.Read<C1>(new NameValueCollection());
+            Assert.Throws<EmptyNameValueCollectionNotSupportedException>(() => reportReader.Read<C1>(new NameValueCollection()));
         }
 
         [Test]

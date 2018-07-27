@@ -14,10 +14,10 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
     [TestFixture]
     public class ReportReaderHardCasesTest
     {
-        [Test, ExpectedException(typeof(NotSupportedException), ExpectedMessage = "массив массивов")]
+        [Test]
         public void TestArrayOfArrays()
         {
-            ReportReaderHelpers.CreateReader().ReadFromString<string[][]>("<xxx />");
+            Assert.That(() => ReportReaderHelpers.CreateReader().ReadFromString<string[][]>("<xxx />"), Throws.Exception.TypeOf<NotSupportedException>().With.Message.EqualTo("массив массивов"));
         }
 
         [Test]
@@ -52,20 +52,20 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                 new CWithBadProps {fl = 100});
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "Duplicate element 'A'")]
+        [Test]
         public void TestDuplicateItemsWithExceptionWhenDuplicateElement()
         {
             var configuration = new OnDeserializeConfiguration();
             configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException(string.Format("Duplicate element '{0}'", context.CurrentElementLocalName)); };
 
-            ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
+            Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
                 @"<root>
     <A>1</A>
     <B>x</B>
     <B>y</B>
     <A>2</A>
 </root>
-");
+"), Throws.Exception.TypeOf<InvalidOperationException>().With.Message.EqualTo("Duplicate element 'A'"));
         }
 
         [Test]
@@ -81,20 +81,20 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 ").ShouldBeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"x", "y"}});
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "Duplicate element 'B'")]
+        [Test]
         public void TestDuplicateItemsInArrayWithExceptionWhenDuplicateElement()
         {
             var configuration = new OnDeserializeConfiguration();
             configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException(string.Format("Duplicate element '{0}'", context.CurrentElementLocalName)); };
 
-            ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
+            Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
                 @"<root>
     <B>x</B>
     <B>y</B>
     <A>2</A>
     <B>z</B>
 </root>
-");
+"), Throws.Exception.TypeOf<InvalidOperationException>().With.Message.EqualTo("Duplicate element 'B'"));
         }
 
         [Test]
@@ -110,10 +110,10 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 ").ShouldBeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"z"}});
         }
 
-        [Test, ExpectedException(typeof(NotSupportedException), ExpectedMessage = "многомерный массив")]
+        [Test]
         public void TestMultidimensionalArray()
         {
-            ReportReaderHelpers.CreateReader().ReadFromString<string[,]>("<xxx />");
+            Assert.That(() => ReportReaderHelpers.CreateReader().ReadFromString<string[,]>("<xxx />"), Throws.Exception.TypeOf<NotSupportedException>().With.Message.EqualTo("многомерный массив"));
         }
 
         [Test]
@@ -125,16 +125,16 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 ").ShouldBeEquivalentTo(new CWithNonStringProp {A = 1});
         }
 
-        [Test, ExpectedException(typeof(NotSupportedException), ExpectedMessage = "Type '.*CInvisible' should be visible outside assembly", MatchType = MessageMatch.Regex)]
+        [Test]
         public void TestNonVisibleClassesNotSupported()
         {
-            ReportReaderHelpers.CreateReader().ReadFromString<CInvisible>("<xxx />");
+            Assert.That(() => ReportReaderHelpers.CreateReader().ReadFromString<CInvisible>("<xxx />"), Throws.Exception.TypeOf<NotSupportedException>().With.Message.Matches("Type '.*CInvisible' should be visible outside assembly"));
         }
 
-        [Test, ExpectedException(typeof(NotSupportedException), ExpectedMessage = "Type 'System.Object' cannot be deserialized")]
+        [Test]
         public void TestObjectDisabled()
         {
-            ReportReaderHelpers.CreateReader().ReadFromString<object>("<xxx />");
+            Assert.That(() => ReportReaderHelpers.CreateReader().ReadFromString<object>("<xxx />"), Throws.Exception.TypeOf<NotSupportedException>().With.Message.EqualTo("Type 'System.Object' cannot be deserialized"));
         }
 
         public class CWithBadProps

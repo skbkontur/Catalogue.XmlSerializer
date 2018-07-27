@@ -23,23 +23,19 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 
         #endregion
 
-        [Test, ExpectedException(typeof(InvalidOperationException))]
+        [Test]
         public void TestAttrAfterValueBug()
         {
             writer.WriteStartElement("root");
             writer.WriteStartElement("A");
             writer.WriteValue("q");
-            writer.WriteStartAttribute("z");
-            writer.WriteValue("x");
-            writer.WriteEndAttribute();
+            Assert.Throws<InvalidOperationException>(() => writer.WriteStartAttribute("z"));
         }
 
-        [Test, ExpectedException(typeof(InvalidOperationException))]
+        [Test]
         public void TestAttrBeforeRootBug()
         {
-            writer.WriteStartAttribute("z");
-            writer.WriteValue("x");
-            writer.WriteEndAttribute();
+            Assert.Throws<InvalidOperationException>(() => writer.WriteStartAttribute("z"));
         }
 
         [Test]
