@@ -11,7 +11,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public void DeserealizeTest()
         {
             var serializer = new XmlSerialization.XmlSerializer();
-            var actual = serializer.Deserialize<Qxx>(File.ReadAllText(Path.Combine(TestContext.CurrentContext.TestDirectory, "Files", "CassandraColumn.xml"))).col;
+            var actual = serializer.Deserialize<Qxx>(File.ReadAllText(GetFilePath("CassandraColumn.xml"))).col;
             var expected = new[]
                 {
                     new Column {Name = "123623", TTL = 52246, Timestamp = 77834, Value = new byte[] {1, 2, 3, 4}},
@@ -34,6 +34,11 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                 Assert.AreEqual(expected1.Timestamp, actual1.Timestamp);
                 CollectionAssert.AreEqual(expected1.Value, actual1.Value);
             }
+        }
+
+        private static string GetFilePath(string filename)
+        {
+            return $"{TestContext.CurrentContext.TestDirectory}/Reading/Files/{filename}";
         }
 
         public class Column

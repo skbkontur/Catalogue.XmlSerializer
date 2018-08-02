@@ -89,7 +89,7 @@
     <Compile Include="XmlWriterTestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Files\CassandraColumn.xml">
+    <Content Include="Reading\Files\CassandraColumn.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
