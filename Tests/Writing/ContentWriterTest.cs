@@ -6,7 +6,6 @@ using NUnit.Framework;
 
 using SKBKontur.Catalogue.XmlSerialization;
 using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerialization.TestExtensions;
 using SKBKontur.Catalogue.XmlSerialization.Writing;
 using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
 

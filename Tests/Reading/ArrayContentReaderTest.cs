@@ -54,15 +54,8 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             {
                 var arrayContentReader = new ArrayContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
                 var value = arrayContentReader.Read(new SimpleXmlReader(xmlReader, true));
-                value.ShouldBeEquivalentTo(expected);
+                value.Should().BeEquivalentTo(expected);
             }
-        }
-
-        private static void CheckArray<T>(NameValueCollection source, T[] expected)
-        {
-            var arrayContentReader = new ArrayContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
-            var value = arrayContentReader.Read(new NameValueCollectionReader(source));
-            value.ShouldBeEquivalentTo(expected);
         }
 
         public class C1

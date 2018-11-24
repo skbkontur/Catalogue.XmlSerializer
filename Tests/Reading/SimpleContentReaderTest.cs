@@ -127,7 +127,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                 var interpretator = new XmlAttributeInterpretator();
                 var contentReader = new ClassContentReader<Message<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);
                 var message = contentReader.Read(new SimpleXmlReader(xmlReader, true));
-                message.ShouldBeEquivalentTo(new Message<SpecificTransaction>
+                message.Should().BeEquivalentTo(new Message<SpecificTransaction>
                     {
                         SpecificTrash = "1",
                         Transaction = new SpecificTransaction {SpecificTransactionTrash = "2"},
@@ -143,7 +143,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
                 var interpretator = new XmlAttributeInterpretator();
                 var contentReader = new ClassContentReader<ArrayMessage<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);
                 var message = contentReader.Read(new SimpleXmlReader(xmlReader, true));
-                message.ShouldBeEquivalentTo(new ArrayMessage<SpecificTransaction>
+                message.Should().BeEquivalentTo(new ArrayMessage<SpecificTransaction>
                     {
                         SpecificTrash = "st",
                         Transactions = new[]

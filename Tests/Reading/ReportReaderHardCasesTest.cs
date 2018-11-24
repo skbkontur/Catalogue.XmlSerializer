@@ -78,7 +78,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
     <B>y</B>
     <A>2</A>
 </root>
-").ShouldBeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"x", "y"}});
+").Should().BeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"x", "y"}});
         }
 
         [Test]
@@ -107,7 +107,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
     <A>2</A>
     <B>z</B>
 </root>
-").ShouldBeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"z"}});
+").Should().BeEquivalentTo(new CForDuplicateTest {A = 2, B = new[] {"z"}});
         }
 
         [Test]
@@ -122,7 +122,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             ReportReaderHelpers.CreateReader().ReadFromString
                 <CWithNonStringProp>(
                     @"<root A='1'></root>
-").ShouldBeEquivalentTo(new CWithNonStringProp {A = 1});
+").Should().BeEquivalentTo(new CWithNonStringProp {A = 1});
         }
 
         [Test]

@@ -57,7 +57,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
             {
                 var arrayContentReader = new NullableContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
                 var value = arrayContentReader.Read(new SimpleXmlReader(xmlReader, true));
-                value.ShouldBeEquivalentTo(expected);
+                value.Should().BeEquivalentTo(expected);
             }
         }
 

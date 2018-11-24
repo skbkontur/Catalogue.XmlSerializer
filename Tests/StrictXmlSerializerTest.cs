@@ -47,8 +47,8 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
         [Test]
         public void TestDeserializeWithoutTrimming()
         {
-            strictXmlSerializer.Deserialize<A>(@"<A B="" valueB ""><C> valueC </C></A>", false).ShouldBeEquivalentTo(new A {B = " valueB ", C = " valueC "});
-            strictXmlSerializer.Deserialize<C>(@"<C><Z> 2 </Z></C>").ShouldBeEquivalentTo(new C {Z = 2});
+            strictXmlSerializer.Deserialize<A>(@"<A B="" valueB ""><C> valueC </C></A>", false).Should().BeEquivalentTo(new A {B = " valueB ", C = " valueC "});
+            strictXmlSerializer.Deserialize<C>(@"<C><Z> 2 </Z></C>").Should().BeEquivalentTo(new C {Z = 2});
         }
 
         private StrictXmlSerializer strictXmlSerializer;

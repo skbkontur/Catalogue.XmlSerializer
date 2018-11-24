@@ -7,7 +7,7 @@ using System.Xml;
 
 using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerialization.TestExtensions
+namespace SKBKontur.Catalogue.XmlSerializer.Tests
 {
     public static class XmlComparer
     {

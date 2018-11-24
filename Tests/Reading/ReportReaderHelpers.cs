@@ -19,17 +19,17 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         {
             var reportReader = CreateReader();
             var read = reportReader.ReadFromString<T>(source);
-            read.ShouldBeEquivalentTo(expected);
+            read.Should().BeEquivalentTo(expected);
 
             read = reportReader.ReadFromString<T>(KillSpaces(source));
-            read.ShouldBeEquivalentTo(expected);
+            read.Should().BeEquivalentTo(expected);
         }
 
         public static void Check<T>(NameValueCollection source, T expected)
         {
             var reportReader = CreateReader();
             var read = reportReader.Read<T>(source);
-            read.ShouldBeEquivalentTo(expected);
+            read.Should().BeEquivalentTo(expected);
         }
 
         public static ReportReader CreateReader(OnDeserializeConfiguration configuration = null)

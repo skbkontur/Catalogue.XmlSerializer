@@ -86,6 +86,7 @@
     <Compile Include="Writing\ReportXmlWriterTest.cs" />
     <Compile Include="Writing\TestContentWriterCollection.cs" />
     <Compile Include="Writing\Типы.cs" />
+    <Compile Include="XmlComparer.cs" />
     <Compile Include="XmlWriterTestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,10 +95,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XmlSerialization.TestExtensions\XmlSerialization.TestExtensions.csproj">
-      <Project>{9676E0F5-D92A-4EDA-84E8-03FD8CB55482}</Project>
-      <Name>XmlSerialization.TestExtensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\XmlSerialization\XmlSerialization.csproj">
       <Project>{D4CB2820-6919-405B-B476-8C7C340D702A}</Project>
       <Name>XmlSerialization</Name>
