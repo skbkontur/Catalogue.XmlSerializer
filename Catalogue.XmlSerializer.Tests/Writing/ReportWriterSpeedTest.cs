@@ -23,6 +23,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         {
             var пфрсзв2010 = Fill();
             var count = 10000;
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var encoding1251 = Encoding.GetEncoding(1251);
             writer.SerializeToString(пфрсзв2010, true, encoding1251);
             var w = Stopwatch.StartNew();
