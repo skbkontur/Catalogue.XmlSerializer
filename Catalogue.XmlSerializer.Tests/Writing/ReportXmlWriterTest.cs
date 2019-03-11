@@ -2,11 +2,11 @@
 using System.Text;
 using System.Xml;
 
+using Catalogue.XmlSerializer.Writing;
+
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization.Writing;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
+namespace Catalogue.XmlSerializer.Tests.Writing
 {
     [TestFixture]
     public class ReportXmlWriterTest

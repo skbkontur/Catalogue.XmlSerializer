@@ -1,4 +1,4 @@
-﻿namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
+﻿namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class StringContentWriter : ContentWriterBase
     {

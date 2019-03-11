@@ -1,11 +1,10 @@
-﻿using NUnit.Framework;
+﻿using Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents;
+using Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleClassWithManyNamespaces;
+using Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRoots;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents;
-using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleClassWithManyNamespaces;
-using SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRoots;
+using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
+namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
 {
     [TestFixture]
     public class SerializingWithNamespacesTests
@@ -13,7 +12,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         [SetUp]
         public void SetUp()
         {
-            xmlSerializer = new XmlSerialization.XmlSerializer();
+            xmlSerializer = new XmlSerializer();
         }
 
         [Test]
@@ -105,6 +104,6 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
                          .AssertEqualsXml(@"<root xmlns:d=""urn:a"" xmlns:c=""urn:b"" xmlns:b=""urn:c"" xmlns:a=""urn:d""> <d:A>A</d:A> <c:B>B</c:B> <b:C>C</b:C> <a:D>D</a:D> </root>");
         }
 
-        private XmlSerialization.XmlSerializer xmlSerializer;
+        private XmlSerializer xmlSerializer;
     }
 }

@@ -1,6 +1,6 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
+﻿using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleClassWithManyNamespaces
+namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleClassWithManyNamespaces
 {
     [DeclareXmlNamespace("a", "urn:d")]
     [DeclareXmlNamespace("b", "urn:c")]

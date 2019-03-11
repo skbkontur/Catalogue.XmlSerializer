@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SKBKontur.Catalogue.XmlSerialization
+namespace Catalogue.XmlSerializer
 {
     public static class XmlSerializerExtensions
     {

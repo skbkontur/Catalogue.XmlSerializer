@@ -1,4 +1,4 @@
-﻿namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents
+﻿namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents
 {
     public static class Namespaces
     {

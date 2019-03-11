@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public static class ValueTrimmer
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Text;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public interface IReportWriter
     {

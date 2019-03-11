@@ -1,10 +1,10 @@
 ﻿using System.Collections.Specialized;
 
+using Catalogue.XmlSerializer.Attributes;
+
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class ReportReaderAttributesTest

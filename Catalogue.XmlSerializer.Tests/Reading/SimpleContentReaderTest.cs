@@ -1,15 +1,14 @@
 ﻿using System.Xml;
 
+using Catalogue.XmlSerializer.Reading;
+using Catalogue.XmlSerializer.Reading.ContentReaders;
+using Catalogue.XmlSerializer.Tests.Writing;
+
 using FluentAssertions;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Reading;
-using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
-using SKBKontur.Catalogue.XmlSerializer.Tests.Writing;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     public class SimpleContentReaderTest
     {

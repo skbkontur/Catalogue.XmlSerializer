@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace SKBKontur.Catalogue.XmlSerialization
+namespace Catalogue.XmlSerializer
 {
     public class GroboSerializerException : Exception
     {

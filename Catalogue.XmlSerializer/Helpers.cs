@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace SKBKontur.Catalogue.XmlSerialization
+namespace Catalogue.XmlSerializer
 {
     public static class Helpers
     {

@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public class ContentWriterAdaper : ContentWriterBase
     {

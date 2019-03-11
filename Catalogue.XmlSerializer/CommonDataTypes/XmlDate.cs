@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Globalization;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerialization.Reading;
-using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
-using SKBKontur.Catalogue.XmlSerialization.Writing;
-using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
+using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Reading;
+using Catalogue.XmlSerializer.Reading.ContentReaders;
+using Catalogue.XmlSerializer.Writing;
+using Catalogue.XmlSerializer.Writing.ContentWriters;
 
-namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
+namespace Catalogue.XmlSerializer.CommonDataTypes
 {
     public class XmlDate : XmlDataType, ICustomRead, ICustomWrite
     {

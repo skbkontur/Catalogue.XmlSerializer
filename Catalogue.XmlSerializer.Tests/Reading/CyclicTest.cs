@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class CyclicTest

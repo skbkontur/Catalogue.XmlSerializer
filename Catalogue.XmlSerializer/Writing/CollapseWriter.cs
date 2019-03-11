@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public class CollapseWriter : IWriter
     {

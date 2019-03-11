@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public class ReportReader : IReportReader
     {

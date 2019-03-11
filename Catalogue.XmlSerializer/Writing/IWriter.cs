@@ -1,8 +1,8 @@
 ﻿using System;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public interface IWriter : IDisposable
     {

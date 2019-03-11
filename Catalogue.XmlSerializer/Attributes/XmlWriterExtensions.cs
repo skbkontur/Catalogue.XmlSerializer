@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Xml;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Attributes
+namespace Catalogue.XmlSerializer.Attributes
 {
     public static class XmlWriterExtensions
     {

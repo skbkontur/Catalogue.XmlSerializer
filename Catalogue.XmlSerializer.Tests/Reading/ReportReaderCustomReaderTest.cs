@@ -1,11 +1,11 @@
 ﻿using System.Collections.Specialized;
 
+using Catalogue.XmlSerializer.Reading;
+using Catalogue.XmlSerializer.Reading.ContentReaders;
+
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization.Reading;
-using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class ReportReaderCustomReaderTest

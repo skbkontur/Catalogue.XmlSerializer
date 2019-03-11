@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 
-using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
+using Catalogue.XmlSerializer.Writing.ContentWriters;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public class ContentWriterCollection : IContentWriterCollection
     {

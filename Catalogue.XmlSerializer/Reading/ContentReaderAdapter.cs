@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 
-using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
+using Catalogue.XmlSerializer.Reading.ContentReaders;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public class ContentReaderAdapter<T> : IContentReader<T>
     {

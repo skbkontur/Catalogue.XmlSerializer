@@ -1,7 +1,7 @@
 using System.IO;
 using System.Xml;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     public class NoWhitespaceWriter : XmlTextWriter
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Attributes
+namespace Catalogue.XmlSerializer.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     public class DeclareXmlNamespaceAttribute : Attribute

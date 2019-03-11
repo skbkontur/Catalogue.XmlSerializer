@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Xml;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public interface IReportReader
     {

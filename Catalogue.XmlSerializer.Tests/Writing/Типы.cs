@@ -1,6 +1,6 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
+﻿using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
+namespace Catalogue.XmlSerializer.Tests.Writing
 {
     [XmlElement("Message")]
     public class Message<T>

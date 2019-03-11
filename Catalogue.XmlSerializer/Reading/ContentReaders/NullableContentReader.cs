@@ -1,4 +1,4 @@
-﻿namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
+﻿namespace Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class NullableContentReader<T> : IContentReader<T?> where T : struct
     {

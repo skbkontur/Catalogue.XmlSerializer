@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using SKBKontur.Catalogue.XmlSerialization.Reading.Configuration;
-using SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders;
+using Catalogue.XmlSerializer.Reading.Configuration;
+using Catalogue.XmlSerializer.Reading.ContentReaders;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public class ContentReaderCollection : IContentReaderCollection
     {

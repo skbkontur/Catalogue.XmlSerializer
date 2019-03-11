@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace SKBKontur.Catalogue.XmlSerialization
+namespace Catalogue.XmlSerializer
 {
     public class ConstructorNotFoundException : Exception
     {

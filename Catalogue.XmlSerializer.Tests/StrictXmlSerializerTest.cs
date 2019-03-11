@@ -1,13 +1,12 @@
 ﻿using System;
 
+using Catalogue.XmlSerializer.Attributes;
+
 using FluentAssertions;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests
+namespace Catalogue.XmlSerializer.Tests
 {
     [TestFixture]
     public class StrictXmlSerializerTest

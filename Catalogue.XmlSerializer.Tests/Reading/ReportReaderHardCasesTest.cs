@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Specialized;
 
+using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Reading;
+using Catalogue.XmlSerializer.Reading.Configuration;
+
 using FluentAssertions;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerialization.Reading;
-using SKBKontur.Catalogue.XmlSerialization.Reading.Configuration;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class ReportReaderHardCasesTest

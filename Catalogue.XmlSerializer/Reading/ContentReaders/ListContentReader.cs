@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
+namespace Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class ListContentReader<T> : IContentReader<List<T>>
     {

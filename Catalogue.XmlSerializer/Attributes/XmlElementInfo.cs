@@ -1,4 +1,4 @@
-﻿namespace SKBKontur.Catalogue.XmlSerialization.Attributes
+﻿namespace Catalogue.XmlSerializer.Attributes
 {
     public class XmlElementInfo
     {

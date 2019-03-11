@@ -1,6 +1,6 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Reading;
+﻿using Catalogue.XmlSerializer.Reading;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Attributes
+namespace Catalogue.XmlSerializer.Attributes
 {
     public static class XmlReaderExtensions
     {

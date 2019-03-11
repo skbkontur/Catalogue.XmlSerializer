@@ -1,6 +1,6 @@
 ﻿using System.Collections.Specialized;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public interface IReader
     {

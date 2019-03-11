@@ -1,7 +1,7 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerialization.Writing;
+﻿using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Writing;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests
+namespace Catalogue.XmlSerializer.Tests
 {
     public static class XmlWriterTestExtensions
     {

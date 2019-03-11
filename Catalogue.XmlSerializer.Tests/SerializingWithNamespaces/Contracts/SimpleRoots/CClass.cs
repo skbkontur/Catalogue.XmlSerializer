@@ -1,6 +1,6 @@
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRoots
+namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRoots
 {
     public class CClass
     {

@@ -1,8 +1,8 @@
-﻿using System.IO;
+using System.IO;
 
 using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class CassandraTypesTest
@@ -10,7 +10,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         [Test]
         public void DeserealizeTest()
         {
-            var serializer = new XmlSerialization.XmlSerializer();
+            var serializer = new XmlSerializer();
             var actual = serializer.Deserialize<Qxx>(File.ReadAllText(GetFilePath("CassandraColumn.xml"))).col;
             var expected = new[]
                 {

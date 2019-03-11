@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
+﻿using Catalogue.XmlSerializer.Reading;
 
-using SKBKontur.Catalogue.XmlSerialization.Reading;
+using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
+namespace Catalogue.XmlSerializer.Tests.Reading
 {
     [TestFixture]
     public class NameValueCollectionKeyComparerTest

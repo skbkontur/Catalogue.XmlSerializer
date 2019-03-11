@@ -1,10 +1,9 @@
 ﻿using System;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Writing;
-using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
+using Catalogue.XmlSerializer.Writing;
+using Catalogue.XmlSerializer.Writing.ContentWriters;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
+namespace Catalogue.XmlSerializer.Tests.Writing
 {
     public class TestContentWriterCollection : IContentWriterCollection
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing
+namespace Catalogue.XmlSerializer.Writing
 {
     public interface IContentWriterCollection
     {

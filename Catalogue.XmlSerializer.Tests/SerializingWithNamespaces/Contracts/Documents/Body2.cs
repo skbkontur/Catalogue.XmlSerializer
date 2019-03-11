@@ -1,6 +1,6 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
+﻿using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents
+namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.Documents
 {
     [XmlNamespace(Namespaces.TwoNamespace)]
     public class Body2 : Body1

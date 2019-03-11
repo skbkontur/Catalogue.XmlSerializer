@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
+using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Tests.Writing;
+
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerializer.Tests.Writing;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests
+namespace Catalogue.XmlSerializer.Tests
 {
     public class Q
     {
@@ -27,7 +26,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
         [SetUp]
         public void SetUp()
         {
-            xmlSerializer = new XmlSerialization.XmlSerializer();
+            xmlSerializer = new XmlSerializer();
         }
 
         [Test]
@@ -70,6 +69,6 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
   </Qyy>
 </root>";
 
-        private XmlSerialization.XmlSerializer xmlSerializer;
+        private XmlSerializer xmlSerializer;
     }
 }

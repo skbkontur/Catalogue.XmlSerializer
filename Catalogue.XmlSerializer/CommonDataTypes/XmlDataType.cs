@@ -1,4 +1,4 @@
-﻿namespace SKBKontur.Catalogue.XmlSerialization.CommonDataTypes
+﻿namespace Catalogue.XmlSerializer.CommonDataTypes
 {
     public abstract class XmlDataType
     {

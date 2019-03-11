@@ -3,9 +3,9 @@ using System.IO;
 using System.Text;
 using System.Xml;
 
-using SKBKontur.Catalogue.XmlSerialization.Writing;
+using Catalogue.XmlSerializer.Writing;
 
-namespace SKBKontur.Catalogue.XmlSerialization
+namespace Catalogue.XmlSerializer
 {
     public interface IStrictXmlSerializer
     {

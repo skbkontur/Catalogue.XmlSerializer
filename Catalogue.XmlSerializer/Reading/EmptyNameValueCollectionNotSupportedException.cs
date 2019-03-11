@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading
+namespace Catalogue.XmlSerializer.Reading
 {
     public class EmptyNameValueCollectionNotSupportedException : Exception
     {

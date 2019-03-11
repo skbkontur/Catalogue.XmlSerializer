@@ -2,14 +2,13 @@
 using System.Text;
 using System.Xml;
 
+using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Writing;
+using Catalogue.XmlSerializer.Writing.ContentWriters;
+
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
-using SKBKontur.Catalogue.XmlSerialization.Writing;
-using SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
+namespace Catalogue.XmlSerializer.Tests.Writing
 {
     [TestFixture]
     public class ContentWriterTest

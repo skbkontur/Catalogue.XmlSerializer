@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
+namespace Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class CustomContentReader<T> : IContentReader<T> where T : ICustomRead
     {

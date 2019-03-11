@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Text;
+
+using Catalogue.XmlSerializer.Writing;
 
 using NUnit.Framework;
 
-using SKBKontur.Catalogue.XmlSerialization;
-using SKBKontur.Catalogue.XmlSerialization.Writing;
-
-namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
+namespace Catalogue.XmlSerializer.Tests.Writing
 {
     [TestFixture]
     public class ReportWriterSpeedTest

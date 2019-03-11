@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 
 using NUnit.Framework;
 
-namespace SKBKontur.Catalogue.XmlSerializer.Tests
+namespace Catalogue.XmlSerializer.Tests
 {
     public static class NameValueCollectionExtentions
     {

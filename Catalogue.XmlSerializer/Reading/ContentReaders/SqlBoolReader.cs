@@ -1,6 +1,6 @@
-﻿using SKBKontur.Catalogue.XmlSerialization.Attributes;
+﻿using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Reading.ContentReaders
+namespace Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class SqlBoolReader : IContentReader<bool>
     {

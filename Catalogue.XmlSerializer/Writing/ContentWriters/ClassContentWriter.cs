@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-using SKBKontur.Catalogue.XmlSerialization.Attributes;
+using Catalogue.XmlSerializer.Attributes;
 
-namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
+namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class ClassContentWriter : ContentWriterBase
     {
