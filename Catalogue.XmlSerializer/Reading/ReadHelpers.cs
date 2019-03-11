@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.Serialization;
@@ -12,9 +12,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
     {
         static ReadHelpers()
         {
-            var assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(
-                new AssemblyName("ReportReader" + Guid.NewGuid()),
-                AssemblyBuilderAccess.Run);
+            var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("ReportReader" + Guid.NewGuid()), AssemblyBuilderAccess.Run);
             moduleBuilder = assemblyBuilder.DefineDynamicModule("ReportReaderModule");
         }
 
@@ -38,8 +36,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         }
 
         //TODO не работает если T - невидим из своей сборки
-        public static IContentPropertySetter<T> BuildSetter<T>(PropertyInfo propertyInfo,
-                                                               IContentReaderCollection contentWriterCollection)
+        public static IContentPropertySetter<T> BuildSetter<T>(PropertyInfo propertyInfo, IContentReaderCollection contentWriterCollection)
         {
             lock (lockObject)
             {
@@ -89,7 +86,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 ilGenerator.Emit(OpCodes.Callvirt, setMethod);
                 ilGenerator.Emit(OpCodes.Ret);
 
-                var type = typeBuilder.CreateType();
+                var type = typeBuilder.CreateTypeInfo();
                 var publicConstructor = type.GetPublicConstructor(typeof(IContentReaderCollection));
                 var result = publicConstructor.Invoke(new[] {contentWriterCollection});
                 return (IContentPropertySetter<T>)result;
