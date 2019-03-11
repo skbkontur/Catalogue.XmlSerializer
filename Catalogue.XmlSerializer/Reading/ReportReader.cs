@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Xml;
 
@@ -25,7 +26,7 @@ namespace Catalogue.XmlSerializer.Reading
         public T Read<T>(NameValueCollection collection)
         {
             if (collection == null || collection.Count == 0)
-                throw new EmptyNameValueCollectionNotSupportedException();
+                throw new NotSupportedException("An empty name-value collection cannot be deserialized");
             return Read<T>(new NameValueCollectionReader(collection));
         }
 

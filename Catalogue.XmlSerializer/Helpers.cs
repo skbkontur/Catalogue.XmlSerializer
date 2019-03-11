@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Reflection;
 
 namespace Catalogue.XmlSerializer
@@ -12,15 +12,16 @@ namespace Catalogue.XmlSerializer
             return type.GetConstructor(BindingFlags.Public, constructorParameterTypes);
         }
 
-        public static ConstructorInfo GetConstructor(this Type type, BindingFlags constructorFlags,
-                                                     params Type[] constructorParameterTypes)
+        private static ConstructorInfo GetConstructor(this Type type, BindingFlags constructorFlags, params Type[] constructorParameterTypes)
         {
-            var constructorInfo = type.GetConstructor(
-                BindingFlags.Instance | constructorFlags,
-                null, constructorParameterTypes,
-                null);
+            var constructorInfo = type.GetConstructor(BindingFlags.Instance | constructorFlags, null, constructorParameterTypes, null);
             if (constructorInfo == null)
-                throw ConstructorNotFoundException.Create(type, constructorParameterTypes);
+            {
+                var errorMessage = $"Type {type} has no public instance constructor with types{Environment.NewLine}";
+                foreach (var parameterType in constructorParameterTypes)
+                    errorMessage += $"{parameterType.FullName}{Environment.NewLine}";
+                throw new InvalidOperationException(errorMessage);
+            }
             return constructorInfo;
         }
     }

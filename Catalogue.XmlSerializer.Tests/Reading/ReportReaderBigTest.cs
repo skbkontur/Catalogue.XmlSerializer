@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Specialized;
 
 using Catalogue.XmlSerializer.Attributes;
-using Catalogue.XmlSerializer.Reading;
 
 using NUnit.Framework;
 
@@ -72,7 +71,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         public void TestEmptyNvc()
         {
             var reportReader = ReportReaderHelpers.CreateReader();
-            Assert.Throws<EmptyNameValueCollectionNotSupportedException>(() => reportReader.Read<C1>(new NameValueCollection()));
+            Assert.Throws<NotSupportedException>(() => reportReader.Read<C1>(new NameValueCollection()));
         }
 
         [Test]
@@ -166,7 +165,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         e3637da2-2220-422e-85f8-5f8268f024ea
     </Id>
 </Root>
-", PrivateContructor.Create(new Guid("e3637da2-2220-422e-85f8-5f8268f024ea")));
+", PrivateConstructor.Create(new Guid("e3637da2-2220-422e-85f8-5f8268f024ea")));
         }
 
         public enum ZEnum
@@ -175,23 +174,23 @@ namespace Catalogue.XmlSerializer.Tests.Reading
             B
         }
 
-        public class PrivateContructor
+        public class PrivateConstructor
         {
-            private PrivateContructor()
+            private PrivateConstructor()
             {
             }
 
-            private PrivateContructor(int x)
+            private PrivateConstructor(int x)
             {
             }
 
-            private PrivateContructor(string y)
+            private PrivateConstructor(string y)
             {
             }
 
-            public static PrivateContructor Create(Guid id)
+            public static PrivateConstructor Create(Guid id)
             {
-                return new PrivateContructor(6) {Id = id};
+                return new PrivateConstructor(6) {Id = id};
             }
 
             public Guid Id { get; set; }

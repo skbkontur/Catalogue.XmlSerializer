@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -70,7 +70,7 @@ namespace Catalogue.XmlSerializer.Reading
             case NodeType.Element:
                 Read();
                 if (NodeType != NodeType.Text)
-                    throw new GroboSerializerException("Unable to read raw data");
+                    throw new InvalidOperationException("Unable to read raw data");
                 result = cur.Value;
                 Read();
                 Read();
@@ -135,7 +135,7 @@ namespace Catalogue.XmlSerializer.Reading
                     while (i < path.Length && path[i] != '.')
                         list.Add(path[i++]);
                 }
-                result.Add(new String(list.ToArray()));
+                result.Add(new string(list.ToArray()));
             }
             return result.ToArray();
         }
@@ -156,7 +156,7 @@ namespace Catalogue.XmlSerializer.Reading
                 else
                 {
                     if (i != name.Length - 1)
-                        throw new GroboSerializerException("Атрибут {0} не последний в цепочке '{1}'", name[i], path);
+                        throw new InvalidOperationException($"Атрибут {name[i]} не последний в цепочке '{path}'");
                 }
             }
             var lastName = name[name.Length - 1];
