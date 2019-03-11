@@ -177,9 +177,9 @@ namespace Catalogue.XmlSerializer.Reading
                 Value = value;
             }
 
-            public string NamespaceURI { get; private set; }
-            public string Name { get; private set; }
-            public string Value { get; private set; }
+            public string NamespaceURI { get; }
+            public string Name { get; }
+            public string Value { get; }
         }
 
         private class TreeVertex
@@ -279,7 +279,7 @@ namespace Catalogue.XmlSerializer.Reading
             public TreeVertex RightSon { get; private set; }
             public TreeVertex RightNeighbour { get; private set; }
             public List<XmlAttribute> Attributes { get; private set; }
-            public string FullName { get; private set; }
+            public string FullName { get; }
             public string Url => NodeType == NodeType.Attribute ? Attributes[attributeIndex].NamespaceURI : GetUrl();
             public string Name => NodeType == NodeType.Attribute ? Attributes[attributeIndex].Name : GetShortName(FullName);
             public string Value => NodeType == NodeType.Attribute ? Attributes[attributeIndex].Value : value;

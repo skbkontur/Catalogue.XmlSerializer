@@ -1,4 +1,4 @@
-﻿namespace Catalogue.XmlSerializer.Attributes
+namespace Catalogue.XmlSerializer.Attributes
 {
     public class XmlElementInfo
     {
@@ -16,7 +16,7 @@
             Uri = uri;
         }
 
-        public string Prefix { get; private set; }
-        public string Uri { get; private set; }
+        public string Prefix { get; }
+        public string Uri { get; }
     }
 }

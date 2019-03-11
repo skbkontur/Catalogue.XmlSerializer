@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -55,7 +55,7 @@ namespace Catalogue.XmlSerializer
                 return reportReader.Read<T>(xmlReader, needTrimValues);
         }
 
-        public XmlSerializerConfiguration Configuration { get; private set; }
+        public XmlSerializerConfiguration Configuration { get; }
 
         public T Deserialize<T>(string source, bool needTrimValues = true)
         {

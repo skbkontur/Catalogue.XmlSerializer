@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Catalogue.XmlSerializer.Attributes
 {
@@ -10,8 +10,8 @@ namespace Catalogue.XmlSerializer.Attributes
             SpecificName = specificName;
         }
 
-        public XmlFormNameRule XmlFormNameRule { get; private set; }
-        public string SpecificName { get; private set; }
+        public XmlFormNameRule XmlFormNameRule { get; }
+        public string SpecificName { get; }
     }
 
     public enum XmlFormNameRule

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Catalogue.XmlSerializer.Reading.Configuration
 {
@@ -9,6 +9,6 @@ namespace Catalogue.XmlSerializer.Reading.Configuration
             CurrentElementLocalName = currentElementLocalName;
         }
 
-        public string CurrentElementLocalName { get; private set; }
+        public string CurrentElementLocalName { get; }
     }
 }

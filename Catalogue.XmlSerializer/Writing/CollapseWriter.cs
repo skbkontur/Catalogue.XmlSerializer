@@ -109,9 +109,9 @@ namespace Catalogue.XmlSerializer.Writing
                 Action = action;
             }
 
-            public string ActionType { get; private set; }
-            public bool CanBeRemoved { get; private set; }
-            public Action<IWriter> Action { get; private set; }
+            public string ActionType { get; }
+            public bool CanBeRemoved { get; }
+            public Action<IWriter> Action { get; }
         }
     }
 }

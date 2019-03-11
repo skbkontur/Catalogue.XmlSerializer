@@ -1,4 +1,4 @@
-﻿using Catalogue.XmlSerializer.Reading.Configuration;
+using Catalogue.XmlSerializer.Reading.Configuration;
 
 namespace Catalogue.XmlSerializer
 {
@@ -9,6 +9,6 @@ namespace Catalogue.XmlSerializer
             OnDeserialize = new OnDeserializeConfiguration();
         }
 
-        public OnDeserializeConfiguration OnDeserialize { get; private set; }
+        public OnDeserializeConfiguration OnDeserialize { get; }
     }
 }

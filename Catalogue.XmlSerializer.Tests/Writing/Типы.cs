@@ -1,4 +1,4 @@
-﻿using Catalogue.XmlSerializer.Attributes;
+using Catalogue.XmlSerializer.Attributes;
 
 namespace Catalogue.XmlSerializer.Tests.Writing
 {
@@ -67,10 +67,10 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             ПрограммаПодготовкиДанных = new ТипПрограммаПодготовкиДанных();
         }
 
-        public string ВерсияФормата { get; private set; }
-        public string ТипФайла { get; private set; }
-        public ТипПрограммаПодготовкиДанных ПрограммаПодготовкиДанных { get; private set; }
-        public string ИсточникДанных { get; private set; }
+        public string ВерсияФормата { get; }
+        public string ТипФайла { get; }
+        public ТипПрограммаПодготовкиДанных ПрограммаПодготовкиДанных { get; }
+        public string ИсточникДанных { get; }
     }
 
     public class ТипПрограммаПодготовкиДанных
@@ -81,8 +81,8 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             Версия = "1.0";
         }
 
-        public string НазваниеПрограммы { get; private set; }
-        public string Версия { get; private set; }
+        public string НазваниеПрограммы { get; }
+        public string Версия { get; }
     }
 
     public class ТипДеньги
