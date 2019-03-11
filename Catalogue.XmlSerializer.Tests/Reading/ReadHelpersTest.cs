@@ -1,5 +1,4 @@
 using Catalogue.XmlSerializer.Reading;
-using Catalogue.XmlSerializer.Reading.ContentReaders;
 
 using NUnit.Framework;
 
@@ -26,14 +25,6 @@ namespace Catalogue.XmlSerializer.Tests.Reading
             var result = emitConstruction();
             Assert.AreEqual(0, result.localCount);
             Assert.AreEqual(0, CNoPublic.count);
-        }
-
-        private IContentReaderCollection contentWriterCollection;
-        private IContentReader<int> contentReader;
-
-        public class CWithProp
-        {
-            public int A { get; set; }
         }
 
         private class CWithPublic
