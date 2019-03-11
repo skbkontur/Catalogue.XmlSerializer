@@ -14,7 +14,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [SetUp]
         public void SetUp()
         {
-            collection = new ContentWriterCollection(new XmlAttributeInterpretator());
+            collection = new ContentWriterCollection(new XmlAttributeInterpreter());
         }
 
         [Test]

@@ -9,9 +9,9 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class ClassContentWriter : ContentWriterBase
     {
-        public ClassContentWriter(Type type, IContentWriterCollection contentWriterCollection, IXmlAttributeInterpretator xmlAttributeInterpretator)
+        public ClassContentWriter(Type type, IContentWriterCollection contentWriterCollection, IXmlAttributeInterpreter xmlAttributeInterpreter)
         {
-            this.xmlAttributeInterpretator = xmlAttributeInterpretator;
+            this.xmlAttributeInterpreter = xmlAttributeInterpreter;
             var list = new List<IValueWriter>();
             var funcList = new List<Func<object, object>>();
             var elementInfoList = new List<XmlElementInfo>();
@@ -51,7 +51,7 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
             {
                 if (!IsAttr(propertyInfo) && propertyInfo.GetIndexParameters().Length == 0)
                 {
-                    var elementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);
+                    var elementInfo = xmlAttributeInterpreter.GetPropertyNodeInfo(propertyInfo, type);
                     xmlElementInfoList.Add(elementInfo);
                     var propertyType = propertyInfo.PropertyType;
                     var emitReadPropertyFunc = ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type);
@@ -71,7 +71,7 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
                     {
                         var keyWriter = collection.Get(propertyType.GetDictionaryKeyType());
                         var valueWriter = collection.Get(propertyType.GetDictionaryValueType());
-                        list.Add(new DictionaryValueWriter(elementInfo, keyWriter, valueWriter, xmlAttributeInterpretator));
+                        list.Add(new DictionaryValueWriter(elementInfo, keyWriter, valueWriter, xmlAttributeInterpreter));
                     }
                     else list.Add(new ItemValueWriter(elementInfo, collection.Get(propertyType)));
                 }
@@ -86,7 +86,7 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
                 if (IsAttr(propertyInfo))
                 {
                     funcList.Add(ReportEmitHelpers.EmitReadPropertyFunc(propertyInfo, type));
-                    var xmlElementInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(propertyInfo, type);
+                    var xmlElementInfo = xmlAttributeInterpreter.GetPropertyNodeInfo(propertyInfo, type);
                     xmlElementInfoList.Add(xmlElementInfo);
                     list.Add(new AttributeValueWriter(xmlElementInfo, collection.Get(propertyInfo.PropertyType)));
                 }
@@ -98,7 +98,7 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
             return propertyInfo.IsDefined(typeof(XmlAttributeAttribute), false);
         }
 
-        private readonly IXmlAttributeInterpretator xmlAttributeInterpretator;
+        private readonly IXmlAttributeInterpreter xmlAttributeInterpreter;
         private readonly Func<object, object>[] readPropertyFuncs;
         private readonly IValueWriter[] writers;
     }

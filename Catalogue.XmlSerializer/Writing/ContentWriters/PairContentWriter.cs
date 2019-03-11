@@ -4,12 +4,12 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class PairContentWriter : ContentWriterBase
     {
-        public PairContentWriter(IContentWriter keyContentWriter, IContentWriter valueContentWriter, IXmlAttributeInterpretator xmlAttributeInterpretator)
+        public PairContentWriter(IContentWriter keyContentWriter, IContentWriter valueContentWriter, IXmlAttributeInterpreter xmlAttributeInterpreter)
         {
             this.keyContentWriter = keyContentWriter;
             this.valueContentWriter = valueContentWriter;
-            keyNodeInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Key"));
-            valueNodeInfo = xmlAttributeInterpretator.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Value"));
+            keyNodeInfo = xmlAttributeInterpreter.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Key"));
+            valueNodeInfo = xmlAttributeInterpreter.GetPropertyNodeInfo(typeof(DictionaryKeyValuePair).GetProperty("Value"));
         }
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)

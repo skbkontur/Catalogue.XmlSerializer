@@ -123,7 +123,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         {
             using (var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>1</specificTrash><SpecificTransaction><specifictransactiontrash>2</specifictransactiontrash></SpecificTransaction></Message>"))
             {
-                var interpretator = new XmlAttributeInterpretator();
+                var interpretator = new XmlAttributeInterpreter();
                 var contentReader = new ClassContentReader<Message<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);
                 var message = contentReader.Read(new SimpleXmlReader(xmlReader, true));
                 message.Should().BeEquivalentTo(new Message<SpecificTransaction>
@@ -139,7 +139,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         {
             using (var xmlReader = ReportReaderHelpers.CreateXmlReader(@"<Message><specificTrash>st</specificTrash><SpecificTransaction><specifictransactiontrash>stt1</specifictransactiontrash></SpecificTransaction><SpecificTransaction><specifictransactiontrash>stt2</specifictransactiontrash></SpecificTransaction></Message>"))
             {
-                var interpretator = new XmlAttributeInterpretator();
+                var interpretator = new XmlAttributeInterpreter();
                 var contentReader = new ClassContentReader<ArrayMessage<SpecificTransaction>>(new ContentReaderCollection(interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration), interpretator, StandardConfigurations.EmptyOnDeserializeConfiguration);
                 var message = contentReader.Read(new SimpleXmlReader(xmlReader, true));
                 message.Should().BeEquivalentTo(new ArrayMessage<SpecificTransaction>

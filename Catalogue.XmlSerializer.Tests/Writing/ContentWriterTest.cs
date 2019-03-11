@@ -17,19 +17,19 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         public void SetUp()
         {
             collection = new TestContentWriterCollection();
-            xmlAttributeInterpretator = new XmlAttributeInterpretator();
+            xmlAttributeInterpreter = new XmlAttributeInterpreter();
         }
 
         [Test]
         public void TestArrayRank()
         {
-            Assert.Throws<NotSupportedException>(() => new ClassContentWriter(typeof(CWithBadArray), collection, xmlAttributeInterpretator));
+            Assert.Throws<NotSupportedException>(() => new ClassContentWriter(typeof(CWithBadArray), collection, xmlAttributeInterpreter));
         }
 
         [Test]
         public void TestClass()
         {
-            var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -46,7 +46,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void NullArrayTest()
         {
-            var writer = new ClassContentWriter(typeof(Temp), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(Temp), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -63,7 +63,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestCustomContent()
         {
-            var writer = new ClassContentWriter(typeof(WithCustomContent), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(WithCustomContent), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -86,7 +86,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestNullable()
         {
-            var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -104,7 +104,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestNullableWithNullValue()
         {
-            var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(C1), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -119,7 +119,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestNullValue()
         {
-            var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(MyClass), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -175,7 +175,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithArray()
         {
-            var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -196,7 +196,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithArrayEmpty()
         {
-            var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(CWithArray), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -211,7 +211,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithAttributes()
         {
-            var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -229,7 +229,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithElementNameAttr()
         {
-            var writer = new ClassContentWriter(typeof(ClassWithName), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(ClassWithName), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -246,7 +246,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithNullAttributes()
         {
-            var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(ClassWithAttributes), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -264,7 +264,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestWithSublcass()
         {
-            var writer = new ClassContentWriter(typeof(MyClassWithSubclass), collection, xmlAttributeInterpretator);
+            var writer = new ClassContentWriter(typeof(MyClassWithSubclass), collection, xmlAttributeInterpreter);
             var builder = new StringBuilder();
             using (var xmlWriter = CreateWriter(builder))
             {
@@ -288,7 +288,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         }
 
         private IContentWriterCollection collection;
-        private IXmlAttributeInterpretator xmlAttributeInterpretator;
+        private IXmlAttributeInterpreter xmlAttributeInterpreter;
 
         private class Temp
         {

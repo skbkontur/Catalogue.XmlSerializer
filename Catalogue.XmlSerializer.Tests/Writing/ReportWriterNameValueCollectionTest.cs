@@ -13,7 +13,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [SetUp]
         public void SetUp()
         {
-            var xmlAttributeInterpretator = new XmlAttributeInterpretator();
+            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
             collection = new ContentWriterCollection(xmlAttributeInterpretator);
             writer = new ReportWriter(collection);
         }

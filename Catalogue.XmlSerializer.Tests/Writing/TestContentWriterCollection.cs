@@ -18,12 +18,12 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             if (typeof(ICustomWrite).IsAssignableFrom(type))
                 return new CustomContentWriter();
 
-            return new ClassContentWriter(type, this, new XmlAttributeInterpretator());
+            return new ClassContentWriter(type, this, new XmlAttributeInterpreter());
         }
 
         public IContentWriter GetRootWriter(Type type)
         {
-            return new RootContentWriter(type, this, new XmlAttributeInterpretator());
+            return new RootContentWriter(type, this, new XmlAttributeInterpreter());
         }
     }
 }

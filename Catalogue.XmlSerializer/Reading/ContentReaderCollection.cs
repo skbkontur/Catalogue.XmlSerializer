@@ -9,7 +9,7 @@ namespace Catalogue.XmlSerializer.Reading
 {
     public class ContentReaderCollection : IContentReaderCollection
     {
-        public ContentReaderCollection(IXmlAttributeInterpretator xmlAttributeInterpretator, OnDeserializeConfiguration onDeserializeConfiguration)
+        public ContentReaderCollection(IXmlAttributeInterpreter xmlAttributeInterpreter, OnDeserializeConfiguration onDeserializeConfiguration)
         {
             var leafContentReaders = new Dictionary<object, object>
                 {
@@ -24,7 +24,7 @@ namespace Catalogue.XmlSerializer.Reading
                     {typeof(DateTime), new DateTimeContentReader()},
                     {typeof(decimal), new FractionalContentReader<decimal>(decimal.TryParse)},
                 };
-            this.xmlAttributeInterpretator = xmlAttributeInterpretator;
+            this.xmlAttributeInterpreter = xmlAttributeInterpreter;
             this.onDeserializeConfiguration = onDeserializeConfiguration;
             foreach (var leafContentReader in leafContentReaders)
                 readers.Add(leafContentReader.Key, leafContentReader.Value);
@@ -89,7 +89,7 @@ namespace Catalogue.XmlSerializer.Reading
             if (enumReader != null)
                 return enumReader;
 
-            return new ClassContentReader<T>(this, xmlAttributeInterpretator, onDeserializeConfiguration);
+            return new ClassContentReader<T>(this, xmlAttributeInterpreter, onDeserializeConfiguration);
         }
 
         private static IContentReader<T> TryCreateForEnum<T>()
@@ -182,7 +182,7 @@ namespace Catalogue.XmlSerializer.Reading
 
         private readonly Hashtable readers = new Hashtable();
         private readonly object readersLock = new object();
-        private readonly IXmlAttributeInterpretator xmlAttributeInterpretator;
+        private readonly IXmlAttributeInterpreter xmlAttributeInterpreter;
         private readonly OnDeserializeConfiguration onDeserializeConfiguration;
     }
 }

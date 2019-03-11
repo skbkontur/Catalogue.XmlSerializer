@@ -11,7 +11,7 @@ namespace Catalogue.XmlSerializer.Reading.ContentReaders
     {
         public ClassContentReader(
             IContentReaderCollection contentReaderCollection,
-            IXmlAttributeInterpretator xmlAttributeInterpretator,
+            IXmlAttributeInterpreter xmlAttributeInterpreter,
             OnDeserializeConfiguration onDeserializeConfiguration)
         {
             this.onDeserializeConfiguration = onDeserializeConfiguration;
@@ -23,12 +23,12 @@ namespace Catalogue.XmlSerializer.Reading.ContentReaders
                 if (PropertyIsBad(propertyInfo)) continue;
                 if (propertyInfo.IsDefined(typeof(XmlAttributeAttribute), false))
                 {
-                    var name = xmlAttributeInterpretator.GetXmlNodeName(propertyInfo);
+                    var name = xmlAttributeInterpreter.GetXmlNodeName(propertyInfo);
                     attributeMap.Add(name, ReadHelpers.BuildSetter<T>(propertyInfo, contentReaderCollection));
                 }
                 else
                 {
-                    var name = xmlAttributeInterpretator.GetXmlNodeName(propertyInfo);
+                    var name = xmlAttributeInterpreter.GetXmlNodeName(propertyInfo);
                     propertiesMap.Add(name, ReadHelpers.BuildSetter<T>(propertyInfo, contentReaderCollection));
                 }
             }

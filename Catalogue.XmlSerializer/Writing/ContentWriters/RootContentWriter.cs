@@ -6,10 +6,10 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class RootContentWriter : IContentWriter
     {
-        public RootContentWriter(Type type, IContentWriterCollection contentWriterCollection, IXmlAttributeInterpretator xmlAttributeInterpretator)
+        public RootContentWriter(Type type, IContentWriterCollection contentWriterCollection, IXmlAttributeInterpreter xmlAttributeInterpreter)
         {
             contentWriter = contentWriterCollection.Get(type);
-            rootElementInfo = xmlAttributeInterpretator.GetRootNodeInfo(type);
+            rootElementInfo = xmlAttributeInterpreter.GetRootNodeInfo(type);
         }
 
         public void Write(object obj, IWriter writer)

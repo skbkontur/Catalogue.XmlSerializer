@@ -13,7 +13,7 @@ namespace Catalogue.XmlSerializer
         public XmlSerializer()
         {
             Configuration = new XmlSerializerConfiguration();
-            var xmlAttributeInterpretator = new XmlAttributeInterpretator();
+            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
             reportReader = new ReportReader(new ContentReaderCollection(xmlAttributeInterpretator, Configuration.OnDeserialize));
             reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpretator));
         }

@@ -7,9 +7,9 @@ namespace Catalogue.XmlSerializer.Writing
 {
     public class ContentWriterCollection : IContentWriterCollection
     {
-        public ContentWriterCollection(IXmlAttributeInterpretator xmlAttributeInterpretator)
+        public ContentWriterCollection(IXmlAttributeInterpreter xmlAttributeInterpreter)
         {
-            this.xmlAttributeInterpretator = xmlAttributeInterpretator;
+            this.xmlAttributeInterpreter = xmlAttributeInterpreter;
         }
 
         public IContentWriter Get(Type type)
@@ -33,7 +33,7 @@ namespace Catalogue.XmlSerializer.Writing
 
         public IContentWriter GetRootWriter(Type type)
         {
-            return new RootContentWriter(type, this, xmlAttributeInterpretator);
+            return new RootContentWriter(type, this, xmlAttributeInterpreter);
         }
 
         private IContentWriter CreateLeafWriter(Type type)
@@ -55,7 +55,7 @@ namespace Catalogue.XmlSerializer.Writing
         {
             if (typeof(ICustomWrite).IsAssignableFrom(type))
                 return customContentWriter;
-            return CreateLeafWriter(type) ?? new ClassContentWriter(type, this, xmlAttributeInterpretator);
+            return CreateLeafWriter(type) ?? new ClassContentWriter(type, this, xmlAttributeInterpreter);
         }
 
         private IContentWriter Read(Type type)
@@ -67,10 +67,8 @@ namespace Catalogue.XmlSerializer.Writing
         private static readonly StringContentWriter stringContentWriter = new StringContentWriter();
         private static readonly ToStringContentWriter toStringContentWriter = new ToStringContentWriter();
 
-        private readonly IXmlAttributeInterpretator xmlAttributeInterpretator;
-
+        private readonly IXmlAttributeInterpreter xmlAttributeInterpreter;
         private readonly CustomContentWriter customContentWriter = new CustomContentWriter();
-
         private readonly Hashtable writers = new Hashtable();
         private readonly object writersLock = new object();
     }

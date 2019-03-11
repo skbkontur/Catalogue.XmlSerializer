@@ -5,7 +5,7 @@ using Catalogue.XmlSerializer.Attributes;
 
 namespace Catalogue.XmlSerializer
 {
-    public interface IXmlAttributeInterpretator
+    public interface IXmlAttributeInterpreter
     {
         string GetXmlNodeName(MemberInfo memberInfo);
         XmlElementInfo GetPropertyNodeInfo(PropertyInfo propertyInfo, Type parentType = null);

@@ -54,7 +54,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         {
             using (var xmlReader = ReportReaderHelpers.CreateXmlReader(source))
             {
-                var arrayContentReader = new NullableContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpretator(), StandardConfigurations.EmptyOnDeserializeConfiguration));
+                var arrayContentReader = new NullableContentReader<T>(new ContentReaderCollection(new XmlAttributeInterpreter(), StandardConfigurations.EmptyOnDeserializeConfiguration));
                 var value = arrayContentReader.Read(new SimpleXmlReader(xmlReader, true));
                 value.Should().BeEquivalentTo(expected);
             }

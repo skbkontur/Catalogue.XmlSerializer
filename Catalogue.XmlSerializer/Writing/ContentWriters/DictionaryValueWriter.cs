@@ -7,9 +7,9 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class DictionaryValueWriter : ValueWriterBase
     {
-        public DictionaryValueWriter(XmlElementInfo xmlElementInfo, IContentWriter keyWriter, IContentWriter valueWriter, IXmlAttributeInterpretator xmlAttributeInterpretator)
+        public DictionaryValueWriter(XmlElementInfo xmlElementInfo, IContentWriter keyWriter, IContentWriter valueWriter, IXmlAttributeInterpreter xmlAttributeInterpreter)
         {
-            itemContentWriter = new PairContentWriter(keyWriter, valueWriter, xmlAttributeInterpretator);
+            itemContentWriter = new PairContentWriter(keyWriter, valueWriter, xmlAttributeInterpreter);
             arrayValueWriter = new ArrayValueWriter(xmlElementInfo, itemContentWriter);
         }
 

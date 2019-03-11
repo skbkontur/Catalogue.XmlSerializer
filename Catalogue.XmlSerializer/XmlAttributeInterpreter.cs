@@ -7,7 +7,7 @@ using Catalogue.XmlSerializer.Attributes;
 
 namespace Catalogue.XmlSerializer
 {
-    public class XmlAttributeInterpretator : IXmlAttributeInterpretator
+    public class XmlAttributeInterpreter : IXmlAttributeInterpreter
     {
         public string GetXmlNodeName(MemberInfo memberInfo)
         {
@@ -38,7 +38,7 @@ namespace Catalogue.XmlSerializer
                 };
         }
 
-        private bool IsOptional(MemberInfo memberInfo)
+        private static bool IsOptional(MemberInfo memberInfo)
         {
             return GetAttribute<XmlOptionalAttribute>(memberInfo, true) != null;
         }
@@ -53,7 +53,7 @@ namespace Catalogue.XmlSerializer
                           .ToArray();
         }
 
-        private string GetXmlNamespace(MemberInfo memberInfo, Type parentType = null)
+        private static string GetXmlNamespace(MemberInfo memberInfo, Type parentType = null)
         {
             var namespaceAttribute = GetAttribute<XmlNamespaceAttribute>(memberInfo, true);
             if (namespaceAttribute != null)

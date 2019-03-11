@@ -35,7 +35,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         {
             if (configuration == null)
                 configuration = StandardConfigurations.EmptyOnDeserializeConfiguration;
-            return new ReportReader(new ContentReaderCollection(new XmlAttributeInterpretator(), configuration));
+            return new ReportReader(new ContentReaderCollection(new XmlAttributeInterpreter(), configuration));
         }
 
         public static XmlReader CreateXmlReader(string source)

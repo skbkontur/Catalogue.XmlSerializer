@@ -14,7 +14,7 @@ namespace Catalogue.XmlSerializer
     {
         public StrictXmlSerializer()
         {
-            var xmlAttributeInterpretator = new XmlAttributeInterpretator();
+            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
 
             var onDeserializeConfiguration = new OnDeserializeConfiguration();
             onDeserializeConfiguration.OnUnexpectedElement += OnUnexpectedElement;
