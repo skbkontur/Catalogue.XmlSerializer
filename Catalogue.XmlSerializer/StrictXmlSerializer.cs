@@ -14,14 +14,14 @@ namespace SkbKontur.Catalogue.XmlSerializer
     {
         public StrictXmlSerializer()
         {
-            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
+            var xmlAttributeInterpreter = new XmlAttributeInterpreter();
 
             var onDeserializeConfiguration = new OnDeserializeConfiguration();
             onDeserializeConfiguration.OnUnexpectedElement += OnUnexpectedElement;
             onDeserializeConfiguration.OnUnexpectedAttribute += OnUnexpectedAttribute;
 
-            reportReader = new ReportReader(new ContentReaderCollection(xmlAttributeInterpretator, onDeserializeConfiguration));
-            reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpretator));
+            reportReader = new ReportReader(new ContentReaderCollection(xmlAttributeInterpreter, onDeserializeConfiguration));
+            reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpreter));
         }
 
         public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding)

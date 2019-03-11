@@ -13,9 +13,9 @@ namespace SkbKontur.Catalogue.XmlSerializer
         public XmlSerializer()
         {
             Configuration = new XmlSerializerConfiguration();
-            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
-            reportReader = new ReportReader(new ContentReaderCollection(xmlAttributeInterpretator, Configuration.OnDeserialize));
-            reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpretator));
+            var xmlAttributeInterpreter = new XmlAttributeInterpreter();
+            reportReader = new ReportReader(new ContentReaderCollection(xmlAttributeInterpreter, Configuration.OnDeserialize));
+            reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpreter));
         }
 
         public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding)

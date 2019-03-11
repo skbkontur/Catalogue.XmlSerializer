@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 
 using NUnit.Framework;
 
@@ -14,8 +14,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [SetUp]
         public void SetUp()
         {
-            var xmlAttributeInterpretator = new XmlAttributeInterpreter();
-            collection = new ContentWriterCollection(xmlAttributeInterpretator);
+            collection = new ContentWriterCollection(new XmlAttributeInterpreter());
             writer = new ReportWriter(collection);
         }
 
