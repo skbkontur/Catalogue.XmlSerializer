@@ -92,7 +92,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
         private void Check(string badActions, string currentAction)
         {
             if (badActions.Contains(actionsList[actionsList.Count - 1].ActionType))
-                throw new InvalidOperationException(string.Format("Попытка выполнить '{0}' в ситуации, когда это запрещено", currentAction));
+                throw new InvalidOperationException($"Попытка выполнить '{currentAction}' в ситуации, когда это запрещено");
         }
 
         private readonly List<XmlWriterAction> actionsList;

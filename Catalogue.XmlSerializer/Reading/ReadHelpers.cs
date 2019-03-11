@@ -12,7 +12,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
     {
         static ReadHelpers()
         {
-            var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName("ReportReader" + Guid.NewGuid()), AssemblyBuilderAccess.Run);
+            var assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName($"ReportReader{Guid.NewGuid()}"), AssemblyBuilderAccess.Run);
             moduleBuilder = assemblyBuilder.DefineDynamicModule("ReportReaderModule");
         }
 

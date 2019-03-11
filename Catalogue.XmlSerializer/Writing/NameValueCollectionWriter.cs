@@ -22,13 +22,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing
 
         public void WriteStartArrayElement(XmlElementInfo xmlElementInfo, int index)
         {
-            Add(string.Format("{0}${1}", GetXmlElementString(xmlElementInfo), index));
+            Add($"{GetXmlElementString(xmlElementInfo)}${index}");
             namespacesStack.Push(GetUrl(xmlElementInfo));
         }
 
         public void WriteStartAttribute(XmlElementInfo xmlElementInfo)
         {
-            Add(string.Format("{0}${1}", GetXmlElementString(xmlElementInfo), "Attr"));
+            Add($"{GetXmlElementString(xmlElementInfo)}${"Attr"}");
             namespacesStack.Push(GetUrl(xmlElementInfo));
         }
 

@@ -59,9 +59,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
         {
             var type = typeof(T);
             if (!type.IsVisible)
-                throw new NotSupportedException(string.Format("Type '{0}' should be visible outside assembly", type));
+                throw new NotSupportedException($"Type '{type}' should be visible outside assembly");
             if (badTypes.Contains(type))
-                throw new NotSupportedException(string.Format("Type '{0}' cannot be deserialized", type));
+                throw new NotSupportedException($"Type '{type}' cannot be deserialized");
         }
 
         private IContentReader<T> TryGet<T>()

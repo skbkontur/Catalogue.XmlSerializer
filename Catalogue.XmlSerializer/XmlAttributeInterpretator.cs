@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -77,10 +77,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             if (memberInfo.MemberType != MemberTypes.Property)
             {
                 if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
-                    throw new NotSupportedException(
-                        string.Format(
-                            "У элемента {0} не может быть выставлено правило {1}. Это правило можно выставлять только для свойств.",
-                            memberInfo, XmlFormNameRule.GetAttributeFromTypeDeclaration));
+                    throw new NotSupportedException($"У элемента {memberInfo} не может быть выставлено правило {XmlFormNameRule.GetAttributeFromTypeDeclaration}. Это правило можно выставлять только для свойств.");
             }
 
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
@@ -101,10 +98,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
             if (memberInfo.MemberType != MemberTypes.Property)
             {
                 if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
-                    throw new NotSupportedException(
-                        string.Format(
-                            "У элемента {0} не может быть выставлено правило {1}. Это правило можно выставлять только для свойств.",
-                            memberInfo, XmlFormNameRule.GetAttributeFromTypeDeclaration));
+                    throw new NotSupportedException($"У элемента {memberInfo} не может быть выставлено правило {XmlFormNameRule.GetAttributeFromTypeDeclaration}. Это правило можно выставлять только для свойств.");
             }
 
             if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
@@ -129,9 +123,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
         {
             if (!PossibleXmlName(name))
                 throw new NotSupportedException(
-                    string.Format(
-                        "У элемента {0} не может отсутствовать конкретное имя. Его имя '{1}' не является допустимым для xml.",
-                        memberInfo, name));
+                    $"У элемента {memberInfo} не может отсутствовать конкретное имя. Его имя '{name}' не является допустимым для xml.");
         }
 
         private static T GetAttribute<T>(MemberInfo memberInfo, bool inherit)
@@ -139,8 +131,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
         {
             T[] attributes = memberInfo.GetAttributes<T>(inherit);
             if (attributes.Length > 1)
-                throw new Exception(string.Format("У элемента '{0}' не может быть больше одного атрибута типа '{1}'.",
-                                                  memberInfo, typeof(T).Name));
+                throw new Exception($"У элемента '{memberInfo}' не может быть больше одного атрибута типа '{typeof(T).Name}'.");
             if (attributes.Length == 1) return attributes[0];
             return null;
         }

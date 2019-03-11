@@ -69,12 +69,12 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private static void OnUnexpectedAttribute(object sender, DeserializationContext context)
         {
-            throw new InvalidOperationException(string.Format("Unexpected attributeName {0}", context.CurrentElementLocalName));
+            throw new InvalidOperationException($"Unexpected attributeName {context.CurrentElementLocalName}");
         }
 
         private static void OnUnexpectedElement(object sender, DeserializationContext context)
         {
-            throw new InvalidOperationException(string.Format("Unexpected elementName {0}", context.CurrentElementLocalName));
+            throw new InvalidOperationException($"Unexpected elementName {context.CurrentElementLocalName}");
         }
 
         private readonly ReportReader reportReader;

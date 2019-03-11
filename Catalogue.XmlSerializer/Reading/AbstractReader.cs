@@ -7,7 +7,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
     {
         public NameValueCollection GetAttributes()
         {
-            if (NodeType != NodeType.Element) throw new XmlException(string.Format("Атрибуты можно вычитывать только у узла с типом Element. Тип '{0}' не годится.", NodeType));
+            if (NodeType != NodeType.Element) throw new XmlException($"Атрибуты можно вычитывать только у узла с типом Element. Тип '{NodeType}' не годится.");
             if (!HasAttributes) return new NameValueCollection();
             var collection = new NameValueCollection();
             MoveToFirstAttribute();
@@ -27,7 +27,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                 while (NodeType != NodeType.EndElement)
                 {
                     if (NodeType == NodeType.Text || NodeType == NodeType.CDATA) result = Value;
-                    if (NodeType == NodeType.Element) throw new XmlException(string.Format("У элемента, который должен был быть простым, оказались дочерние элементы ({0})", LocalName));
+                    if (NodeType == NodeType.Element) throw new XmlException($"У элемента, который должен был быть простым, оказались дочерние элементы ({LocalName})");
                     if (!Read()) return null;
                 }
             }

@@ -207,7 +207,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
                     {
                         if (i == 0) attrs += "[";
                         if (i != 0) attrs += "; ";
-                        attrs += string.Format("{0}:{1}={2}", Attributes[i].NamespaceURI, Attributes[i].Name, Attributes[i].Value);
+                        attrs += $"{Attributes[i].NamespaceURI}:{Attributes[i].Name}={Attributes[i].Value}";
                         if (i == Attributes.Count - 1) attrs += "]";
                     }
                 }

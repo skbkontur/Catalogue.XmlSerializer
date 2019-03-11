@@ -56,7 +56,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public void TestDuplicateItemsWithExceptionWhenDuplicateElement()
         {
             var configuration = new OnDeserializeConfiguration();
-            configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException(string.Format("Duplicate element '{0}'", context.CurrentElementLocalName)); };
+            configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException($"Duplicate element '{context.CurrentElementLocalName}'"); };
 
             Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
                 @"<root>
@@ -85,7 +85,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         public void TestDuplicateItemsInArrayWithExceptionWhenDuplicateElement()
         {
             var configuration = new OnDeserializeConfiguration();
-            configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException(string.Format("Duplicate element '{0}'", context.CurrentElementLocalName)); };
+            configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException($"Duplicate element '{context.CurrentElementLocalName}'"); };
 
             Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
                 @"<root>

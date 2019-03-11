@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 
 using FluentAssertions;
 
@@ -14,7 +14,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
     public class ArrayContentReaderTest
     {
         [Test]
-        public void TestEndOfErray()
+        public void TestEndOfArray()
         {
             const string source =
                 @"<A>1</A>
@@ -25,7 +25,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         }
 
         [Test]
-        public void TestEndOfErrayNvc()
+        public void TestEndOfArrayNvc()
         {
             var nvc = new NameValueCollection {{"A$0", "1"}, {"A$1", "2"}, {"B", "100"}};
             ReportReaderHelpers.Check(nvc, new C1 {A = new[] {1, 2}});

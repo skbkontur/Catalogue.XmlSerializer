@@ -30,7 +30,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests
                     File.WriteAllText(actualFilePath, reformatActual);
                     Process.Start(new ProcessStartInfo
                         {
-                            Arguments = string.Format("{0} {1}", actualFilePath, expectedFilePath),
+                            Arguments = $"{actualFilePath} {expectedFilePath}",
                             FileName = araxisComparePath ?? @"c:\Program Files\Araxis\Araxis Merge\compare.exe",
                             WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory,
                         });

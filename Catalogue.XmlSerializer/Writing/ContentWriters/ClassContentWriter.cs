@@ -64,7 +64,7 @@ namespace SKBKontur.Catalogue.XmlSerialization.Writing.ContentWriters
                     else if (propertyType.IsArray)
                     {
                         if (propertyType.GetArrayRank() > 1)
-                            throw new NotSupportedException(string.Format("array with rank {0}", propertyType.GetArrayRank()));
+                            throw new NotSupportedException($"array with rank {propertyType.GetArrayRank()}");
                         list.Add(new ArrayValueWriter(elementInfo, collection.Get(propertyType.GetElementType())));
                     }
                     else if (propertyType.IsList())

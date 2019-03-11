@@ -12,7 +12,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         public static Exception Create(Type type, IEnumerable<Type> constructorParameterTypes)
         {
-            var message = String.Format("Type {0} has no public instance constructor with types\n", type);
+            var message = $"Type {type} has no public instance constructor with types\n";
             foreach (var parameterType in constructorParameterTypes)
                 message += parameterType.FullName + "\r\n";
             return new ConstructorNotFoundException(message);
