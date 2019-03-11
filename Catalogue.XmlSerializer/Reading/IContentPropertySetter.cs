@@ -1,4 +1,4 @@
-﻿namespace Catalogue.XmlSerializer.Reading
+﻿namespace SkbKontur.Catalogue.XmlSerializer.Reading
 {
     public interface IContentPropertySetter<in T>
     {

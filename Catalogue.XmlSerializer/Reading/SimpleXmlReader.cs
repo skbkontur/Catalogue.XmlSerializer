@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace Catalogue.XmlSerializer.Reading
+namespace SkbKontur.Catalogue.XmlSerializer.Reading
 {
     public class SimpleXmlReader : AbstractReader
     {

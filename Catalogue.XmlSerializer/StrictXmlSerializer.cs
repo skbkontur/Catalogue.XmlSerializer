@@ -4,11 +4,11 @@ using System.IO;
 using System.Text;
 using System.Xml;
 
-using Catalogue.XmlSerializer.Reading;
-using Catalogue.XmlSerializer.Reading.Configuration;
-using Catalogue.XmlSerializer.Writing;
+using SkbKontur.Catalogue.XmlSerializer.Reading;
+using SkbKontur.Catalogue.XmlSerializer.Reading.Configuration;
+using SkbKontur.Catalogue.XmlSerializer.Writing;
 
-namespace Catalogue.XmlSerializer
+namespace SkbKontur.Catalogue.XmlSerializer
 {
     public class StrictXmlSerializer : IStrictXmlSerializer
     {

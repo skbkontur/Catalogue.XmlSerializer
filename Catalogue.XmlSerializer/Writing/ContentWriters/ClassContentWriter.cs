@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-using Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer.Writing.ContentWriters
+namespace SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class ClassContentWriter : ContentWriterBase
     {

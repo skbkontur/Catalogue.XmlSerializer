@@ -2,9 +2,9 @@ using System;
 using System.Text;
 using System.Xml;
 
-using Catalogue.XmlSerializer.Writing;
-
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer.Writing;
 
 namespace Catalogue.XmlSerializer.Tests.Writing
 {

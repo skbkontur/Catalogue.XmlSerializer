@@ -3,9 +3,9 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-using Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer
+namespace SkbKontur.Catalogue.XmlSerializer
 {
     public class XmlAttributeInterpreter : IXmlAttributeInterpreter
     {

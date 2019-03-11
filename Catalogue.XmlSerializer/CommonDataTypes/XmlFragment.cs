@@ -1,9 +1,9 @@
-﻿using Catalogue.XmlSerializer.Reading;
-using Catalogue.XmlSerializer.Reading.ContentReaders;
-using Catalogue.XmlSerializer.Writing;
-using Catalogue.XmlSerializer.Writing.ContentWriters;
+﻿using SkbKontur.Catalogue.XmlSerializer.Reading;
+using SkbKontur.Catalogue.XmlSerializer.Reading.ContentReaders;
+using SkbKontur.Catalogue.XmlSerializer.Writing;
+using SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters;
 
-namespace Catalogue.XmlSerializer.CommonDataTypes
+namespace SkbKontur.Catalogue.XmlSerializer.CommonDataTypes
 {
     public class XmlFragment : ICustomRead, ICustomWrite
     {

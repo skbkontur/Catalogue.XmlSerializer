@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 
-using Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer
+namespace SkbKontur.Catalogue.XmlSerializer
 {
     public interface IXmlAttributeInterpreter
     {

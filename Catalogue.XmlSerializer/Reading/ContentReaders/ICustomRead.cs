@@ -1,4 +1,4 @@
-﻿namespace Catalogue.XmlSerializer.Reading.ContentReaders
+﻿namespace SkbKontur.Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public interface ICustomRead
     {

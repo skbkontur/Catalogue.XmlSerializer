@@ -3,12 +3,13 @@ using System.IO;
 using System.Text;
 using System.Xml;
 
-using Catalogue.XmlSerializer.Reading;
-using Catalogue.XmlSerializer.Reading.Configuration;
-
 using FluentAssertions;
 
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer;
+using SkbKontur.Catalogue.XmlSerializer.Reading;
+using SkbKontur.Catalogue.XmlSerializer.Reading.Configuration;
 
 namespace Catalogue.XmlSerializer.Tests.Reading
 {

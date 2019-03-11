@@ -4,9 +4,9 @@ using System.Reflection.Emit;
 using System.Runtime.Serialization;
 using System.Threading;
 
-using Catalogue.XmlSerializer.Reading.ContentReaders;
+using SkbKontur.Catalogue.XmlSerializer.Reading.ContentReaders;
 
-namespace Catalogue.XmlSerializer.Reading
+namespace SkbKontur.Catalogue.XmlSerializer.Reading
 {
     public class ReadHelpers
     {

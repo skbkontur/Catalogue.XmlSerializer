@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Catalogue.XmlSerializer.Writing.ContentWriters
+namespace SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class DateTimeContentWriter : ContentWriterBase
     {

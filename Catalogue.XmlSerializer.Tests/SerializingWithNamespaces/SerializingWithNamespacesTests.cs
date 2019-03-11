@@ -4,6 +4,8 @@ using Catalogue.XmlSerializer.Tests.SerializingWithNamespaces.Contracts.SimpleRo
 
 using NUnit.Framework;
 
+using SkbKontur.Catalogue.XmlSerializer;
+
 namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
 {
     [TestFixture]
@@ -12,7 +14,7 @@ namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
         [SetUp]
         public void SetUp()
         {
-            xmlSerializer = new XmlSerializer();
+            xmlSerializer = new SkbKontur.Catalogue.XmlSerializer.XmlSerializer();
         }
 
         [Test]
@@ -104,6 +106,6 @@ namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
                          .AssertEqualsXml(@"<root xmlns:d=""urn:a"" xmlns:c=""urn:b"" xmlns:b=""urn:c"" xmlns:a=""urn:d""> <d:A>A</d:A> <c:B>B</c:B> <b:C>C</b:C> <a:D>D</a:D> </root>");
         }
 
-        private XmlSerializer xmlSerializer;
+        private SkbKontur.Catalogue.XmlSerializer.XmlSerializer xmlSerializer;
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 
-using Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer.Writing.ContentWriters
+namespace SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class RootContentWriter : IContentWriter
     {

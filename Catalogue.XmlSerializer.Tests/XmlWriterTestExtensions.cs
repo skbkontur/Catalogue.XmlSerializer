@@ -1,5 +1,6 @@
-﻿using Catalogue.XmlSerializer.Attributes;
-using Catalogue.XmlSerializer.Writing;
+﻿using SkbKontur.Catalogue.XmlSerializer.Writing;
+
+using XmlElementInfo = SkbKontur.Catalogue.XmlSerializer.Attributes.XmlElementInfo;
 
 namespace Catalogue.XmlSerializer.Tests
 {

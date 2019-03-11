@@ -1,4 +1,4 @@
-﻿namespace Catalogue.XmlSerializer
+﻿namespace SkbKontur.Catalogue.XmlSerializer
 {
     public class DictionaryKeyValuePair<TKey, TValue>
     {

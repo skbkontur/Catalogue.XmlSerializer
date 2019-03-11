@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Catalogue.XmlSerializer.Reading.Configuration
+namespace SkbKontur.Catalogue.XmlSerializer.Reading.Configuration
 {
     public class OnDeserializeConfiguration
     {

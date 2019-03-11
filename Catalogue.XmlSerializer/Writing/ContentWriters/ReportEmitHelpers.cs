@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace Catalogue.XmlSerializer.Writing.ContentWriters
+namespace SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters
 {
     public class ReportEmitHelpers
     {

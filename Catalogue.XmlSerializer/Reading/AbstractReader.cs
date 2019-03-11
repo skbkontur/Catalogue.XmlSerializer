@@ -1,7 +1,7 @@
 using System.Collections.Specialized;
 using System.Xml;
 
-namespace Catalogue.XmlSerializer.Reading
+namespace SkbKontur.Catalogue.XmlSerializer.Reading
 {
     public abstract class AbstractReader : IReader
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 
-namespace Catalogue.XmlSerializer
+namespace SkbKontur.Catalogue.XmlSerializer
 {
     public static class AttributeHelper
     {

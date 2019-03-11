@@ -1,4 +1,4 @@
-﻿namespace Catalogue.XmlSerializer.Attributes
+﻿namespace SkbKontur.Catalogue.XmlSerializer.Attributes
 {
     public class XmlAttributeAttribute : XmlFormNameAttribute
     {

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Catalogue.XmlSerializer.Reading.ContentReaders
+namespace SkbKontur.Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class FractionalContentReader<T> : IContentReader<T>
     {

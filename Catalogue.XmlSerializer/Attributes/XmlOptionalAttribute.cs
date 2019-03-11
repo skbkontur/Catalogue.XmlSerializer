@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Catalogue.XmlSerializer.Attributes
+namespace SkbKontur.Catalogue.XmlSerializer.Attributes
 {
     public class XmlOptionalAttribute : Attribute
     {

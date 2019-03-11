@@ -1,10 +1,11 @@
 using System.Text;
 using System.Xml;
 
-using Catalogue.XmlSerializer.Writing;
-using Catalogue.XmlSerializer.Writing.ContentWriters;
-
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer;
+using SkbKontur.Catalogue.XmlSerializer.Writing;
+using SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters;
 
 namespace Catalogue.XmlSerializer.Tests.Writing
 {

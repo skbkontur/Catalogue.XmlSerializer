@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Specialized;
 
-using Catalogue.XmlSerializer.Attributes;
-using Catalogue.XmlSerializer.Reading;
-using Catalogue.XmlSerializer.Reading.Configuration;
-
 using FluentAssertions;
 
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Reading;
+using SkbKontur.Catalogue.XmlSerializer.Reading.Configuration;
 
 namespace Catalogue.XmlSerializer.Tests.Reading
 {

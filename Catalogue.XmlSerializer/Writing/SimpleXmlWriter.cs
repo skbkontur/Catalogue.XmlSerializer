@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
 
-using Catalogue.XmlSerializer.Attributes;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer.Writing
+namespace SkbKontur.Catalogue.XmlSerializer.Writing
 {
     public class SimpleXmlWriter : IWriter
     {

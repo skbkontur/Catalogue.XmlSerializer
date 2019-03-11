@@ -1,6 +1,6 @@
-﻿using Catalogue.XmlSerializer.Attributes;
+﻿using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
-namespace Catalogue.XmlSerializer.Reading.ContentReaders
+namespace SkbKontur.Catalogue.XmlSerializer.Reading.ContentReaders
 {
     public class StringContentReader : IContentReader<string>
     {

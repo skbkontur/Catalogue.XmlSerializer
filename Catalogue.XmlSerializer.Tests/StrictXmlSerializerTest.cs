@@ -1,10 +1,11 @@
 ﻿using System;
 
-using Catalogue.XmlSerializer.Attributes;
-
 using FluentAssertions;
 
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer;
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
 namespace Catalogue.XmlSerializer.Tests
 {

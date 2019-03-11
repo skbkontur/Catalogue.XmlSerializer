@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Specialized;
 
-using Catalogue.XmlSerializer.Attributes;
-
 using NUnit.Framework;
+
+using SkbKontur.Catalogue.XmlSerializer.Attributes;
 
 namespace Catalogue.XmlSerializer.Tests.Reading
 {
