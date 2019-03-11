@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Xml;
 
 namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
@@ -15,7 +15,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
         {
         }
 
-        public override XmlWriterSettings Settings { get { return settings; } }
+        public override XmlWriterSettings Settings => settings;
         private readonly XmlWriterSettings settings;
     }
 }

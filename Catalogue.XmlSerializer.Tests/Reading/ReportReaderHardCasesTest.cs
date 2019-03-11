@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Specialized;
 
 using FluentAssertions;
@@ -139,17 +139,17 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Reading
 
         public class CWithBadProps
         {
-            public int this[int i] { get { return this.i + i; } set { this.i = value + i; } }
+            public int this[int i] { get => this.i + i; set => this.i = value + i; }
 
-            public string this[string s] { get { return s; } }
+            public string this[string s] => s;
 
-            public long this[long l] { set { this.l = value + l; } }
+            public long this[long l] { set => this.l = value + l; }
 
-            public long SetOnlyL { set { fl = value; } }
+            public long SetOnlyL { set => fl = value; }
 
-            public long SetOnlyLPrivate { private set { throw new NotSupportedException(); } get { return 200; } }
+            public long SetOnlyLPrivate { private set => throw new NotSupportedException(); get => 200; }
 
-            public long GetOnlyL { get { return 23445; } }
+            public long GetOnlyL => 23445;
 
             public static string S { get; set; }
             public long fl;

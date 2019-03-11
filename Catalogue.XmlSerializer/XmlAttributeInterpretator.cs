@@ -11,7 +11,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
     {
         public string GetXmlNodeName(MemberInfo memberInfo)
         {
-            string name = GetXmlNodeInternal(memberInfo);
+            var name = GetXmlNodeInternal(memberInfo);
             CheckName(memberInfo, name);
             return name;
         }
@@ -45,7 +45,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private XmlNamespaceDescription[] GetXmlNamespaceDescriptions(MemberInfo memberInfo)
         {
-            DeclareXmlNamespaceAttribute[] attributes = GetAttributes<DeclareXmlNamespaceAttribute>(memberInfo, true);
+            var attributes = GetAttributes<DeclareXmlNamespaceAttribute>(memberInfo, true);
             return
                 attributes.OrderBy(x => x.Uri)
                           .ThenBy(x => x.Prefix)
@@ -72,8 +72,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private string GetXmlNodeInternal(MemberInfo memberInfo)
         {
-            XmlFormNameAttribute formNameAttribute = GetAttribute<XmlFormNameAttribute>(memberInfo, true) ??
-                                                     new XmlElementAttribute();
+            var formNameAttribute = GetAttribute<XmlFormNameAttribute>(memberInfo, true) ?? new XmlElementAttribute();
             if (memberInfo.MemberType != MemberTypes.Property)
             {
                 if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
@@ -93,8 +92,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private string GetRootNameInternal(MemberInfo memberInfo)
         {
-            XmlFormNameAttribute formNameAttribute = GetAttribute<XmlFormNameAttribute>(memberInfo, true) ??
-                                                     new XmlElementAttribute();
+            var formNameAttribute = GetAttribute<XmlFormNameAttribute>(memberInfo, true) ?? new XmlElementAttribute();
             if (memberInfo.MemberType != MemberTypes.Property)
             {
                 if (formNameAttribute.XmlFormNameRule == XmlFormNameRule.GetAttributeFromTypeDeclaration)
@@ -114,7 +112,7 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private string GetRootName(MemberInfo memberInfo)
         {
-            string name = GetRootNameInternal(memberInfo);
+            var name = GetRootNameInternal(memberInfo);
             CheckName(memberInfo, name);
             return name;
         }
@@ -122,14 +120,13 @@ namespace SKBKontur.Catalogue.XmlSerialization
         private static void CheckName(MemberInfo memberInfo, string name)
         {
             if (!PossibleXmlName(name))
-                throw new NotSupportedException(
-                    $"У элемента {memberInfo} не может отсутствовать конкретное имя. Его имя '{name}' не является допустимым для xml.");
+                throw new NotSupportedException($"У элемента {memberInfo} не может отсутствовать конкретное имя. Его имя '{name}' не является допустимым для xml.");
         }
 
         private static T GetAttribute<T>(MemberInfo memberInfo, bool inherit)
             where T : Attribute
         {
-            T[] attributes = memberInfo.GetAttributes<T>(inherit);
+            var attributes = memberInfo.GetAttributes<T>(inherit);
             if (attributes.Length > 1)
                 throw new Exception($"У элемента '{memberInfo}' не может быть больше одного атрибута типа '{typeof(T).Name}'.");
             if (attributes.Length == 1) return attributes[0];
@@ -156,8 +153,9 @@ namespace SKBKontur.Catalogue.XmlSerialization
 
         private static Type GetPropertyType(PropertyInfo propertyInfo)
         {
-            Type propertyType = propertyInfo.PropertyType;
-            if (propertyType.HasElementType) return propertyType.GetElementType();
+            var propertyType = propertyInfo.PropertyType;
+            if (propertyType.HasElementType)
+                return propertyType.GetElementType();
             return propertyType;
         }
     }

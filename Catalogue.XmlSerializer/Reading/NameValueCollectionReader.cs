@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -94,10 +94,10 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             cur.MoveToElement();
         }
 
-        public override string NamespaceURI { get { return cur.Url; } }
+        public override string NamespaceURI => cur.Url;
 
-        public override bool IsEmptyElement { get { return cur.IsEmptyElement; } }
-        public override bool HasAttributes { get { return cur.Attributes != null; } }
+        public override bool IsEmptyElement => cur.IsEmptyElement;
+        public override bool HasAttributes => cur.Attributes != null;
 
         public override NodeType NodeType
         {
@@ -108,9 +108,9 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             }
         }
 
-        public override string Value { get { return ValueTrimmer.Trim(cur.Value); } }
-        public override string LocalName { get { return cur.Name; } }
-        public override int Depth { get { return cur.Depth; } }
+        public override string Value => ValueTrimmer.Trim(cur.Value);
+        public override string LocalName => cur.Name;
+        public override int Depth => cur.Depth;
 
         private static bool IsAttribute(string name)
         {
@@ -280,12 +280,12 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             public TreeVertex RightNeighbour { get; private set; }
             public List<XmlAttribute> Attributes { get; private set; }
             public string FullName { get; private set; }
-            public string Url { get { return NodeType == NodeType.Attribute ? Attributes[attributeIndex].NamespaceURI : GetUrl(); } }
-            public string Name { get { return NodeType == NodeType.Attribute ? Attributes[attributeIndex].Name : GetShortName(FullName); } }
-            public string Value { get { return NodeType == NodeType.Attribute ? Attributes[attributeIndex].Value : value; } }
+            public string Url => NodeType == NodeType.Attribute ? Attributes[attributeIndex].NamespaceURI : GetUrl();
+            public string Name => NodeType == NodeType.Attribute ? Attributes[attributeIndex].Name : GetShortName(FullName);
+            public string Value => NodeType == NodeType.Attribute ? Attributes[attributeIndex].Value : value;
             public NodeType NodeType { get; set; }
-            public int Depth { get { return NodeType == NodeType.Text ? depth + 1 : depth; } }
-            public bool IsEmptyElement { get { return LeftSon == null && Value == null; } }
+            public int Depth => NodeType == NodeType.Text ? depth + 1 : depth;
+            public bool IsEmptyElement => LeftSon == null && Value == null;
 
             private string GetUrl()
             {

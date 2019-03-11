@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 using NUnit.Framework;
@@ -163,7 +163,7 @@ namespace SKBKontur.Catalogue.XmlSerializer.Tests.Writing
 
         public class ClassWithIndexer
         {
-            public virtual Object this[int index] { get { return "djskdjsdk"; } }
+            public virtual Object this[int index] => "djskdjsdk";
         }
 
         public class QZZ

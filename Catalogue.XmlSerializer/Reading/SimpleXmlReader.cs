@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Xml;
 
@@ -59,13 +59,13 @@ namespace SKBKontur.Catalogue.XmlSerialization.Reading
             }
         }
 
-        public override string Value { get { return needTrimValues ? ValueTrimmer.Trim(xmlReader.Value) : xmlReader.Value; } }
-        public override string LocalName { get { return xmlReader.LocalName; } }
-        public override bool HasAttributes { get { return xmlReader.HasAttributes; } }
-        public override string NamespaceURI { get { return xmlReader.NamespaceURI; } }
+        public override string Value => needTrimValues ? ValueTrimmer.Trim(xmlReader.Value) : xmlReader.Value;
+        public override string LocalName => xmlReader.LocalName;
+        public override bool HasAttributes => xmlReader.HasAttributes;
+        public override string NamespaceURI => xmlReader.NamespaceURI;
 
-        public override bool IsEmptyElement { get { return xmlReader.IsEmptyElement; } }
-        public override int Depth { get { return xmlReader.Depth; } }
+        public override bool IsEmptyElement => xmlReader.IsEmptyElement;
+        public override int Depth => xmlReader.Depth;
 
         private static void Initialize()
         {
