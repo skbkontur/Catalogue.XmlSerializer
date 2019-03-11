@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Xml;
 
 using Catalogue.XmlSerializer.Writing;
@@ -11,15 +11,11 @@ namespace Catalogue.XmlSerializer.Tests.Writing
     [TestFixture]
     public class ContentWriterCollectionTest
     {
-        #region Setup/Teardown
-
         [SetUp]
         public void SetUp()
         {
             collection = new ContentWriterCollection(new XmlAttributeInterpretator());
         }
-
-        #endregion
 
         [Test]
         public void TestCacheNonSimpleTypes()
@@ -73,7 +69,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         }
 
         [Test]
-        public void TestWithNullabler()
+        public void TestWithNullable()
         {
             Check(new WithNullable {Int = 37843}, "<Int>37843</Int>");
         }

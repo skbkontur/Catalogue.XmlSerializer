@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Xml;
 
 namespace Catalogue.XmlSerializer.Attributes
@@ -11,7 +11,7 @@ namespace Catalogue.XmlSerializer.Attributes
                 writer.WriteStartElement(xmlElementInfo.Name);
             else
             {
-                var xmlNamespaceDescription = xmlElementInfo.NamespaceDescriptions == null ? null : xmlElementInfo.NamespaceDescriptions.FirstOrDefault(x => x.Uri == xmlElementInfo.NamespaceUri);
+                var xmlNamespaceDescription = xmlElementInfo.NamespaceDescriptions?.FirstOrDefault(x => x.Uri == xmlElementInfo.NamespaceUri);
                 if (xmlNamespaceDescription != null)
                     writer.WriteStartElement(xmlNamespaceDescription.Prefix, xmlElementInfo.Name, xmlElementInfo.NamespaceUri);
                 else

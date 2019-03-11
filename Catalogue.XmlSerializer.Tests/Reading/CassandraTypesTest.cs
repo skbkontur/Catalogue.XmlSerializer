@@ -8,7 +8,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
     public class CassandraTypesTest
     {
         [Test]
-        public void DeserealizeTest()
+        public void DeserializeTest()
         {
             var serializer = new XmlSerializer();
             var actual = serializer.Deserialize<Qxx>(File.ReadAllText(GetFilePath("CassandraColumn.xml"))).col;

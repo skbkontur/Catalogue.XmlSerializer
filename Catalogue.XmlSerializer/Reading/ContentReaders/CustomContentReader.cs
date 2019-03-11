@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Catalogue.XmlSerializer.Reading.ContentReaders
 {
@@ -9,17 +9,13 @@ namespace Catalogue.XmlSerializer.Reading.ContentReaders
             emitConstruction = ReadHelpers.EmitConstruction<T>();
         }
 
-        #region IContentReader<T> Members
-
         public T Read(IReader reader)
         {
             var result = emitConstruction();
             result.Read(reader);
-            //TODO check XmlReader not currupted
+            //TODO check XmlReader not corrupted
             return result;
         }
-
-        #endregion
 
         private readonly Func<T> emitConstruction;
     }

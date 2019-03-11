@@ -10,8 +10,6 @@ namespace Catalogue.XmlSerializer.Tests.Writing
     [TestFixture]
     public class ReportWriterSpeedTest
     {
-        #region Setup/Teardown
-
         [SetUp]
         public void SetUp()
         {
@@ -19,8 +17,6 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             collection = new ContentWriterCollection(xmlAttributeInterpretator);
             writer = new ReportWriter(collection);
         }
-
-        #endregion
 
         [Test]
         public void TestSimple()

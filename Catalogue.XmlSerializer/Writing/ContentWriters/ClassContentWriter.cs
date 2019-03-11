@@ -16,11 +16,9 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
             var funcList = new List<Func<object, object>>();
             var elementInfoList = new List<XmlElementInfo>();
             ProcessAttributes(type, funcList, list, elementInfoList, contentWriterCollection);
-            attributeCount = elementInfoList.Count;
             ProcessOtherProps(type, funcList, list, elementInfoList, contentWriterCollection);
             writers = list.ToArray();
             readPropertyFuncs = funcList.ToArray();
-            elementInfos = elementInfoList.ToArray();
         }
 
         protected override void WriteNonNullableObject(object obj, IWriter writer)
@@ -101,10 +99,7 @@ namespace Catalogue.XmlSerializer.Writing.ContentWriters
         }
 
         private readonly IXmlAttributeInterpretator xmlAttributeInterpretator;
-
         private readonly Func<object, object>[] readPropertyFuncs;
         private readonly IValueWriter[] writers;
-        private readonly XmlElementInfo[] elementInfos;
-        private readonly int attributeCount;
     }
 }

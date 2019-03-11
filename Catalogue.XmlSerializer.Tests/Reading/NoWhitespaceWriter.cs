@@ -8,7 +8,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         public NoWhitespaceWriter(TextWriter writer, XmlWriterSettings settings)
             : base(writer)
         {
-            this.Settings = settings;
+            Settings = settings;
         }
 
         public override void WriteWhitespace(string ws)

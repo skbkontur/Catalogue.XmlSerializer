@@ -28,7 +28,7 @@ namespace Catalogue.XmlSerializer.Writing
 
         public void WriteStartAttribute(XmlElementInfo xmlElementInfo)
         {
-            Add($"{GetXmlElementString(xmlElementInfo)}${"Attr"}");
+            Add($"{GetXmlElementString(xmlElementInfo)}$Attr");
             namespacesStack.Push(GetUrl(xmlElementInfo));
         }
 
@@ -72,15 +72,15 @@ namespace Catalogue.XmlSerializer.Writing
 
         private string GetUrl(XmlElementInfo xmlElementInfo)
         {
-            var currentUrl = xmlElementInfo == null ? null : xmlElementInfo.NamespaceUri;
-            var topUrl = namespacesStack.Count > 0 ? namespacesStack.Peek() : "";
+            var currentUrl = xmlElementInfo?.NamespaceUri;
+            var topUrl = namespacesStack.Count > 0 ? namespacesStack.Peek() : string.Empty;
             return string.IsNullOrEmpty(currentUrl) ? topUrl : currentUrl;
         }
 
         private string GetXmlElementString(XmlElementInfo xmlElementInfo)
         {
             var url = GetUrl(xmlElementInfo);
-            var topUrl = namespacesStack.Count > 0 ? namespacesStack.Peek() : "";
+            var topUrl = namespacesStack.Count > 0 ? namespacesStack.Peek() : string.Empty;
             if (string.IsNullOrEmpty(url) || url == topUrl)
                 return xmlElementInfo.Name;
             return "[" + url + "]" + xmlElementInfo.Name;

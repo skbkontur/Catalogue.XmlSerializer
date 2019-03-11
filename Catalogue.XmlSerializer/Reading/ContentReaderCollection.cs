@@ -30,8 +30,6 @@ namespace Catalogue.XmlSerializer.Reading
                 readers.Add(leafContentReader.Key, leafContentReader.Value);
         }
 
-        #region IContentReaderCollection Members
-
         public IContentReader<T> Get<T>()
         {
             CheckGanGet<T>();
@@ -52,8 +50,6 @@ namespace Catalogue.XmlSerializer.Reading
             }
             return contentReader;
         }
-
-        #endregion
 
         private void CheckGanGet<T>()
         {

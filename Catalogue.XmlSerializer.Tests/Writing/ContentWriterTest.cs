@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Xml;
 
@@ -13,16 +13,12 @@ namespace Catalogue.XmlSerializer.Tests.Writing
     [TestFixture]
     public class ContentWriterTest
     {
-        #region Setup/Teardown
-
         [SetUp]
         public void SetUp()
         {
             collection = new TestContentWriterCollection();
             xmlAttributeInterpretator = new XmlAttributeInterpretator();
         }
-
-        #endregion
 
         [Test]
         public void TestArrayRank()

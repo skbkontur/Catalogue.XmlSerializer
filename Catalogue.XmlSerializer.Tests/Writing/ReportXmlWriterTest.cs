@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Xml;
 
@@ -11,16 +11,12 @@ namespace Catalogue.XmlSerializer.Tests.Writing
     [TestFixture]
     public class ReportXmlWriterTest
     {
-        #region Setup/Teardown
-
         [SetUp]
         public void SetUp()
         {
             builder = new StringBuilder();
             writer = new CollapseWriter(new SimpleXmlWriter(XmlWriter.Create(builder, new XmlWriterSettings {OmitXmlDeclaration = true})));
         }
-
-        #endregion
 
         [Test]
         public void TestAttrAfterValueBug()
