@@ -14,15 +14,15 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing.ContentWriters
 
         protected override void WriteNonNullableValue(object value, IWriter writer)
         {
+            if (value == null)
+                return;
+
             var array = (Array)value;
             for (var i = 0; i < array.Length; ++i)
             {
                 var arrayItem = array.GetValue(i);
-                if (arrayItem != null)
-                {
-                    var itemValueWriter = new ArrayItemValueWriter(xmlElementInfo, itemContentWriter, i);
-                    itemValueWriter.Write(arrayItem, writer);
-                }
+                var itemValueWriter = new ArrayItemValueWriter(xmlElementInfo, itemContentWriter, i);
+                itemValueWriter.Write(arrayItem, writer);
             }
         }
 

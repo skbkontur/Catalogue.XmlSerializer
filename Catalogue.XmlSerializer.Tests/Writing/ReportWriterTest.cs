@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using System.Text;
 
 using NUnit.Framework;
@@ -26,7 +27,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             writer.SerializeToString(new QXX
                 {
                     Id = id
-                }, true, Encoding.ASCII).AssertEqualsXml(
+                }, true, Encoding.ASCII, true).AssertEqualsXml(
                     @"
 <root>
     <Id>7fe483b0-b27e-43fb-ac68-d66fd7dea4da</Id>
@@ -39,7 +40,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             writer.SerializeToString(new DCC
                 {
                     Z = 23782.323223m
-                }, true, Encoding.ASCII).AssertEqualsXml(
+                }, true, Encoding.ASCII, true).AssertEqualsXml(
                     @"
 <root>
     <Z>23782.323223</Z>
@@ -52,7 +53,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             writer.SerializeToString(new Q
                 {
                     Z = ZEnum.B
-                }, true, Encoding.ASCII).AssertEqualsXml(
+                }, true, Encoding.ASCII, true).AssertEqualsXml(
                     @"
 <root>
     <Z>B</Z>
@@ -62,7 +63,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestSimple()
         {
-            writer.SerializeToString(new C1 {PackNumber = 12, C2Prop = new C2 {P = "sss", U = ""}}, true, Encoding.ASCII).AssertEqualsXml(
+            writer.SerializeToString(new C1 {PackNumber = 12, C2Prop = new C2 {P = "sss", U = ""}}, true, Encoding.ASCII, true).AssertEqualsXml(
                 @"
 <TestRoot>
     <PackNumber>12</PackNumber>
@@ -81,7 +82,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                     SpecificTrash = "1",
                     Transaction = new SpecificTransaction {SpecificTransactionTrash = "2"},
                 };
-            writer.SerializeToString(message, true, Encoding.ASCII).AssertEqualsXml(
+            writer.SerializeToString(message, true, Encoding.ASCII, true).AssertEqualsXml(
                 @"
                 <Message>
                     <specificTrash>1</specificTrash>
@@ -104,7 +105,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                         }
                 };
 
-            writer.SerializeToString(message, true, Encoding.ASCII).AssertEqualsXml(@"
+            writer.SerializeToString(message, true, Encoding.ASCII, true).AssertEqualsXml(@"
                 <Message>
                     <specificTrash>st</specificTrash>
                     <SpecificTransaction>
@@ -123,7 +124,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 {
                     ByteArray = new byte[] {0, 1, 2, 3, 4, 5}
                 };
-            writer.SerializeToString(message, true, Encoding.ASCII).AssertEqualsXml(@"
+            writer.SerializeToString(message, true, Encoding.ASCII, true).AssertEqualsXml(@"
 <root>
     <ByteArray>AAECAwQF</ByteArray>
 </root>
@@ -133,15 +134,30 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         [Test]
         public void TestByteArrayNull()
         {
-            writer.SerializeToString(new QZZ(), true, Encoding.ASCII).AssertEqualsXml(@"
+            writer.SerializeToString(new QZZ(), true, Encoding.ASCII, true).AssertEqualsXml(@"
 <root />
 ");
         }
 
+        [TestCase(false)]
+        [TestCase(true)]
+        public void TestWriteEmpty(bool skipEmpty)
+        {
+            var emptyStringSerialized = skipEmpty ? "" : @"
+  <String/>
+  <NullComplex/>
+  <Strings/>";
+            writer.SerializeToString(new C44 {Strings = new[] {null, "abc"}}, true, Encoding.ASCII, skipEmpty).AssertEqualsXml($@"
+<root>{emptyStringSerialized}
+  <Strings>abc</Strings>
+</root>
+");
+        }
+        
         [Test]
         public void TestClassWithIndexer()
         {
-            var actual = writer.SerializeToString(new ClassWithIndexer(), true, Encoding.ASCII);
+            var actual = writer.SerializeToString(new ClassWithIndexer(), true, Encoding.ASCII, true);
             actual.AssertEqualsXml(@"
 <root />
 ");
@@ -193,6 +209,14 @@ namespace Catalogue.XmlSerializer.Tests.Writing
         {
             public int? PackNumber { get; set; }
             public C2 C2Prop { get; set; }
+        }
+
+        private class C44
+        {
+            public string String { get; set; }
+            public C1 NullComplex { get; set; }
+            public string[] NullArray { get; set; }
+            public string[] Strings { get; set; }
         }
     }
 }

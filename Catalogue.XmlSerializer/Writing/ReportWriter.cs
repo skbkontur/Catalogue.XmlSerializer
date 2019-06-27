@@ -12,7 +12,7 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
             this.contentWriterCollection = contentWriterCollection;
         }
 
-        public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding)
+        public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding, bool skipEmpty)
         {
             var settings = new XmlWriterSettings
                 {
@@ -24,13 +24,16 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
                 };
             var memoryStream = new MemoryStream();
             using (var xmlWriter = XmlWriter.Create(memoryStream, settings))
-                Write(data, new CollapseWriter(new SimpleXmlWriter(xmlWriter)));
+            {
+                var innerWriter = new SimpleXmlWriter(xmlWriter);
+                Write(data, skipEmpty ? new CollapseWriter(innerWriter) : (IWriter)innerWriter);
+            }
             return memoryStream.ToArray();
         }
 
-        public string SerializeToString<T>(T data, bool omitXmlDeclaration, Encoding encoding)
+        public string SerializeToString<T>(T data, bool omitXmlDeclaration, Encoding encoding, bool skipEmpty)
         {
-            return encoding.GetString(SerializeToBytes(data, omitXmlDeclaration, encoding));
+            return encoding.GetString(SerializeToBytes(data, omitXmlDeclaration, encoding, skipEmpty));
         }
 
         public NameValueCollection SerializeToNameValueCollection<T>(T data, bool skipEmpty)

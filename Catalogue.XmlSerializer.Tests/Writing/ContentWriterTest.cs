@@ -78,6 +78,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 @"
 <root>
     <Arr>custom-a</Arr>
+    <Arr/>
     <Item2 />
     <Item>custom-b</Item>
 </root>
@@ -188,6 +189,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 @"
 <root>
     <Values>1</Values>
+    <Values/>
     <Values>2</Values>
     <Values>3</Values>
 </root>
