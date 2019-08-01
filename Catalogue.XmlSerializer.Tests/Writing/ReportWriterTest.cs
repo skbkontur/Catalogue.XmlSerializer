@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using System.Text;
 
 using NUnit.Framework;
@@ -147,13 +146,17 @@ namespace Catalogue.XmlSerializer.Tests.Writing
   <String/>
   <NullComplex/>
   <Strings/>";
-            writer.SerializeToString(new C44 {Strings = new[] {null, "abc"}}, true, Encoding.ASCII, skipEmpty).AssertEqualsXml($@"
+            var attr = skipEmpty ? "" : " Attr1=\"\"";
+            writer.SerializeToString(new C44 {Strings = new[] {null, "abc"}, NotNullComplex = new C10 {Value = "123"}}, true, Encoding.ASCII, skipEmpty).AssertEqualsXml($@"
 <root>{emptyStringSerialized}
   <Strings>abc</Strings>
+  <NotNullComplex{attr}>
+    <Value>123</Value>
+  </NotNullComplex>
 </root>
 ");
         }
-        
+
         [Test]
         public void TestClassWithIndexer()
         {
@@ -211,12 +214,21 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             public C2 C2Prop { get; set; }
         }
 
+        private class C10
+        {
+            [XmlAttribute]
+            public string Attr1 { get; set; }
+
+            public string Value { get; set; }
+        }
+
         private class C44
         {
             public string String { get; set; }
-            public C1 NullComplex { get; set; }
+            public C10 NullComplex { get; set; }
             public string[] NullArray { get; set; }
             public string[] Strings { get; set; }
+            public C10 NotNullComplex { get; set; }
         }
     }
 }
