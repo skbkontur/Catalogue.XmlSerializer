@@ -140,17 +140,14 @@ namespace Catalogue.XmlSerializer.Tests.Writing
 
         [TestCase(false)]
         [TestCase(true)]
-        public void TestWriteEmpty(bool skipEmpty)
+        public void TestWriteEmpty(bool collapseArrayElements)
         {
-            var emptyStringSerialized = skipEmpty ? "" : @"
-  <String/>
-  <NullComplex/>
+            var emptyStringSerialized = collapseArrayElements ? "" : @"
   <Strings/>";
-            var attr = skipEmpty ? "" : " Attr1=\"\"";
-            writer.SerializeToString(new C44 {Strings = new[] {null, "abc"}, NotNullComplex = new C10 {Value = "123"}}, true, Encoding.ASCII, skipEmpty).AssertEqualsXml($@"
+            writer.SerializeToString(new C44 {Strings = new[] {null, "abc"}, NotNullComplex = new C10 {Value = "123"}}, true, Encoding.ASCII, collapseArrayElements).AssertEqualsXml($@"
 <root>{emptyStringSerialized}
   <Strings>abc</Strings>
-  <NotNullComplex{attr}>
+  <NotNullComplex>
     <Value>123</Value>
   </NotNullComplex>
 </root>

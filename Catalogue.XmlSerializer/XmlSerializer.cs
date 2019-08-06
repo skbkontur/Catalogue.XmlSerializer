@@ -18,14 +18,14 @@ namespace SkbKontur.Catalogue.XmlSerializer
             reportWriter = new ReportWriter(new ContentWriterCollection(xmlAttributeInterpreter));
         }
 
-        public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding, bool skipEmpty = true)
+        public byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding, bool collapseArrayElements = true)
         {
-            return reportWriter.SerializeToBytes(data, omitXmlDeclaration, encoding, skipEmpty);
+            return reportWriter.SerializeToBytes(data, omitXmlDeclaration, encoding, collapseArrayElements);
         }
 
-        public NameValueCollection SerializeToNameValueCollection<T>(T data, bool skipEmpty = true)
+        public NameValueCollection SerializeToNameValueCollection<T>(T data, bool collapseArrayElements = true)
         {
-            return reportWriter.SerializeToNameValueCollection(data, skipEmpty);
+            return reportWriter.SerializeToNameValueCollection(data, collapseArrayElements);
         }
 
         public void Serialize<T>(T data, IWriter writer)
