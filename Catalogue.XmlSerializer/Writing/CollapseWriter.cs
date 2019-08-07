@@ -81,10 +81,13 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
 
         private bool CanBeRemoved(XmlElementInfo xmlElementInfo, bool isArrayElement)
         {
+            if (collapseOnlyOptionalElements)
+                return xmlElementInfo.Optional;
+
             if (isArrayElement)
                 return collapseArrayElements;
 
-            return !collapseOnlyOptionalElements || xmlElementInfo.Optional;
+            return true;
         }
 
         private void Flush()
