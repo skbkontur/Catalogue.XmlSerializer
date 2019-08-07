@@ -38,6 +38,14 @@ namespace Catalogue.XmlSerializer.Tests
             Assert.AreEqual(xmlText, xmlSerializer.SerializeToUtfString(data, true));
         }
 
+        [TestCase(false)]
+        [TestCase(true)]
+        public void TestNull(bool collapseArrayElements)
+        {
+            var data = xmlSerializer.Deserialize<Q>(Encoding.UTF8.GetBytes(xmlNullText));
+            Assert.AreEqual(xmlNullText, xmlSerializer.SerializeToUtfString(data, true, collapseArrayElements));
+        }
+
         private const string xmlText = @"<root>
   <Qxx>
     <specificTrash>qzz1</specificTrash>
@@ -70,6 +78,8 @@ namespace Catalogue.XmlSerializer.Tests
     </Value>
   </Qyy>
 </root>";
+
+        private const string xmlNullText = @"<root />";
 
         private SkbKontur.Catalogue.XmlSerializer.XmlSerializer xmlSerializer;
     }
