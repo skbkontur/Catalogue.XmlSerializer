@@ -23,9 +23,9 @@ namespace SkbKontur.Catalogue.XmlSerializer
             return reportWriter.SerializeToBytes(data, omitXmlDeclaration, encoding, collapseArrayElements);
         }
 
-        public NameValueCollection SerializeToNameValueCollection<T>(T data, bool collapseArrayElements = true)
+        public NameValueCollection SerializeToNameValueCollection<T>(T data, bool skipEmpty = true)
         {
-            return reportWriter.SerializeToNameValueCollection(data, collapseArrayElements);
+            return reportWriter.SerializeToNameValueCollection(data, skipEmpty);
         }
 
         public void Serialize<T>(T data, IWriter writer)

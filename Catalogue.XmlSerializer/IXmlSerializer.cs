@@ -10,7 +10,7 @@ namespace SkbKontur.Catalogue.XmlSerializer
     public interface IXmlSerializer
     {
         byte[] SerializeToBytes<T>(T data, bool omitXmlDeclaration, Encoding encoding, bool collapseArrayElements = true);
-        NameValueCollection SerializeToNameValueCollection<T>(T data, bool collapseArrayElements = true);
+        NameValueCollection SerializeToNameValueCollection<T>(T data, bool skipEmpty = true);
         void Serialize<T>(T data, IWriter writer);
 
         T Deserialize<T>(XmlReader reader, bool needTrimValues = true);
