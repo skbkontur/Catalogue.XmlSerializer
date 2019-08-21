@@ -7,10 +7,11 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
 {
     public class CollapseWriter : IWriter
     {
-        public CollapseWriter(IWriter writer, bool collapseOnlyOptionalElements = false)
+        public CollapseWriter(IWriter writer, bool collapseOnlyOptionalElements = false, bool collapseArrayElements = true)
         {
             this.writer = writer;
             this.collapseOnlyOptionalElements = collapseOnlyOptionalElements;
+            this.collapseArrayElements = collapseArrayElements;
             actionsList = new List<XmlWriterAction> {new XmlWriterAction("?", w => { }, false)};
             cur = 0;
         }
@@ -48,19 +49,19 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
         public void WriteStartAttribute(XmlElementInfo xmlElementInfo)
         {
             Check("[*)?", "WriteStartAttribute");
-            actionsList.Add(new XmlWriterAction("[", w => w.WriteStartAttribute(xmlElementInfo), CanBeRemoved(xmlElementInfo)));
+            actionsList.Add(new XmlWriterAction("[", w => w.WriteStartAttribute(xmlElementInfo), CanBeRemoved(xmlElementInfo, isArrayElement : false)));
         }
 
         public void WriteStartArrayElement(XmlElementInfo xmlElementInfo, int index)
         {
             Check("[*", "WriteStartElement");
-            actionsList.Add(new XmlWriterAction("(", w => w.WriteStartArrayElement(xmlElementInfo, index), CanBeRemoved(xmlElementInfo)));
+            actionsList.Add(new XmlWriterAction("(", w => w.WriteStartArrayElement(xmlElementInfo, index), CanBeRemoved(xmlElementInfo, isArrayElement : true)));
         }
 
         public void WriteStartElement(XmlElementInfo xmlElementInfo)
         {
             Check("[*", "WriteStartElement");
-            actionsList.Add(new XmlWriterAction("(", w => w.WriteStartElement(xmlElementInfo), CanBeRemoved(xmlElementInfo)));
+            actionsList.Add(new XmlWriterAction("(", w => w.WriteStartElement(xmlElementInfo), CanBeRemoved(xmlElementInfo, isArrayElement : false)));
         }
 
         public void WriteValue(object value)
@@ -78,9 +79,15 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
             actionsList.Add(new XmlWriterAction("*", w => w.WriteRawData(data), false));
         }
 
-        private bool CanBeRemoved(XmlElementInfo xmlElementInfo)
+        private bool CanBeRemoved(XmlElementInfo xmlElementInfo, bool isArrayElement)
         {
-            return !collapseOnlyOptionalElements || xmlElementInfo.Optional;
+            if (collapseOnlyOptionalElements)
+                return xmlElementInfo.Optional;
+
+            if (isArrayElement)
+                return collapseArrayElements;
+
+            return true;
         }
 
         private void Flush()
@@ -98,6 +105,7 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
         private readonly List<XmlWriterAction> actionsList;
         private readonly IWriter writer;
         private readonly bool collapseOnlyOptionalElements;
+        private readonly bool collapseArrayElements;
         private int cur;
 
         private class XmlWriterAction

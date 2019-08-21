@@ -25,10 +25,10 @@ namespace Catalogue.XmlSerializer.Tests.Writing
             var count = 10000;
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var encoding1251 = Encoding.GetEncoding(1251);
-            writer.SerializeToString(пфрсзв2010, true, encoding1251);
+            writer.SerializeToString(пфрсзв2010, true, encoding1251, true);
             var w = Stopwatch.StartNew();
             for (var i = 0; i < count; ++i)
-                writer.SerializeToString(пфрсзв2010, true, encoding1251);
+                writer.SerializeToString(пфрсзв2010, true, encoding1251, true);
             Debug.WriteLine(w.ElapsedMilliseconds);
             Debug.WriteLine(count / w.Elapsed.TotalSeconds + " writes/s");
         }
