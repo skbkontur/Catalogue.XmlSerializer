@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.x - 2021.03.11
+- Update dependencies.
+- Run tests against net5.0 tfm.
+
 ## v1.1 - 2019.08.21
 - Add `collapseArrayElements` option to IXmlSerializer.SerializeToBytes method
 

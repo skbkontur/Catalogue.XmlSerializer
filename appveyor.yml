@@ -4,7 +4,7 @@ skip_commits:
   files:
     - '**/*.md'
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 init:
   - cmd: git config --global core.autocrlf false
@@ -15,7 +15,7 @@ init:
       {
         $env:SHOULD_PUBLISH_NUGET_PACKAGE = "true"
         Write-Host "Will publish nuget package for $tagName tag" -ForegroundColor "Green"
-        if ($tagName -match '^v\d+\.\d+-release$') # tag name matches 'vX.Y-release'
+        if ($tagName -match '^v\d+\.\d+-release') # tag name starts with 'vX.Y-release' (e.g. use 'v4.2-release.1' tag for the first patch for release v4.2)
         {
           $env:SHOULD_CREATE_RELEASE = "true"
           Write-Host "Will create release for $tagName tag" -ForegroundColor "Green"
@@ -27,14 +27,14 @@ nuget:
 
 before_build:
   - cmd: dotnet --info
-  - cmd: dotnet restore ./Catalogue.XmlSerializer.sln --verbosity m
-  
+  - cmd: dotnet restore ./Catalogue.XmlSerializer.sln --verbosity minimal
+
 build_script:
   - cmd: dotnet build --configuration Release ./Catalogue.XmlSerializer.sln
   - cmd: dotnet pack --no-build --configuration Release ./Catalogue.XmlSerializer.sln
 
 test_script:
-  - cmd: dotnet test --no-build --configuration Release ./Catalogue.XmlSerializer.Tests/Catalogue.XmlSerializer.Tests.csproj
+  - cmd: dotnet test --no-build --verbosity normal --configuration Release ./Catalogue.XmlSerializer.Tests/Catalogue.XmlSerializer.Tests.csproj
 
 artifacts:
   - path: './Catalogue.XmlSerializer/bin/Release/*.nupkg'
@@ -43,7 +43,7 @@ deploy:
   - provider: NuGet
     server: https://nuget.org
     api_key:
-      secure: CQ4MGAZ56ySfApnQ2TeZhSYDs+yLTggiu+5EWVsJBF9xn/pKcOO9IelQM6qA0mbf
+      secure: y2RPf+gBBqffQVm8pg9qZcg99m7K8hsSa4z7VHvIE6t+kuO7r/oIqTVcryZzL93D
     skip_symbols: true
     on:
       SHOULD_PUBLISH_NUGET_PACKAGE: true
