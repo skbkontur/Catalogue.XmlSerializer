@@ -9,8 +9,6 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
         public SimpleXmlReader(XmlReader xmlReader, bool needTrimValues)
         {
             this.needTrimValues = needTrimValues;
-            if (transformTable == null || goodNodeTypes == null)
-                Initialize();
             this.xmlReader = xmlReader;
             ReadWhileBadNodeType();
         }
@@ -67,7 +65,7 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
         public override bool IsEmptyElement => xmlReader.IsEmptyElement;
         public override int Depth => xmlReader.Depth;
 
-        private static void Initialize()
+        static SimpleXmlReader()
         {
             var xmlNodeType = typeof(XmlNodeType);
             var xmlNodeTypeNames = Enum.GetNames(xmlNodeType);
@@ -108,8 +106,8 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
             }
         }
 
-        private static int[] transformTable;
-        private static bool[] goodNodeTypes;
+        private static readonly int[] transformTable;
+        private static readonly bool[] goodNodeTypes;
 
         private readonly XmlReader xmlReader;
         private readonly bool needTrimValues;
