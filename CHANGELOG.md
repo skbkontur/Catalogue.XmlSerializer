@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.14 - 2021.08.26
+- Thread safe static fields initialization in SimpleXmlReader
+
 ## v1.1.11 - 2021.03.11
 - Update dependencies.
 - Run tests against net5.0 tfm.
