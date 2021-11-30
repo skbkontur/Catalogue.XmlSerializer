@@ -6,6 +6,36 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
 {
     public class SimpleXmlReader : AbstractReader
     {
+        static SimpleXmlReader()
+        {
+            var xmlNodeType = typeof(XmlNodeType);
+            var xmlNodeTypeNames = Enum.GetNames(xmlNodeType);
+            var xmlNodeTypeValues = Enum.GetValues(xmlNodeType);
+            var map = new Dictionary<string, int>();
+            var max = 0;
+            for (var i = 0; i < xmlNodeTypeNames.Length; ++i)
+            {
+                var value = (int)xmlNodeTypeValues.GetValue(i);
+                map.Add(xmlNodeTypeNames[i], value);
+                if (value > max) max = value;
+            }
+            if (max > (1 << 20)) throw new NotSupportedException();
+            transformTable = new int[max + 1];
+            for (var i = 0; i < transformTable.Length; ++i)
+                transformTable[i] = -1;
+            var nodeType = typeof(NodeType);
+            var nodeTypeNames = Enum.GetNames(nodeType);
+            var nodeTypeValues = Enum.GetValues(nodeType);
+            for (var i = 0; i < nodeTypeNames.Length; ++i)
+                transformTable[map[nodeTypeNames[i]]] = (int)nodeTypeValues.GetValue(i);
+            goodNodeTypes = new bool[max + 1];
+            goodNodeTypes[(int)XmlNodeType.Element] = true;
+            goodNodeTypes[(int)XmlNodeType.CDATA] = true;
+            goodNodeTypes[(int)XmlNodeType.EndElement] = true;
+            goodNodeTypes[(int)XmlNodeType.Text] = true;
+            goodNodeTypes[(int)XmlNodeType.Attribute] = true;
+        }
+
         public SimpleXmlReader(XmlReader xmlReader, bool needTrimValues)
         {
             this.needTrimValues = needTrimValues;
@@ -64,36 +94,6 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
 
         public override bool IsEmptyElement => xmlReader.IsEmptyElement;
         public override int Depth => xmlReader.Depth;
-
-        static SimpleXmlReader()
-        {
-            var xmlNodeType = typeof(XmlNodeType);
-            var xmlNodeTypeNames = Enum.GetNames(xmlNodeType);
-            var xmlNodeTypeValues = Enum.GetValues(xmlNodeType);
-            var map = new Dictionary<string, int>();
-            var max = 0;
-            for (var i = 0; i < xmlNodeTypeNames.Length; ++i)
-            {
-                var value = (int)xmlNodeTypeValues.GetValue(i);
-                map.Add(xmlNodeTypeNames[i], value);
-                if (value > max) max = value;
-            }
-            if (max > (1 << 20)) throw new NotSupportedException();
-            transformTable = new int[max + 1];
-            for (var i = 0; i < transformTable.Length; ++i)
-                transformTable[i] = -1;
-            var nodeType = typeof(NodeType);
-            var nodeTypeNames = Enum.GetNames(nodeType);
-            var nodeTypeValues = Enum.GetValues(nodeType);
-            for (var i = 0; i < nodeTypeNames.Length; ++i)
-                transformTable[map[nodeTypeNames[i]]] = (int)nodeTypeValues.GetValue(i);
-            goodNodeTypes = new bool[max + 1];
-            goodNodeTypes[(int)XmlNodeType.Element] = true;
-            goodNodeTypes[(int)XmlNodeType.CDATA] = true;
-            goodNodeTypes[(int)XmlNodeType.EndElement] = true;
-            goodNodeTypes[(int)XmlNodeType.Text] = true;
-            goodNodeTypes[(int)XmlNodeType.Attribute] = true;
-        }
 
         private bool ReadWhileBadNodeType()
         {

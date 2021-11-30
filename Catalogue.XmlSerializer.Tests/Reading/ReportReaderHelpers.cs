@@ -51,7 +51,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
         {
             using (var xmlReader = XmlReader.Create(new StringReader(source),
                                                     new XmlReaderSettings
-                                                        {ConformanceLevel = ConformanceLevel.Fragment}))
+                                                            {ConformanceLevel = ConformanceLevel.Fragment}))
             {
                 var builder = new StringBuilder();
                 using (

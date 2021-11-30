@@ -27,7 +27,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 {
                     Id = id
                 }, true, Encoding.ASCII, true).AssertEqualsXml(
-                    @"
+                @"
 <root>
     <Id>7fe483b0-b27e-43fb-ac68-d66fd7dea4da</Id>
 </root>");
@@ -40,7 +40,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 {
                     Z = 23782.323223m
                 }, true, Encoding.ASCII, true).AssertEqualsXml(
-                    @"
+                @"
 <root>
     <Z>23782.323223</Z>
 </root>");
@@ -53,7 +53,7 @@ namespace Catalogue.XmlSerializer.Tests.Writing
                 {
                     Z = ZEnum.B
                 }, true, Encoding.ASCII, true).AssertEqualsXml(
-                    @"
+                @"
 <root>
     <Z>B</Z>
 </root>");

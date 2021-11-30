@@ -59,7 +59,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
             configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException($"Duplicate element '{context.CurrentElementLocalName}'"); };
 
             Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
-                @"<root>
+                            @"<root>
     <A>1</A>
     <B>x</B>
     <B>y</B>
@@ -88,7 +88,7 @@ namespace Catalogue.XmlSerializer.Tests.Reading
             configuration.OnDuplicateElement += delegate(object sender, DeserializationContext context) { throw new InvalidOperationException($"Duplicate element '{context.CurrentElementLocalName}'"); };
 
             Assert.That(() => ReportReaderHelpers.CreateReader(configuration).ReadFromString<CForDuplicateTest>(
-                @"<root>
+                            @"<root>
     <B>x</B>
     <B>y</B>
     <A>2</A>

@@ -54,8 +54,8 @@ namespace SkbKontur.Catalogue.XmlSerializer.Reading
                                                                        new[]
                                                                            {
                                                                                typeof(
-                                                                           IContentReaderCollection
-                                                                           )
+                                                                                   IContentReaderCollection
+                                                                               )
                                                                            });
 
                 var methodInfo = typeof(IContentReaderCollection).GetMethod("Get");

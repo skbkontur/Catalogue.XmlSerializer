@@ -12,7 +12,7 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
             this.writer = writer;
             this.collapseOnlyOptionalElements = collapseOnlyOptionalElements;
             this.collapseArrayElements = collapseArrayElements;
-            actionsList = new List<XmlWriterAction> {new XmlWriterAction("?", w => { }, false)};
+            actionsList = new List<XmlWriterAction> {new XmlWriterAction("?", w => {}, false)};
             cur = 0;
         }
 

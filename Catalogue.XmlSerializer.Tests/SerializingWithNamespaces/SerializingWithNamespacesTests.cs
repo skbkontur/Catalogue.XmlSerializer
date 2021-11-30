@@ -64,8 +64,7 @@ namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
                                 {
                                     A = "A"
                                 }
-                        }, true).
-                 AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body><one:A>A</one:A></m:Body></m:root>");
+                        }, true).AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body><one:A>A</one:A></m:Body></m:root>");
 
             xmlSerializer
                 .SerializeToUtfString(
@@ -76,8 +75,7 @@ namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
                                     A = "A",
                                     B = "B"
                                 }
-                        }, true).
-                 AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body><two:A>A</two:A><two:B>B</two:B></m:Body></m:root>");
+                        }, true).AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body><two:A>A</two:A><two:B>B</two:B></m:Body></m:root>");
 
             xmlSerializer
                 .SerializeToUtfString(
@@ -89,20 +87,19 @@ namespace Catalogue.XmlSerializer.Tests.SerializingWithNamespaces
                                     B = "B",
                                     C = "C"
                                 }
-                        }, true).
-                 AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body> <three:A>A</three:A> <three:B>B</three:B> <three:C>C</three:C> </m:Body></m:root>");
+                        }, true).AssertEqualsXml(@"<m:root xmlns:m=""main"" xmlns:one=""one"" xmlns:three=""three"" xmlns:two=""two"" ><m:Body> <three:A>A</three:A> <three:B>B</three:B> <three:C>C</three:C> </m:Body></m:root>");
         }
 
         [Test]
         public void TestCheckPrefixDeclaringOrder()
         {
             xmlSerializer.SerializeToUtfString(new RootWithManyNamespaces
-                {
-                    A = "A",
-                    B = "B",
-                    C = "C",
-                    D = "D",
-                }, true)
+                             {
+                                 A = "A",
+                                 B = "B",
+                                 C = "C",
+                                 D = "D",
+                             }, true)
                          .AssertEqualsXml(@"<root xmlns:d=""urn:a"" xmlns:c=""urn:b"" xmlns:b=""urn:c"" xmlns:a=""urn:d""> <d:A>A</d:A> <c:B>B</c:B> <b:C>C</b:C> <a:D>D</a:D> </root>");
         }
 
