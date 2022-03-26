@@ -1,4 +1,4 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -20,7 +20,8 @@ namespace SkbKontur.Catalogue.XmlSerializer.Writing
                     OmitXmlDeclaration = omitXmlDeclaration,
                     Indent = true,
                     ConformanceLevel = ConformanceLevel.Document,
-                    Encoding = encoding
+                    Encoding = encoding,
+                    NewLineChars = "\r\n"
                 };
             var memoryStream = new MemoryStream();
             using (var xmlWriter = XmlWriter.Create(memoryStream, settings))
